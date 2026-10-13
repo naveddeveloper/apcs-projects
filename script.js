@@ -14,10 +14,9 @@ const projectsData = [
     image: "assets/weather.png",
     liveUrl: "https://naveddeveloper.github.io/apcs-projects/Weather/",
     demoUrl: "https://naveddeveloper.github.io/apcs-projects/Weather/",
-    githubUrl: "https://github.com/naveddeveloper/apcs-projects",
+    githubUrl: "https://github.com/naveddeveloper/apcs-projects/tree/main/Weather",
     hasLocalDemo: true
   },
-
   {
     id: "portfolio",
     name: "Portfolio",
@@ -36,7 +35,6 @@ const projectsData = [
     githubUrl: "https://github.com/naveddeveloper/apcs-projects",
     hasLocalDemo: true
   },
-
   {
     id: "todolist",
     name: "TodoList",
@@ -44,7 +42,7 @@ const projectsData = [
     category: "web-apps",
     categoryLabel: "Web App",
     description:
-      "A complete task management application featuring instant task creation, inline editing, status toggling, custom categories, priority filtering, and client-side persistence using localStorage.",
+      "Task management application with instant task creation, inline editing, status toggling, custom categories, priority filtering, and localStorage persistence.",
     technologies: ["HTML5", "CSS3", "JavaScript", "localStorage"],
     tags: ["HTML5", "CSS3", "JavaScript", "localStorage"],
     icon: "✓",
@@ -52,10 +50,9 @@ const projectsData = [
     image: "assets/todolist.png",
     liveUrl: "https://naveddeveloper.github.io/apcs-projects/TodoList/",
     demoUrl: "https://naveddeveloper.github.io/apcs-projects/TodoList/",
-    githubUrl: "https://github.com/naveddeveloper/apcs-projects",
+    githubUrl: "https://github.com/naveddeveloper/apcs-projects/tree/main/TodoList",
     hasLocalDemo: true
   },
-
   {
     id: "quiz",
     name: "Quiz",
@@ -63,7 +60,7 @@ const projectsData = [
     category: "web-apps",
     categoryLabel: "Web App",
     description:
-      "An interactive computer science practice quiz application featuring timed questions on web technologies, immediate score calculation, answer reviews, and responsive quiz card styling.",
+      "Interactive computer science practice quiz featuring timed questions, score calculation, answer reviews, and responsive quiz cards.",
     technologies: ["JavaScript", "HTML5", "CSS3", "Quiz Engine"],
     tags: ["JavaScript", "HTML5", "CSS3", "Quiz Engine"],
     icon: "✦",
@@ -71,10 +68,9 @@ const projectsData = [
     image: "assets/quiz.png",
     liveUrl: "https://naveddeveloper.github.io/apcs-projects/Quiz/",
     demoUrl: "https://naveddeveloper.github.io/apcs-projects/Quiz/",
-    githubUrl: "https://github.com/naveddeveloper/apcs-projects",
+    githubUrl: "https://github.com/naveddeveloper/apcs-projects/tree/main/Quiz",
     hasLocalDemo: true
   },
-
   {
     id: "calculator",
     name: "Calculator",
@@ -82,7 +78,7 @@ const projectsData = [
     category: "utilities",
     categoryLabel: "Utility",
     description:
-      "A classic retro-styled arithmetic calculator built with responsive tactile keypads, keyboard input support, decimal calculations, and clear display states for desktop and mobile.",
+      "Retro-styled arithmetic calculator with responsive keypads, keyboard input, decimal calculations, and clear display states.",
     technologies: ["HTML5", "CSS3", "JavaScript", "UI Design"],
     tags: ["HTML5", "CSS3", "JavaScript", "UI Design"],
     icon: "±",
@@ -90,10 +86,9 @@ const projectsData = [
     image: "assets/project-calculator.png",
     liveUrl: "https://naveddeveloper.github.io/apcs-projects/Calculator/",
     demoUrl: "https://naveddeveloper.github.io/apcs-projects/Calculator/",
-    githubUrl: "https://github.com/naveddeveloper/apcs-projects",
+    githubUrl: "https://github.com/naveddeveloper/apcs-projects/tree/main/Calculator",
     hasLocalDemo: true
   },
-
   {
     id: "navedi-mall-ecommerse",
     name: "Navedi Mall Ecommerce",
@@ -101,7 +96,7 @@ const projectsData = [
     category: "ecommerce",
     categoryLabel: "E-Commerce",
     description:
-      "A modern multi-category eCommerce storefront featuring promotional banners, category showcases, responsive product grids with rating badges, and mobile navigation.",
+      "Modern multi-category eCommerce storefront featuring promotional banners, category showcases, product grids, rating badges, and mobile navigation.",
     technologies: ["HTML5", "CSS3", "JavaScript", "E-Commerce"],
     tags: ["HTML5", "CSS3", "JavaScript", "E-Commerce"],
     icon: "🛍",
@@ -109,7 +104,7 @@ const projectsData = [
     image: "assets/project-ecommerse.jpg",
     liveUrl: "https://naveddeveloper.github.io/apcs-projects/Ecommerse/",
     demoUrl: "https://naveddeveloper.github.io/apcs-projects/Ecommerse/",
-    githubUrl: "https://github.com/naveddeveloper/apcs-projects",
+    githubUrl: "https://github.com/naveddeveloper/apcs-projects/tree/main/Ecommerse",
     hasLocalDemo: true
   }
 ];

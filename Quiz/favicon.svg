@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#093d94"/>
+      <stop offset="50%" stop-color="#0d59cf"/>
+      <stop offset="100%" stop-color="#2563eb"/>
+    </linearGradient>
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="2" stdDeviation="2" flood-color="#000000" flood-opacity="0.25"/>
+    </filter>
+  </defs>
+  <!-- Background squircle -->
+  <rect width="64" height="64" rx="16" fill="url(#bgGrad)"/>
+  
+  <!-- Subtle inner border highlight -->
+  <rect x="2" y="2" width="60" height="60" rx="14" fill="none" stroke="#93c5fd" stroke-width="1.5" stroke-opacity="0.35"/>
+
+  <!-- Stylized "Q" symbol with integrated quiz checkmark -->
+  <!-- Main Q loop -->
+  <ellipse cx="29" cy="29" rx="15" ry="15" fill="none" stroke="#ffffff" stroke-width="5" stroke-linecap="round"/>
+  
+  <!-- Q dynamic tail -->
+  <path d="M38 38 L48 48" stroke="#ffffff" stroke-width="5.5" stroke-linecap="round"/>
+  
+  <!-- Inside checkmark indicating quiz verification -->
+  <path d="M21 29 L26.5 34.5 L37 23.5" fill="none" stroke="#38bdf8" stroke-width="3.8" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

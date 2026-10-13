@@ -1,0 +1,298 @@
+================================================================================
+NAVEDQUIZ — APCS PROJECT LEARNING DOCUMENT & VIVA PREPARATION
+================================================================================
+
+1. PROJECT NAME & OVERVIEW
+--------------------------------------------------------------------------------
+Project Name: NavedQuiz — Frontend Web Development Interactive Quiz Application
+Author: Naved
+Course: Advanced Placement Computer Science (APCS)
+
+NavedQuiz is a responsive, web-based self-assessment platform built from scratch
+using only HTML5, CSS3, and Vanilla JavaScript. It helps computer science students
+study and test their knowledge across three core frontend disciplines:
+1. HTML5 (15 Questions: doctype, semantic structure, forms, tables, accessibility)
+2. CSS3 (15 Questions: selectors, specificity, box model, Flexbox, Grid, media queries)
+3. JavaScript (15 Questions: primitives, scoping, functions, array methods, DOM, async)
+
+Total question bank: 45 carefully authored, realistic multiple-choice questions.
+
+
+2. PROJECT OBJECTIVE
+--------------------------------------------------------------------------------
+The objective of this project was to construct a robust, interactive single-page
+application (SPA) without relying on external libraries or frameworks like React,
+Vue, Bootstrap, or jQuery. The goals were:
+- Build a pixel-clean, accessible, and intuitive testing interface.
+- Implement responsive multi-column desktop, tablet, and mobile layouts.
+- Design a modular quiz engine in pure JavaScript supporting multiple categories.
+- Provide immediate feedback with option highlights and detailed rationales.
+- Track attempt history and calculate category performance using browser localStorage.
+- Prepare a comprehensive APCS viva defense based on real code.
+
+
+3. WHAT I LEARNED IN HTML5
+--------------------------------------------------------------------------------
+- Semantic Document Structure:
+  I learned how to construct a multi-view application using semantic HTML5 elements
+  such as <header>, <nav>, <main>, <section>, <aside>, <article>, and <footer>.
+  Semantic elements provide meaningful structural information to browsers and
+  assistive technologies rather than generic nested <div> tags.
+- Accessible Form Controls:
+  I learned how to connect form controls using explicit <label for="id"> associations,
+  enforce client-side constraints with required and type="email", and provide helpful
+  error message containers.
+- ARIA Attributes and Roles:
+  I utilized aria-label on icon buttons, role="progressbar" with aria-valuenow on
+  the custom progress bar track, and aria-label on navigation blocks.
+- Accessible Modal Overlays:
+  I built modal dialogs for the Quick Reference cheatsheet, quiz results, and user
+  confirmations, ensuring proper document flow and focus handling.
+
+
+4. WHAT I LEARNED IN CSS3
+--------------------------------------------------------------------------------
+- CSS Variables (Design Tokens):
+  I defined a global palette of CSS custom properties in :root (--primary-color,
+  --bg-option, --success-bg, --danger-bg, --html-accent, etc.). This made colors,
+  border-radii, and shadows consistent across the application.
+- CSS Box Model and box-sizing: border-box:
+  Applying box-sizing: border-box universally prevents element borders and padding
+  from expanding calculated widths, making layout math predictable.
+- Responsive CSS Grid and Flexbox:
+  - Main Quiz Layout: Uses CSS Grid (minmax(0, 1fr) 290px) to give the question
+    area fluid space while maintaining a fixed-width tracking sidebar.
+  - One-Dimensional Components: Uses Flexbox for the top navigation bar, score
+    cards, button rows, and vertical question lists.
+- Media Queries and Responsive Breakpoints:
+  - Desktop (>992px): Two-column layout with fixed sidebar.
+  - Tablet (768px - 992px): Adjusted gap spacing and flexible column widths.
+  - Mobile (<768px): Stacks the question section and sidebar vertically, rearranges
+    the controls, makes buttons tap-friendly (minimum 44px height), and limits the
+    question navigator height to prevent page scrolling.
+  - Mobile (<480px): Stacks action buttons vertically for effortless thumb navigation.
+
+
+5. WHAT I LEARNED IN JAVASCRIPT
+--------------------------------------------------------------------------------
+- Centralized State Management:
+  I structured a central appState object containing currentCategory, currentIndex,
+  answers, timerInterval, elapsedSeconds, isReviewMode, and isCompleted. This serves
+  as the single source of truth, avoiding scattered variables.
+- Pure DOM Manipulation:
+  I avoided heavy DOM replacement and used document.createElement(), textContent,
+  classList.add(), classList.remove(), and querySelector() to dynamically render
+  question prompts, option cards, and SVG icons.
+- Event Delegation and Listeners:
+  I attached event listeners with addEventListener() for click, change, submit,
+  and global keydown (Escape key to close modals).
+- Data Structures:
+  I organized all 45 questions into a dictionary QUIZ_DATA with keys 'html', 'css',
+  and 'js'. Each question contains an id, text, options array, correct string,
+  explanation, and topic tag.
+
+
+6. HOW THE QUIZ ENGINE WORKS
+--------------------------------------------------------------------------------
+1. Category Selection:
+   When a user clicks "Start HTML Quiz" or changes the dropdown, initializeQuiz()
+   loads the selected category from QUIZ_DATA, clears previous answers, resets the
+   timer, and displays Question 1.
+2. Answering Questions:
+   Clicking an option card updates appState.answers[currentIndex] with the selected
+   index and highlights the card with a blue border. It reveals the "Submit Answer"
+   button.
+3. Answer Grading:
+   Clicking "Submit Answer" compares the chosen text to currentQ.correct.
+   - If correct: Option turns green (#dcfce7, border #16a34a) with a checkmark SVG.
+   - If incorrect: Chosen option turns red (#fee2e2, border #dc2626) with an 'x' SVG,
+     and the true correct answer is highlighted in green.
+   - The rationale box reveals the complete explanation text.
+   - The sidebar status icon updates immediately.
+4. Navigation and Preservation:
+   Previous and Next buttons allow students to browse forward and backward.
+   Because all choices are stored in appState.answers, answers and grading states
+   are completely preserved when returning to earlier questions.
+
+
+7. HOW SCORE AND PROGRESS ARE CALCULATED
+--------------------------------------------------------------------------------
+- Real-Time Provisional Score (Sidebar):
+  While a quiz is underway, the sidebar displays accuracy based on submitted answers:
+  Provisional Score = (Correct Answers / Submitted Answers) * 100
+  For example, 4 correct out of 5 submitted displays 80.0%.
+- Final Completed Score:
+  When the quiz finishes, the final percentage evaluates overall performance:
+  Final Score = (Correct Answers / Total Questions) * 100
+  For example, 12 correct out of 15 questions displays 80.0%.
+- Progress Bar:
+  Progress Percentage = Math.round(((currentIndex + 1) / totalQuestions) * 100)
+  Displayed on both the visual bar fill and the label: e.g. "Question 7/15 (47%)".
+
+
+8. HOW LOCALSTORAGE AND THE DASHBOARD WORK
+--------------------------------------------------------------------------------
+- Local Storage Persistence:
+  When a quiz finishes, saveAttemptRecord() serializes an attempt object (category,
+  title, date, scorePercent, correct, incorrect, unanswered, total, timeTaken) into
+  a JSON string and saves it under the key "navedquiz_attempts_history".
+- Multi-Category Aggregation:
+  renderHistoryDashboard() reads saved history and calculates:
+  - Total Quiz Attempts
+  - Total Completed Quizzes
+  - Overall Best Score
+  - Overall Average Score
+  - HTML Performance (attempts, best, average)
+  - CSS Performance (attempts, best, average)
+  - JavaScript Performance (attempts, best, average)
+  - Recent attempts table
+- Defensive Error Handling:
+  Reads and writes are wrapped in try...catch blocks. If localStorage contains
+  corrupted or non-array data, it resets cleanly without throwing unhandled errors.
+- Scope Limitation:
+  localStorage is strictly local to the specific browser on the specific machine.
+  It does not synchronize across devices or provide cloud database accounts.
+
+
+9. HOW THE TIMER WORKS
+--------------------------------------------------------------------------------
+- The timer utilizes window.setInterval() executing every 1000 milliseconds.
+- A variable appState.elapsedSeconds increments by 1 on each tick.
+- formatTimer(seconds) converts elapsed seconds into a readable MM:SS format using
+  Math.floor(seconds / 60) and String.padStart(2, "0").
+- Leak Prevention:
+  stopTimer() calls clearInterval() before starting any new timer to guarantee
+  that duplicate intervals never run concurrently.
+
+
+10. PROBLEMS SOLVED DURING DEVELOPMENT
+--------------------------------------------------------------------------------
+- Problem 1: Accidental Answer Changing After Grading
+  Originally, students could click another option after seeing an answer was wrong.
+  Solution: Verified savedAnswer.submitted at the start of handleOptionSelect()
+  and immediately returned if the question was already submitted.
+- Problem 2: Preserving Answers Across Questions
+  Navigating backwards originally reset the selected option.
+  Solution: Decoupled UI state from the question index. All answers are retained
+  in appState.answers, and renderCurrentQuestion() re-applies classes and icons.
+- Problem 3: Timer Acceleration Bug
+  Switching categories repeatedly caused the timer to tick multiple times per second.
+  Solution: Ensured startTimer() always clears any active interval with stopTimer()
+  before launching a new setInterval().
+- Problem 4: Mobile Responsiveness and Touch Usability
+  On narrow mobile screens, horizontal scrolling occurred and buttons were small.
+  Solution: Added responsive media queries at 768px and 480px, stacked columns,
+  made tap targets at least 44px, and added overflow-x: hidden on body.
+- Problem 5: Corrupted LocalStorage Crashing the App
+  Manually editing localStorage with invalid strings crashed the JSON parser.
+  Solution: Added try...catch and Array.isArray() validation in getStoredHistory().
+
+
+11. APCS VIVA PREPARATION (QUESTIONS & ANSWERS)
+--------------------------------------------------------------------------------
+
+Q1: What is the purpose of NavedQuiz?
+A1: NavedQuiz is an interactive web-based educational platform that tests and tracks
+    a student's knowledge of HTML5, CSS3, and JavaScript across 45 questions.
+
+Q2: What technologies did you use to build it?
+A2: Only standard HTML5, CSS3, and Vanilla JavaScript. No external frameworks or
+    libraries were used.
+
+Q3: How do you organize questions for the different categories?
+A3: I created a QUIZ_DATA JavaScript dictionary with 'html', 'css', and 'js' keys.
+    Each category has an array of 15 question objects containing id, prompt, options,
+    correct answer string, explanation, and topic tag.
+
+Q4: What is the CSS Box Model?
+A4: The CSS box model describes the rectangular boxes generated for elements in the
+    document tree: Content, Padding, Border, and Margin from the inside out.
+
+Q5: Why did you use box-sizing: border-box?
+A5: It includes padding and border within the element's specified width and height,
+    preventing unintended layout expansion.
+
+Q6: What is the difference between CSS Grid and Flexbox?
+A6: Flexbox is designed for one-dimensional layouts along a single axis (row or column).
+    CSS Grid is designed for two-dimensional layouts controlling rows and columns
+    simultaneously.
+
+Q7: What is an event listener in JavaScript?
+A7: An event listener is a method (addEventListener) that registers a callback
+    function to be invoked whenever a specified event (like click or submit) occurs
+    on a target DOM element.
+
+Q8: How does answer validation work in NavedQuiz?
+A8: When the user clicks "Submit Answer", the chosen option string is compared with
+    the question's correct property. If it matches, the question is marked correct;
+    otherwise, it is marked incorrect and the true answer is revealed.
+
+Q9: How do you prevent duplicate scoring?
+A9: Each question's submission status is recorded with a boolean submitted flag in
+    appState.answers. The scoring function iterates through submitted questions only
+    once, preventing duplicate points.
+
+Q10: How does the timer work and how do you prevent timer leaks?
+A10: The timer uses setInterval() to increment an elapsedSeconds counter every 1000ms.
+     To prevent leaks and multiple intervals, stopTimer() calls clearInterval() before
+     any new timer starts.
+
+Q11: What is localStorage and how is it used in NavedQuiz?
+A11: localStorage is a browser Web Storage API that stores string key-value pairs
+     with no expiration time. NavedQuiz serializes completed attempt objects into
+     JSON to compute dashboard statistics and recent attempts across browser reloads.
+
+Q12: What is the difference between localStorage and a database?
+A12: localStorage resides on the client's browser on a single device, stores only
+     strings, and has ~5MB capacity. A database runs on a backend server, supports
+     multiple users, manages relational data, and persists independently of client browsers.
+
+Q13: What happens when a user finishes a quiz with unanswered questions?
+A13: A confirmation dialog warns the user about unanswered questions. If confirmed,
+     unanswered questions are scored as 0 and reflected on the results screen.
+
+Q14: What was the most challenging technical aspect of the project?
+A14: Building a centralized state management and reactive rendering system in Vanilla
+     JavaScript that synchronizes the question cards, sidebar indicators, progress
+     bar, timer, and localStorage without using any framework.
+
+Q15: How did you fix the bug where no results were displayed after completing the quiz?
+A15: The root cause was twofold: first, the results modal element (resultsBackdrop) had
+     been replaced by a full-page results view (#view-results), but script.js still called
+     methods on undefined backdrop and heading DOM references, throwing unhandled TypeErrors.
+     Second, on the final question, clicking "Finish Quiz" without separately clicking
+     "Submit Answer" left the final selection unsubmitted, triggering false unanswered warnings.
+     I resolved this by:
+     - Adding dedicated results view management in switchView("results").
+     - Auto-submitting active selections upon clicking "Finish Quiz".
+     - Guarding completeQuizAndShowResults() against duplicate executions.
+     - Binding all results screen actions: Review Answers, Try Again, Return to Dashboard,
+       and Back to Results.
+     - Accurately computing and rendering all 9 key performance metrics.
+
+Q16: Why was the first answer option (index 0) appearing as correct for every question, and how was it fixed?
+A16: In the original question bank (QUIZ_DATA), all 45 questions across HTML, CSS, and
+     JavaScript were defined with the correct answer placed at array index 0. Consequently,
+     submitting any question or reviewing results always marked Option 1 with green success
+     styling and check icons.
+     I fixed this by:
+     - Distributing the correct answers evenly across all four option positions (indices 0, 1, 2, and 3).
+     - Standardizing the question data model with both explicit correctAnswer and correct strings.
+     - Ensuring all options render in a completely neutral state prior to submission.
+     - Comparing chosen answers directly against the question's explicit correctAnswer text.
+     - Displaying incorrect feedback on wrong selections while highlighting the true correct option.
+
+Q17: Why did the app open the HTML quiz automatically on startup/refresh, and how did you make Home the default?
+A17: The startup function loadInitialState() was immediately invoking initializeQuiz("html", 0),
+     which started the quiz timer and rendered the first HTML question. Additionally, in index.html,
+     #view-quiz was visible by default while #view-home had the hidden class.
+     I resolved this by:
+     - Updating loadInitialState() to invoke switchView("home") and renderHistoryDashboard() instead.
+     - Updating index.html so #view-home is visible by default and #view-quiz has the hidden class.
+     - Setting the "Home" nav link to active on startup.
+     - Requiring users to explicitly choose a category and click "Start Quiz" before entering any quiz.
+
+================================================================================
+END OF LEARNINGS DOCUMENT
+================================================================================
+

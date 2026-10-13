@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Naved Developer — Creative Portfolio</title>
+  <meta name="description"
+    content="Personal developer portfolio of Naved Developer featuring responsive web applications, mobile concepts, REST APIs, and creative UI engineering.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;700;800&display=swap"
+    rel="stylesheet">
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+  <link rel="alternate icon" href="assets/favicon.svg">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <nav class="navbar" id="navbar">
+    <div class="nav-container">
+      <a href="#home" class="nav-brand" aria-label="Naved Developer Home">
+        <span class="brand-dot"></span>
+        <span>Naved Developer</span>
+      </a>
+      <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <div class="nav-menu" id="nav-menu">
+        <a href="#home" class="nav-link active">Home</a>
+        <a href="#about" class="nav-link">About</a>
+        <a href="#skills" class="nav-link">Skills</a>
+        <a href="#projects" class="nav-link">Projects</a>
+        <a href="#experience" class="nav-link">Experience</a>
+        <a href="#contact" class="nav-link">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <header class="hero-section" id="home">
+    <div class="hero-decorations" aria-hidden="true">
+      <div class="sticker-star star-left"></div>
+      <div class="sticker-star star-right"></div>
+      <svg class="sparkle-doodle" viewBox="0 0 24 24">
+        <path d="M12 2v20M2 12h20M4.93 4.93l14.14 14.14M4.93 19.07l14.14-14.14"></path>
+      </svg>
+      <svg class="sparkle-doodle-right" viewBox="0 0 24 24">
+        <path d="M12 2v20M2 12h20M4.93 4.93l14.14 14.14M4.93 19.07l14.14-14.14"></path>
+      </svg>
+    </div>
+
+    <div class="hero-container">
+      <div class="year-badge-wrapper">
+        <span class="year-badge">2026</span>
+      </div>
+      <h1 class="hero-title">
+        <span class="title-word">Naved</span>
+        <span class="title-word">Developer</span>
+      </h1>
+      <p class="hero-subtitle">
+        <span>Web Development</span>
+        <span class="bullet-star">✦</span>
+        <span>Mobile Apps</span>
+        <span class="bullet-star">✦</span>
+        <span>APIs &amp; Integrations</span>
+      </p>
+      <p class="hero-intro">
+        Hi, I'm Naved &mdash; a developer who enjoys building web applications, mobile apps, APIs, and practical digital
+        products.
+      </p>
+      <div class="hero-actions">
+        <a href="#projects" class="btn btn-primary" id="hero-projects-btn">Explore My Projects</a>
+        <a href="#contact" class="btn btn-outline" id="hero-contact-btn">Contact Me</a>
+      </div>
+    </div>
+
+    <div class="torn-paper-divider" aria-hidden="true">
+      <svg viewBox="0 0 1440 85" preserveAspectRatio="none" class="torn-svg">
+        <path
+          d="M0,32 Q40,24 85,38 T170,28 T255,44 T340,22 T425,38 T510,20 T595,42 T680,26 T765,46 T850,22 T935,42 T1020,24 T1105,44 T1190,22 T1275,40 T1360,26 T1440,34 L1440,85 L0,85 Z">
+        </path>
+      </svg>
+    </div>
+  </header>
+
+  <main class="main-content">
+    <div class="content-container">
+      <div class="scrapbook-layout">
+
+        <div class="left-column">
+          <div class="scrapbook-card-container">
+            <div class="profile-scrapbook-card">
+              <img src="assets/naved-card-edited.jpg" alt="Naved Ansari — Software &amp; Web Developer"
+                class="profile-card-image">
+              <div class="profile-card-caption">
+                <p class="profile-tagline">Software &amp; Web Developer</p>
+              </div>
+            </div>
+          </div>
+
+          <section class="education-section" id="education">
+            <h3 class="section-title-serif">Education</h3>
+            <div class="education-block">
+              <div class="education-item">
+                <div class="education-dates">Currently Pursuing &middot; 2nd Year &middot; 3rd Semester</div>
+                <div class="education-school">Bachelor of Computer Applications (BCA)</div>
+                <div class="education-degree">Undergraduate Student</div>
+                <div class="education-details">Currently pursuing BCA with focus on Web Development, Programming
+                  Languages, Database Systems, and Core Computer Applications.</div>
+              </div>
+            </div>
+          </section>
+
+          <section class="skills-sidebar-section" id="skills">
+            <h3 class="section-title-serif">Software</h3>
+            <div class="software-grid">
+              <div class="software-badge badge-js">
+                <span class="badge-code">JS</span>
+                <span class="badge-name">JavaScript</span>
+              </div>
+              <div class="software-badge badge-html">
+                <span class="badge-code">HTML</span>
+                <span class="badge-name">HTML5</span>
+              </div>
+              <div class="software-badge badge-css">
+                <span class="badge-code">CSS</span>
+                <span class="badge-name">CSS3</span>
+              </div>
+              <div class="software-badge badge-node">
+                <span class="badge-code">Node</span>
+                <span class="badge-name">Node.js</span>
+              </div>
+              <div class="software-badge badge-kotlin">
+                <span class="badge-code">Kt</span>
+                <span class="badge-name">Kotlin</span>
+              </div>
+              <div class="software-badge badge-git">
+                <span class="badge-code">Git</span>
+                <span class="badge-name">GitHub</span>
+              </div>
+              <div class="software-badge badge-api">
+                <span class="badge-code">API</span>
+                <span class="badge-name">REST</span>
+              </div>
+              <div class="software-badge badge-sql">
+                <span class="badge-code">SQL</span>
+                <span class="badge-name">Database</span>
+              </div>
+            </div>
+
+            <div class="competencies-heading">Core Competencies</div>
+            <div class="competencies-list">
+              <span class="competency-tag">Clean Architecture</span>
+              <span class="competency-tag">Responsive Design</span>
+              <span class="competency-tag">Problem Solving</span>
+              <span class="competency-tag">DOM Manipulation</span>
+              <span class="competency-tag">Eager to Learn</span>
+              <span class="competency-tag">Team Collaboration</span>
+            </div>
+          </section>
+        </div>
+
+        <div class="right-column">
+          <section class="about-section" id="about">
+            <h2 class="section-title-serif">Hello !</h2>
+            <p class="bio-text">
+              Hi, my name is Naved, a developer with a passion for crafting clean, interactive frontend experiences,
+              practical backend APIs, and reliable software applications. I enjoy transforming creative designs into
+              responsive, production-ready code that communicates effectively.
+            </p>
+            <p class="bio-text">
+              My hands-on experience includes developing full-featured task management tools, interactive quiz
+              platforms, and retro web utilities using pure HTML5, CSS3, and Vanilla JavaScript, alongside exploring
+              scalable mobile architecture and logistics concepts.
+            </p>
+            <div class="bio-focus-list">
+              <span class="bio-focus-chip">Frontend Web Development</span>
+              <span class="bio-focus-chip">REST APIs &amp; Integrations</span>
+              <span class="bio-focus-chip">Mobile App Concepts</span>
+              <span class="bio-focus-chip">Clean Code &amp; Accessibility</span>
+            </div>
+          </section>
+
+          <section class="contact-section" id="contact">
+            <h2 class="section-title-serif">Contact</h2>
+            <div class="contact-grid">
+              <a href="mailto:ansarinavedhabeeb@gmail.com" class="contact-card" id="contact-email">
+                <div class="contact-icon-circle icon-circle-email">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                    <polyline points="22,6 12,13 2,6"></polyline>
+                  </svg>
+                </div>
+                <div class="contact-info">
+                  <span class="contact-label">Email</span>
+                  <span class="contact-value">ansarinavedhabeeb@gmail.com</span>
+                </div>
+              </a>
+
+              <a href="https://github.com/naveddeveloper" class="contact-card" target="_blank" rel="noopener noreferrer"
+                id="contact-github">
+                <div class="contact-icon-circle icon-circle-github">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <path
+                      d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22">
+                    </path>
+                  </svg>
+                </div>
+                <div class="contact-info">
+                  <span class="contact-label">GitHub</span>
+                  <span class="contact-value">github.com/naveddeveloper</span>
+                </div>
+              </a>
+
+              <a href="https://www.linkedin.com/in/naveddeveloper/" class="contact-card" target="_blank"
+                rel="noopener noreferrer" id="contact-linkedin">
+                <div class="contact-icon-circle icon-circle-linkedin">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                    <rect x="2" y="9" width="4" height="12"></rect>
+                    <circle cx="4" cy="4" r="2"></circle>
+                  </svg>
+                </div>
+                <div class="contact-info">
+                  <span class="contact-label">LinkedIn</span>
+                  <span class="contact-value">linkedin.com/in/naveddeveloper</span>
+                </div>
+              </a>
+
+              <a href="https://wa.me/919307147361" class="contact-card" target="_blank" rel="noopener noreferrer"
+                id="contact-whatsapp">
+                <div class="contact-icon-circle icon-circle-chat">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <path
+                      d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z">
+                    </path>
+                  </svg>
+                </div>
+                <div class="contact-info">
+                  <span class="contact-label">WhatsApp / Chat</span>
+                  <span class="contact-value">+91 93071 47361</span>
+                </div>
+              </a>
+            </div>
+          </section>
+
+          <section class="experience-section" id="experience">
+            <h2 class="section-title-serif">Experience</h2>
+            <div class="timeline-list">
+              <div class="timeline-item">
+                <div class="timeline-date">2024 &mdash; 2025</div>
+                <h3 class="timeline-title">Frontend &amp; Web Development</h3>
+                <div class="timeline-subtitle">Independent Developer &amp; Student Projects</div>
+                <p class="timeline-description">
+                  [Building responsive web applications, task managers, interactive quizzes, and retro-themed tools
+                  using HTML5, CSS3, and modern JavaScript.]
+                </p>
+              </div>
+
+              <div class="timeline-item">
+                <div class="timeline-date">2025 &mdash; 2026</div>
+                <h3 class="timeline-title">API &amp; Logistics Architecture Concepts</h3>
+                <div class="timeline-subtitle">Product Exploration &amp; System Design</div>
+                <p class="timeline-description">
+                  [Conceptualizing end-to-end multi-role workflows for on-demand grocery delivery (Raftaar) and freight
+                  dispatch platforms (CargoConnect).]
+                </p>
+              </div>
+
+              <div class="timeline-item">
+                <div class="timeline-date">2026 &mdash; Present</div>
+                <h3 class="timeline-title">Full-Stack &amp; Mobile Development Journey</h3>
+                <div class="timeline-subtitle">APCS Projects &amp; Applied Engineering</div>
+                <p class="timeline-description">
+                  [Practicing clean code principles, mobile app foundations with Kotlin &amp; Jetpack Compose, and
+                  building modular frontend architectures.]
+                </p>
+              </div>
+            </div>
+          </section>
+        </div>
+
+      </div>
+
+      <section class="projects-section" id="projects">
+        <div class="projects-header-centered">
+          <span class="section-tag-badge">Showcase</span>
+          <h2 class="section-title-serif">Featured Projects</h2>
+          <p class="section-lead-text">
+            A showcase of web applications, system concepts, and interactive tools built with clean code and practical
+            functionality.
+          </p>
+        </div>
+
+        <div class="project-filter-tabs">
+          <button class="filter-btn active" data-filter="all">All Projects</button>
+          <button class="filter-btn" data-filter="web-apps">Web Apps</button>
+          <button class="filter-btn" data-filter="utilities">Utilities</button>
+          <button class="filter-btn" data-filter="ecommerse">E-Commerce</button>
+        </div>
+
+        <div class="projects-grid" id="projects-grid"></div>
+      </section>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <span class="brand-dot"></span>
+          <span>Naved Developer</span>
+        </div>
+        <nav class="footer-nav">
+          <a href="#home">Home</a>
+          <a href="#about">About</a>
+          <a href="#skills">Skills</a>
+          <a href="#projects">Projects</a>
+          <a href="#experience">Experience</a>
+          <a href="#contact">Contact</a>
+        </nav>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; <span id="current-year">2026</span> Naved Developer. Built with HTML5, CSS3 &amp; Vanilla JavaScript.
+        </p>
+        <span class="footer-badge">APCS College Project Portfolio</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,96 @@
+WEATHERNOW — PROJECT LEARNINGS & VIVA PREPARATION
+
+1. PROJECT OVERVIEW
+WeatherNow is a realistic, cinematic weather dashboard built for an APCS college project. It features translucent glassmorphism floating over dynamic atmospheric backgrounds. It uses live weather data from Open-Meteo, presenting real-time observations, 7-day forecast, hourly wind graph, daylight arc, and adaptive weather themes.
+
+2. TECHNOLOGIES USED
+- HTML5: Semantic structure (<header>, <nav>, <main>, <section>), accessibility (ARIA labels).
+- CSS3: Glassmorphism (backdrop-filter), CSS Grid, Flexbox, keyframe animations, media queries.
+- Vanilla JavaScript: Open-Meteo API integration, client caching (localStorage), DOM updates, debouncing, SVG math.
+- Open-Meteo API: Free, public weather and geocoding endpoints (no API key needed).
+- Google Fonts: "Outfit" (display/temperature) and "Inter" (UI metrics).
+- Inline SVG: Scalable weather icons, wind trend curve, daylight arc, and temperature curve.
+- No external frameworks or libraries used.
+
+3. HTML CONCEPTS LEARNED
+- Semantic layout: <header>, <nav>, <main>, <section> for structured accessibility.
+- Multi-layered background: Dedicated divs for gradient, storm photo, sunny photo, sunburst, clouds, rain, snow, lightning, and stars.
+- Accessibility: aria-label on icon-only buttons for screen readers.
+- Data attributes: data-lat, data-lon on dropdown items for instant coordinate access.
+
+4. CSS CONCEPTS LEARNED
+- Glassmorphism: backdrop-filter: blur(28px) saturate(1.35), thin semi-transparent borders, and layered drop shadows.
+- Typography: Pairing geometric "Outfit" with readable "Inter".
+- Dynamic Theming: CSS classes (.weather-clear-day, .weather-rain, .weather-thunder, .weather-snow, .weather-clear-night) controlling lighting, gradients, and particle layers.
+- Hardware Acceleration: Using transform: translateZ(0) and contain: strict to offload background animations to the GPU.
+- Responsive Layout: CSS Grid (2-column desktop body) and Flexbox with mobile-first media queries.
+- Accessibility: prefers-reduced-motion media query to respect user animation preferences.
+
+5. JAVASCRIPT CONCEPTS LEARNED
+- Asynchronous Fetch & Promises: Using async/await to call APIs and parse JSON.
+- Client-Side Caching: Using localStorage to restore last viewed weather instantly (0ms) on reload, updating fresh data silently in background.
+- Debounced Search: 350ms debounce timer prevents excessive API requests during typing.
+- Request Cancellation: AbortController cancels outdated search requests while typing fast.
+- Race Condition Guard: Incremental requestId prevents slower outdated responses from overwriting newer selections.
+- SVG Path Generation: Cubic Bezier curves (C command) for smooth wind and temperature curves; trigonometric formulas (Math.cos, Math.sin) for the sun position along the daylight arc.
+- Unit Conversion: Toggling between Celsius and Fahrenheit mathematically in memory without refetching data.
+
+6. HOW OPEN-METEO API WORKS
+- Geocoding API (geocoding-api.open-meteo.com): Converts city search queries into coordinates (latitude, longitude), country, and timezone.
+- Forecast API (api.open-meteo.com): Uses coordinates to return current temperature, humidity, wind, pressure, hourly visibility/UV, and 7-day daily forecasts.
+
+7. HOW CITY SEARCH & GEOLOCATION WORK
+- Search: User types -> 350ms debounce -> geocoding request -> suggestions dropdown -> click sets coordinates and loads weather.
+- Geolocation: navigator.geolocation.getCurrentPosition() retrieves user GPS coordinates directly. If permission is denied, clear notification prompts manual city search.
+
+8. HOW DYNAMIC THEMES & ANIMATIONS WORK
+- WMO Weather Codes map to background classes (.weather-clear-day, .weather-rain, .weather-thunder, etc.).
+- CSS transitions smoothly cross-fade gradients and photo layers.
+- CSS @keyframes drive continuous cloud drifts, rain precipitation, twinkling stars, and sunbeam rotation.
+
+9. RESPONSIVE DESIGN BREAKPOINTS
+- Desktop (>900px): Wide 2-column layout with hero weather on the left and side cards (wind + sun) on the right.
+- Tablet (768px - 900px): Stacked body with side-by-side cards.
+- Mobile (<=768px): Natural document block flow (display: block) to eliminate empty scroll voids; header wraps cleanly; 2x2 details grid; touch-friendly 7-day forecast scroll.
+- Small Phones (<=380px): Compact spacing, scaled typography (clamp), minimum touch targets.
+
+10. ERROR HANDLING & PERFORMANCE
+- Loading Overlay: Displays during fresh searches; hidden during cached silent revalidation.
+- Error Overlay: Informs user with a retry button on network disconnection without destroying existing valid data.
+- Preconnecting: <link rel="preconnect"> tags prime DNS and TLS handshakes early.
+- Animation Frame Throttling: requestAnimationFrame throttles SVG curve resizing.
+
+11. PROBLEMS FACED & SOLUTIONS
+- Problem: Race conditions during rapid typing.
+  Solution: Used an incrementing requestId check and AbortController.
+- Problem: Screen lines/artifacts appearing on reload.
+  Solution: Removed default hardcoded storm class; replaced repeating linear gradient with smooth natural rain streaks.
+- Problem: White text washing out on bright sunny themes.
+  Solution: Implemented polarized slate-blue glass tint and text contrast shadows.
+- Problem: Extra scroll space at the bottom on mobile.
+  Solution: Switched mobile layout from centered flexbox to normal block flow.
+
+12. APCS VIVA QUESTIONS & ANSWERS
+Q1: What are the main technologies used?
+A: Pure HTML5, CSS3, and Vanilla JavaScript. No external frameworks or libraries.
+
+Q2: What is an API and how does your app communicate with it?
+A: An API (Application Programming Interface) allows applications to exchange data. This app uses the native fetch() API with async/await to request JSON from Open-Meteo.
+
+Q3: What is JSON and how is it processed?
+A: JSON (JavaScript Object Notation) is a text-based data format. JavaScript parses it into native objects using response.json().
+
+Q4: What is debouncing and why did you use it?
+A: Debouncing delays function execution until user input stops for 350ms. It prevents spamming the geocoding API on every keystroke.
+
+Q5: How does the temperature toggle (°C / °F) work without refetching?
+A: Celsius values are kept in state. Toggling applies the formula F = (C * 9/5) + 32 client-side and re-renders the text instantly with zero network delay.
+
+Q6: How is the sun's position calculated on the daylight arc?
+A: The fraction of elapsed daylight between sunrise and sunset is converted to radians. Trigonometric functions (Math.cos and Math.sin) then calculate the SVG (x, y) coordinates.
+
+Q7: How is the app optimized for speed and responsiveness?
+A: Through localStorage caching (0ms instant render on reload), DNS preconnecting, GPU hardware acceleration, fluid typography with clamp(), and responsive CSS Grid/Flexbox without horizontal or vertical scroll overflow.
+
+Q8: How does error handling work?
+A: Fetch calls are wrapped in try...catch blocks. If a network error occurs, an error overlay appears with a "Retry" button without erasing the previously loaded weather data.

@@ -1,0 +1,135 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <defs>
+    <!-- Plastic body gradient -->
+    <linearGradient id="calcBody" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#f5f2ed" />
+      <stop offset="100%" stop-color="#ded8ce" />
+    </linearGradient>
+
+    <!-- Display bezel gradient -->
+    <linearGradient id="bezelGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#2a2c2f" />
+      <stop offset="100%" stop-color="#141517" />
+    </linearGradient>
+
+    <!-- LCD glass gradient -->
+    <linearGradient id="lcdGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#bdc8a4" />
+      <stop offset="100%" stop-color="#a8b490" />
+    </linearGradient>
+
+    <!-- Cream key gradient -->
+    <linearGradient id="creamKey" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff" />
+      <stop offset="100%" stop-color="#eae3d5" />
+    </linearGradient>
+
+    <!-- Orange operator key gradient -->
+    <linearGradient id="orangeKey" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#f09d43" />
+      <stop offset="100%" stop-color="#d47c22" />
+    </linearGradient>
+
+    <!-- Red Clear key gradient -->
+    <linearGradient id="redKey" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#d6572b" />
+      <stop offset="100%" stop-color="#b83e16" />
+    </linearGradient>
+
+    <!-- Equals slate key gradient -->
+    <linearGradient id="equalsKey" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#8a87a2" />
+      <stop offset="100%" stop-color="#696681" />
+    </linearGradient>
+
+    <!-- Outer drop shadow -->
+    <filter id="dropShadow" x="-15%" y="-10%" width="130%" height="130%">
+      <feDropShadow dx="0" dy="2.5" stdDeviation="2.2" flood-color="#000000" flood-opacity="0.28" />
+    </filter>
+
+    <!-- Subtle button shadow -->
+    <filter id="btnShadow" x="-10%" y="-10%" width="120%" height="130%">
+      <feDropShadow dx="0" dy="0.6" stdDeviation="0.4" flood-color="#000000" flood-opacity="0.25" />
+    </filter>
+  </defs>
+
+  <!-- Main Calculator Body -->
+  <rect x="9" y="4" width="46" height="56" rx="10" fill="url(#calcBody)" stroke="#c2bbb0" stroke-width="1" filter="url(#dropShadow)" />
+
+  <!-- Retro Color Stripes (Red, Yellow, Blue) -->
+  <g id="stripes">
+    <rect x="14" y="4" width="3.2" height="7" rx="1" fill="#d83726" />
+    <rect x="18" y="4" width="3.2" height="7" rx="1" fill="#f4ba1b" />
+    <rect x="22" y="4" width="3.2" height="7" rx="1" fill="#1b6db8" />
+  </g>
+
+  <!-- Display Bezel -->
+  <rect x="14" y="13.5" width="36" height="13" rx="3.5" fill="url(#bezelGrad)" stroke="#0e0f10" stroke-width="0.8" />
+
+  <!-- LCD Screen -->
+  <rect x="16" y="15.5" width="32" height="9" rx="2" fill="url(#lcdGrad)" />
+
+  <!-- LCD Glare highlight -->
+  <path d="M16 15.5 L48 15.5 L45 19 L16 19 Z" fill="#ffffff" opacity="0.2" />
+
+  <!-- LCD Result Digits -->
+  <text x="45.5" y="22.4" font-family="'Courier New', Courier, monospace" font-size="6.8" font-weight="900" fill="#1c2216" text-anchor="end" letter-spacing="0.5">1822</text>
+
+  <!-- Keypad Recessed Panel -->
+  <rect x="13.5" y="29.5" width="37" height="26.5" rx="3.5" fill="#d5ceca" opacity="0.75" />
+
+  <!-- Buttons Grid (filter applies subtle tactile shadow) -->
+  <g filter="url(#btnShadow)">
+    <!-- Row 1: C, ±, %, ÷ -->
+    <rect x="15.5" y="31.5" width="7" height="4.8" rx="1.5" fill="url(#redKey)" />
+    <text x="19" y="35" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="3.6" font-weight="bold" fill="#ffffff" text-anchor="middle">C</text>
+
+    <rect x="24" y="31.5" width="7" height="4.8" rx="1.5" fill="url(#orangeKey)" />
+    <text x="27.5" y="35" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="3.6" font-weight="bold" fill="#ffffff" text-anchor="middle">±</text>
+
+    <rect x="32.5" y="31.5" width="7" height="4.8" rx="1.5" fill="url(#orangeKey)" />
+    <text x="36" y="34.9" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="3.4" font-weight="bold" fill="#ffffff" text-anchor="middle">%</text>
+
+    <rect x="41" y="31.5" width="7" height="4.8" rx="1.5" fill="url(#orangeKey)" />
+    <text x="44.5" y="35" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="3.8" font-weight="bold" fill="#ffffff" text-anchor="middle">÷</text>
+
+    <!-- Row 2: 7, 8, 9, × -->
+    <rect x="15.5" y="37.8" width="7" height="4.8" rx="1.5" fill="url(#creamKey)" stroke="#d3cbc0" stroke-width="0.4" />
+    <text x="19" y="41.3" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="3.6" font-weight="bold" fill="#8d3a14" text-anchor="middle">7</text>
+
+    <rect x="24" y="37.8" width="7" height="4.8" rx="1.5" fill="url(#creamKey)" stroke="#d3cbc0" stroke-width="0.4" />
+    <text x="27.5" y="41.3" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="3.6" font-weight="bold" fill="#8d3a14" text-anchor="middle">8</text>
+
+    <rect x="32.5" y="37.8" width="7" height="4.8" rx="1.5" fill="url(#creamKey)" stroke="#d3cbc0" stroke-width="0.4" />
+    <text x="36" y="41.3" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="3.6" font-weight="bold" fill="#8d3a14" text-anchor="middle">9</text>
+
+    <rect x="41" y="37.8" width="7" height="4.8" rx="1.5" fill="url(#orangeKey)" />
+    <text x="44.5" y="41.3" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="3.6" font-weight="bold" fill="#ffffff" text-anchor="middle">×</text>
+
+    <!-- Row 3: 4, 5, 6, − -->
+    <rect x="15.5" y="44.1" width="7" height="4.8" rx="1.5" fill="url(#creamKey)" stroke="#d3cbc0" stroke-width="0.4" />
+    <text x="19" y="47.6" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="3.6" font-weight="bold" fill="#8d3a14" text-anchor="middle">4</text>
+
+    <rect x="24" y="44.1" width="7" height="4.8" rx="1.5" fill="url(#creamKey)" stroke="#d3cbc0" stroke-width="0.4" />
+    <text x="27.5" y="47.6" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="3.6" font-weight="bold" fill="#8d3a14" text-anchor="middle">5</text>
+
+    <rect x="32.5" y="44.1" width="7" height="4.8" rx="1.5" fill="url(#creamKey)" stroke="#d3cbc0" stroke-width="0.4" />
+    <text x="36" y="47.6" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="3.6" font-weight="bold" fill="#8d3a14" text-anchor="middle">6</text>
+
+    <rect x="41" y="44.1" width="7" height="4.8" rx="1.5" fill="url(#orangeKey)" />
+    <text x="44.5" y="47.6" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="3.8" font-weight="bold" fill="#ffffff" text-anchor="middle">−</text>
+
+    <!-- Row 4: 1, 2, 3, = -->
+    <rect x="15.5" y="50.4" width="7" height="4.8" rx="1.5" fill="url(#creamKey)" stroke="#d3cbc0" stroke-width="0.4" />
+    <text x="19" y="53.9" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="3.6" font-weight="bold" fill="#8d3a14" text-anchor="middle">1</text>
+
+    <rect x="24" y="50.4" width="7" height="4.8" rx="1.5" fill="url(#creamKey)" stroke="#d3cbc0" stroke-width="0.4" />
+    <text x="27.5" y="53.9" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="3.6" font-weight="bold" fill="#8d3a14" text-anchor="middle">2</text>
+
+    <rect x="32.5" y="50.4" width="7" height="4.8" rx="1.5" fill="url(#creamKey)" stroke="#d3cbc0" stroke-width="0.4" />
+    <text x="36" y="53.9" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="3.6" font-weight="bold" fill="#8d3a14" text-anchor="middle">3</text>
+
+    <rect x="41" y="50.4" width="7" height="4.8" rx="1.5" fill="url(#equalsKey)" />
+    <text x="44.5" y="53.9" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="3.8" font-weight="bold" fill="#ffffff" text-anchor="middle">=</text>
+  </g>
+</svg>

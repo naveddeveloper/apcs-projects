@@ -1,0 +1,191 @@
+NAVED TODO APP
+
+1. PROJECT NAME
+Naved Todo App
+
+
+2. PROJECT OBJECTIVE
+The objective of this project is to build a modern, intuitive, and fully functional personal task management website using fundamental web technologies (HTML5, CSS3, and Vanilla JavaScript). The application allows users to organize day-to-day work, categorize tasks, monitor deadlines, track priorities, view live statistics on a dashboard, and persist data locally in the browser without requiring any backend server or external dependencies.
+
+
+3. TECHNOLOGIES USED
+- HTML5: For semantic page structure, accessible forms, inputs, and layout tags.
+- CSS3: For layout styling, Flexbox, CSS Grid, custom color palette, responsive media queries, and micro-interactions.
+- Vanilla JavaScript (ES6+): For application state management, DOM event handling, dynamic rendering, local storage persistence, date calculation, and statistical aggregation.
+
+
+4. WHAT I LEARNED IN HTML
+- How to structure a web application using semantic elements like <header>, <main>, <aside>, <section>, <article>, and <nav> instead of generic <div> tags everywhere.
+- How to build accessible forms using <label> tags bound with the "for" attribute to input IDs, and using native input attributes like required, type="date", type="number", and <datalist> for suggestions.
+- How to use ARIA attributes such as role="dialog", aria-modal="true", aria-label, and aria-live="polite" to make modals and dynamic toast messages accessible to screen readers.
+- How to embed vector graphics directly using inline <svg> elements for crisp UI icons that scale without losing quality and do not require heavy third-party font libraries.
+
+
+5. WHAT I LEARNED IN CSS
+- How to create a clean, modern user interface inspired by real software dashboards with subtle borders (#eaecf0), soft card shadows, generous whitespace, and an attractive blue-violet primary color scheme (#4f46e5).
+- How to use Flexbox to align toolbar items, buttons, checkboxes, titles, and metadata tags effortlessly.
+- How to use CSS Grid for the dashboard summary cards and reports grid to create clean columns that adapt automatically using repeat(auto-fit, minmax(...)).
+- How to build responsive layouts using CSS media queries (@media (max-width: 992px) and @media (max-width: 640px)) so that the sidebar turns into a sliding drawer on mobile and the task toolbar stacks neatly on smaller screens.
+- How to create pure CSS progress bars with dynamic percentage width tracks and subtle transition animations.
+- How to support accessibility with :focus-visible outlines and the @media (prefers-reduced-motion: reduce) media query.
+
+
+6. WHAT I LEARNED IN JAVASCRIPT
+- How to structure a clean, centralized application state object ("state") containing tasks, active view, active filters, sort criteria, and UI flags.
+- How to write pure, reusable helper functions for date formatting, category badge styling, HTML character escaping, and mathematical percentage calculations.
+- How to manipulate arrays using modern JavaScript methods such as .map(), .filter(), .sort(), .find(), .findIndex(), and .slice().
+- How to handle dates accurately using local Date parsing (avoiding timezone bugs) to calculate whether a task is due today, tomorrow, or overdue.
+- How to build Single Page Application (SPA) view switching by toggling display styles and active navigation states without reloading the page.
+
+
+7. HOW TASK CREATION WORKS
+When the user clicks the "+ New Task" button:
+1. The JavaScript event listener intercepts the click and opens the modal dialog (#taskModalBackdrop) by changing its CSS display property to "flex".
+2. The form fields are reset, and the focus is automatically moved to the task title input field.
+3. When the user fills out the form and clicks "Create Task", the form's submit event listener triggers handleTaskFormSubmit(e).
+4. e.preventDefault() prevents the default browser page reload.
+5. The function validates the title input. If the title is empty, it displays an inline error message and stops execution.
+6. If valid, a new task object is created with a unique ID (e.g., 'task-' + Date.now()), the input values (title, description, due date, priority, category, comments, attachments), and timestamps.
+7. The new task is unshifted to the front of the state.tasks array.
+8. The updated list is saved to localStorage via saveTasks().
+9. The modal is closed, the task list is re-rendered, the dashboard and reports are recalculated, and a toast notification is displayed.
+
+
+8. HOW TASK EDITING AND DELETION WORK
+- Task Editing:
+  1. Each task card renders an edit button with data-action="edit" and data-id.
+  2. Clicking edit finds the matching task object in state.tasks using Array.prototype.find().
+  3. The modal is opened with title "Edit Task" and button "Save Changes".
+  4. The form fields are pre-populated with the existing task data, and a hidden input (#editTaskId) holds the task's ID.
+  5. Upon submission, the task at the found index is updated with the new values and an updated timestamp, saved to localStorage, and re-rendered.
+
+- Task Deletion:
+  1. Clicking the trash icon triggers openConfirmDelete(taskId).
+  2. A confirmation modal (#confirmModalBackdrop) appears asking the user to confirm the deletion, preventing accidental data loss.
+  3. Clicking "Delete" invokes executeDeleteTask(), which filters out the candidate task from state.tasks using Array.prototype.filter().
+  4. The updated array is persisted to localStorage, the UI re-renders, the modal closes, and a confirmation toast is shown.
+
+
+9. HOW EVENT LISTENERS WORK
+- Event listeners are registered in the setupEventListeners() function using element.addEventListener(eventName, handlerFunction).
+- We use Event Delegation on the task list container (#taskList):
+  Instead of attaching separate event listeners to every checkbox, edit button, and delete button on every render (which could lead to memory leaks and performance overhead), a single click listener is placed on the parent container.
+- When clicked, e.target.closest('[data-action]') inspects whether the clicked element (or its child icon) is an interactive action button, extracts its data-action and data-id attributes, and routes the action accordingly.
+- Global window listeners listen for the 'Escape' key to close active popovers and modals quickly.
+
+
+10. HOW DOM MANIPULATION WORKS
+- DOM (Document Object Model) is the tree-like representation of the HTML document created by the browser.
+- JavaScript accesses DOM elements using methods like document.getElementById() and document.querySelectorAll().
+- The renderTasks() function generates clean HTML strings using JavaScript template literals (`${...}`) based on the current filtered state, and updates the task list container via taskListEl.innerHTML.
+- All user-generated text is passed through an escapeHtml() function before insertion to prevent Cross-Site Scripting (XSS).
+- Dynamic styling classes (e.g., .completed, .active, .checked, .open) are added or removed using element.classList.add(), element.classList.remove(), and element.classList.toggle().
+
+
+11. HOW LOCALSTORAGE SAVES TASKS
+- Window.localStorage is a web storage API that allows web applications to store key-value pairs persistently in the user's browser across page refreshes and browser restarts.
+- Because localStorage only stores strings, we convert our JavaScript tasks array to a JSON string using JSON.stringify(state.tasks) before calling localStorage.setItem('naved_todo_app_tasks', jsonString).
+- When the page loads, loadTasks() reads the stored string using localStorage.getItem('naved_todo_app_tasks') and parses it back into a JavaScript array using JSON.parse().
+- If localStorage is empty, the application automatically seeds the five sample tasks from the project design reference so the application is immediately interactive and matches the screenshot.
+- Note: localStorage is strictly local to the individual user's browser; it does not synchronize across different computers or users because there is no backend server.
+
+
+12. HOW SEARCH AND FILTERS WORK
+- The filterAndSortTasks() function takes the raw state.tasks array and applies multiple sequential filter checks:
+  1. Status filter: checks if task.status matches 'pending' or 'completed'.
+  2. Priority filter: checks if task.priority matches 'High', 'Medium', or 'Low'.
+  3. Due Date filter: checks whether a task is due today, overdue, or upcoming.
+  4. Category filter: checks if task.category matches the selected category.
+  5. Search query: checks if the lowercase search string is included in the task's title, description, or category label.
+- The resulting filtered array is then sorted according to state.sortBy (newest created, oldest created, due date ascending, priority descending, or title alphabetical).
+- An active filter count badge and status bar display the number of matching tasks and the active criteria.
+- "Clear All" or "Reset Filters" resets the filter state back to defaults and immediately re-renders the complete task list without mutating the original tasks.
+
+
+13. HOW THE DASHBOARD CALCULATES STATISTICS
+All dashboard metrics and report charts are calculated on-the-fly from the live state.tasks array:
+- Total Tasks = state.tasks.length
+- Pending Tasks = state.tasks.filter(t => t.status !== 'completed').length
+- Completed Tasks = state.tasks.filter(t => t.status === 'completed').length
+- Overdue Tasks = state.tasks.filter(t => isTaskOverdue(t)).length
+- Completion Percentage = Total === 0 ? 0 : Math.round((Completed / Total) * 100)
+- The progress bar width is styled dynamically using element.style.width = percentage + '%'.
+- Upcoming Deadlines and Recent Tasks are extracted by filtering and sorting slices of the tasks array.
+- Because these are computed from the underlying data, creating, editing, completing, or deleting a task instantly updates all dashboard metrics and reports.
+
+
+14. HOW RESPONSIVE DESIGN WORKS
+- A responsive design adapts its layout and presentation to different screen sizes and device types.
+- We achieved responsiveness through:
+  1. The viewport meta tag in HTML (<meta name="viewport" content="width=device-width, initial-scale=1.0">).
+  2. Fluid layouts using percentages, max-width, and CSS Grid with auto-fit.
+  3. CSS Media Queries:
+     - At desktop widths (> 992px): The sidebar sits fixed on the left and can be toggled between expanded (240px) and icon-only collapsed mode (68px).
+     - At tablet and mobile widths (<= 992px): The sidebar becomes an off-canvas drawer that slides in over the content when the hamburger button is clicked, covered by a semi-transparent backdrop.
+     - At mobile widths (<= 640px): The toolbar items (New Task, Filters, Search, Sort) stack vertically, form fields stack from two columns to one column, and task card action buttons remain permanently visible for ease of touch.
+
+
+15. PROBLEMS I FACED AND SOLVED
+- Problem 1: Timezone offset issues when comparing task due dates.
+  Solution: Rather than creating new Date("YYYY-MM-DD") which interprets strings as UTC midnight and can cause off-by-one day errors in local timezones, I wrote a custom parseLocalDate() function that splits the string into year, month, and day integers and constructs the Date in local time.
+- Problem 2: Preventing multiple event listeners when re-rendering task cards.
+  Solution: Implemented event delegation on the task list container (#taskList) so that inner cards can be re-rendered cleanly without adding or leaking listeners.
+- Problem 3: Accidental task deletion.
+  Solution: Created a dedicated confirmation modal dialog before deleting any task, giving the user an opportunity to cancel.
+- Problem 4: Empty filter results causing confusing blank screens.
+  Solution: Added a dedicated empty-state component with an icon, explanatory message, and a one-click "Reset All Filters" button.
+- Problem 5: Retaining UI reference fidelity.
+  Solution: Carefully studied the provided reference screenshot and replicated the exact header chrome, traffic light dots, rounded cards, custom checkboxes, badge colors, and layout metrics.
+
+
+16. LIMITATIONS OF THE PROJECT
+- Local Storage Only: Tasks are saved in the client browser's localStorage. If the user clears browser data or opens the app on a different device or browser, the tasks will not be present.
+- No Backend or Database: There is no server-side database (such as PostgreSQL or MongoDB) and no REST or GraphQL API.
+- Single User: The People section is for demonstration purposes; there is no user authentication, login system, or multi-user collaboration.
+- Offline Notifications: The app cannot send push notifications or email reminders when a task is overdue.
+- Attachments & Comments: Comment counts and attachment indicators are stored as numeric metadata fields to match the reference UI; file uploads and threaded discussion systems are not connected to cloud storage.
+
+
+17. APCS VIVA QUESTIONS AND ANSWERS
+
+Q1: What is the purpose of HTML in this project?
+A1: HTML provides the fundamental structure, semantic skeleton, and form elements of the application, defining headers, sidebar navigation, task lists, input fields, and modal dialogs.
+
+Q2: Why did I use CSS?
+A2: CSS is used to style the application, defining colors, typography, spacing, card borders, shadows, layout systems (Flexbox and Grid), animations, and responsive media queries so that the app matches the reference design and looks professional.
+
+Q3: What is JavaScript used for?
+A3: JavaScript provides the interactive logic and application behavior: handling user input, creating and updating tasks, toggling completion, filtering and sorting, computing live dashboard statistics, and persisting tasks to localStorage.
+
+Q4: What is the DOM?
+A4: The DOM (Document Object Model) is the browser's in-memory, tree-structured representation of the HTML document. JavaScript interacts with the DOM to dynamically add, modify, or remove elements in response to user actions.
+
+Q5: What is an event listener?
+A5: An event listener is a JavaScript function that waits for a specific user action (such as a click, form submission, input change, or keypress) on a designated DOM element and executes code in response.
+
+Q6: How does the New Task button work?
+A6: Clicking "+ New Task" triggers an event listener that displays the modal form, resets its inputs, and sets the focus to the title input. Submitting the form validates the title, creates a task object, adds it to the tasks array, saves it to localStorage, and updates the UI.
+
+Q7: How do I mark a task as completed?
+A7: Clicking the checkbox button on a task card toggles its status between 'pending' and 'completed'. The task receives a strikethrough styling and muted text color, the checkbox fills with blue-violet and a checkmark, and dashboard statistics update immediately.
+
+Q8: How does task filtering work?
+A8: The application filters the state.tasks array based on the selected status, priority, category, due date option, and search query. The resulting subset is then rendered without modifying or deleting the underlying tasks in storage.
+
+Q9: What is localStorage?
+A9: localStorage is a web storage API provided by modern browsers that allows web applications to store key-value string data persistently on the client machine with no expiration time.
+
+Q10: How does the application save data after refreshing?
+A10: Whenever tasks are created, updated, or deleted, the updated task array is converted to a JSON string and saved in localStorage under the key 'naved_todo_app_tasks'. On page load, this string is retrieved, parsed back into objects, and rendered.
+
+Q11: What is the difference between localStorage and a database?
+A11: localStorage stores simple key-value string data locally inside a single web browser on a single device, with a storage limit of approximately 5MB. A database runs on a server, supports complex relational or document queries, scales to millions of records, and allows multiple authenticated users across different devices to access shared data.
+
+Q12: How does the application calculate completed task statistics?
+A12: The application counts total tasks using state.tasks.length, counts completed tasks using state.tasks.filter(t => t.status === 'completed').length, and calculates the completion rate using Math.round((completed / total) * 100).
+
+Q13: How does responsive design work?
+A13: Responsive design allows the webpage to adjust fluidly to different screen dimensions. It uses the viewport meta tag, percentage and flex widths, CSS Grid auto-fit columns, and CSS media queries to alter layout rules for desktop, tablet, and mobile displays.
+
+Q14: What are the limitations of my application?
+A14: The application is strictly frontend-based and client-side: data is saved only in browser localStorage, there is no cloud synchronization or backend database, and multi-user authentication is not implemented.

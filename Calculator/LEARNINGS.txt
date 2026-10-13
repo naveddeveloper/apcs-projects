@@ -1,0 +1,100 @@
+1. Project Name
+Naved Calculator (APCS Web Development Project)
+
+2. Project Objective
+My objective for this project was to build a realistic retro-style handheld calculator using only core web technologies: HTML5, CSS3, and Vanilla JavaScript. I wanted to recreate the look of a vintage physical calculator inspired by the reference design, including an off-white curved plastic body, colored stripes at the top, a dark framed olive-green LCD screen, and 3D tactile buttons. Functionally, my goal was to make a reliable, beginner-friendly calculator that performs standard arithmetic operations, handles decimals and edge cases, tracks recent calculations, and supports both mouse clicks and keyboard typing.
+
+3. What I Learned in HTML
+In HTML, I learned how to create clean and semantic markup to build the structure of the calculator:
+- I used standard HTML5 document structure with doctype, head, meta tags, and body.
+- I used semantic elements like <main> and <button> instead of generic <div> tags for clickable controls, which makes the calculator accessible to keyboard users and screen readers.
+- I organized the calculator into logical sections: top colored stripes, an LCD display section with both result and expression lines, utility controls for history and backspace, and a 4-column keypad panel.
+- I learned how to use data attributes (data-number, data-operator, data-action) to store button values directly in HTML. This made it much easier to read and process user actions in JavaScript without hardcoding text values.
+- I kept the HTML completely clean and free of inline styles or inline script tags.
+
+4. What I Learned in CSS
+In CSS, I learned how to transform plain HTML elements into a realistic 3D physical object:
+- CSS Grid: I used CSS Grid with repeat(4, 1fr) to create a perfect keypad layout. Grid made it very simple to arrange the 4 columns and make the 0 button span across two columns using grid-column: span 2.
+- Flexbox: I used Flexbox to center the calculator on the screen, arrange the LCD display text, align the utility buttons, and structure the vertical stripes.
+- Realistic Depth and Shadows: I learned how multiple box-shadow layers create realism. I combined outer soft drop shadows to lift the calculator off the peach background, and inset shadows to make the keypad panel and LCD screen look recessed into the plastic body.
+- 3D Button Styling: I gave each button a layered shadow (a solid bottom edge plus a soft blur) and a subtle linear gradient. When a button is pressed (:active or with a pressed class), it moves down using transform: translateY(3px) and reduces its shadow height, creating a real tactile clicking feel.
+- Color Palette: I matched the retro aesthetic using CSS custom variables for the warm peach background, off-white body, olive-green LCD, deep orange-red clear button, warm orange operator keys, cream number buttons, and muted purple-slate equals button.
+
+5. What I Learned in JavaScript
+In JavaScript, I learned how to bring the calculator to life with clear, structured logic:
+- DOM Selection: I used document.getElementById and document.querySelectorAll to select buttons and display elements.
+- Event Listeners: I used addEventListener to handle click events on all buttons and keydown events on the window for keyboard control.
+- State Management: I learned how to track the calculator's memory using variables for the current input (currentNumber), stored value (previousNumber), selected math symbol (currentOperator), ongoing expression text, and screen reset flag.
+- Safe Math Execution: Instead of using unsafe methods like eval(), I wrote a dedicated function with a switch statement to perform addition, subtraction, multiplication, and division safely.
+- Data Formatting: I learned how to format floating-point results with toPrecision and parseFloat to prevent weird decimals like 0.30000000000000004 and automatically remove useless trailing zeros.
+- History Storage: I used a simple JavaScript array to store past calculations and display them inside the retro screen when requested.
+
+6. How the Calculator Works
+The calculator follows a clear step-by-step cycle when evaluating user input:
+- Step 1 (Typing): When I press a number button, JavaScript appends the digit to currentNumber. If the screen is showing 0 or was marked to reset, it replaces the screen with the new digit instead of appending.
+- Step 2 (Choosing an Operator): When I press an operator (+, −, ×, ÷), JavaScript stores the current number as previousNumber, saves the chosen operator, updates the top expression line, and sets shouldResetScreen to true so the next number starts cleanly.
+- Step 3 (Chaining Operations): If I enter 5 + 3 and then press × instead of equals, the calculator automatically computes 5 + 3 = 8 first, sets 8 as the new previousNumber, and continues the calculation smoothly.
+- Step 4 (Calculating the Result): When I press the equals button (=), the calculate function converts previousNumber and currentNumber from strings into numbers using parseFloat. It runs the math operation, formats the result, records the formula in the history list, shows the final expression on the smaller LCD line, and displays the final answer on the main LCD line.
+
+7. Keyboard Functionality
+To make the calculator fast and enjoyable to use on a computer, I added full keyboard support:
+- Digits 0 to 9 type numbers directly from both the main keyboard top row and the numeric keypad (Numpad), even if NumLock is turned off.
+- The period (.), comma (,), and Numpad decimal keys add a decimal point.
+- The plus (+), minus (-), asterisk (*), and slash (/) keys trigger addition, subtraction, multiplication, and division.
+- Enter, equals (=), and Numpad Enter calculate the answer.
+- Backspace deletes the last digit.
+- Escape, Delete, and the letter C reset the calculator.
+- The percent key (%) calculates percentages.
+- I used event.preventDefault() on special keys like Slash and Enter to prevent default browser shortcuts.
+- When a key is pressed, JavaScript adds an active class to the corresponding on-screen button with visible tactile feedback, so the user sees the physical button push down even while using their keyboard.
+- I also blurred focused buttons after clicks to prevent keyboard events from triggering the wrong button.
+
+8. Responsive Design
+I made sure the calculator looks great on both laptops and mobile devices:
+- I used a mobile-friendly viewport meta tag in the HTML head.
+- I set max-width: 100% and width: 350px so the calculator fits comfortably on larger screens without stretching out of proportion.
+- I used a CSS media query for screens 400px wide and smaller. On small mobile phones, the outer padding, button heights, and LCD font sizes scale down slightly, preventing horizontal scrolling while keeping all buttons large and easy to tap.
+
+9. Problems I Solved
+- Hidden Overlay Specificity Bug: The history drawer overlay had display: flex in CSS, which overrode the HTML hidden attribute due to CSS specificity. This caused the opaque history panel to permanently cover the LCD screen, hiding the result digits. I solved this by explicitly styling .lcd-history-view with display: none by default and only showing it when the .is-open class is applied.
+- DOM Readiness and Event Delegation: To ensure button clicks never fail regardless of how or when the script loads, I added the defer attribute to the script tag, wrapped initialization in a document readyState check, and implemented event delegation on the keypad and utility containers with closest('button').
+- Keyboard and Numpad Input: I fixed an issue where typing on the numeric keypad did not register if NumLock was off. I solved this by inspecting event.code alongside event.key, ensuring Numpad0 through Numpad9 and Numpad operators always register properly.
+- Button Focus Conflict: Clicking a button previously left it focused in the browser, which could cause keyboard presses like Enter to trigger that button again instead of equals. I resolved this by blurring buttons immediately after they are clicked.
+- Preventing Multiple Decimal Points: At first, pressing the decimal key multiple times produced invalid numbers like 3.1.4. I fixed this by checking !currentNumber.includes('.') before allowing a decimal point to be appended.
+- Division by Zero: Dividing a number by 0 normally results in Infinity in JavaScript. I added a check in my math function so that if the second number is 0 during division, the calculator safely returns "Error" without crashing.
+- Number Overflow: Long numbers could spill outside the LCD screen frame. I solved this by dynamically checking the length of currentNumber in JavaScript and adding smaller font classes (small-text or tiny-text) when the number gets long.
+- Leading Zero Glitch: Pressing 0 repeatedly at the beginning could produce values like 0005. I made the number input logic replace 0 with the entered digit unless a decimal point is present.
+- Backspace Handling: When backspacing a single-digit number or a negative single-digit number (like -5), the screen now resets cleanly to 0 instead of leaving an empty string or a solitary minus sign.
+
+10. What I Learned Overall
+This project helped me understand how HTML, CSS, and JavaScript work together as a team:
+- HTML provides the solid skeleton and semantic tags.
+- CSS provides the visual identity, colors, responsive layout, and realistic 3D physical feel.
+- JavaScript provides the intelligence, event handling, math calculations, and interactive state.
+Building this retro calculator showed me how professional web applications handle user input, update displays dynamically, and catch edge cases before they turn into bugs.
+
+11. What I Can Explain to My Teacher
+
+Q: Why did you use HTML?
+A: I used HTML to create the semantic structure and accessible elements of the calculator, giving each button and display area a clean foundation.
+
+Q: Why did you use CSS Grid?
+A: I used CSS Grid for the keypad because calculator buttons are naturally arranged in equal rows and columns. Grid also made it simple for the zero button to span two columns.
+
+Q: What is JavaScript's role in this project?
+A: JavaScript is the brain of the calculator. It listens for user clicks and keystrokes, stores numbers in memory, performs arithmetic calculations, and updates the LCD display in real time.
+
+Q: What is an event listener?
+A: An event listener is a JavaScript method (addEventListener) that waits for a specific user action—such as a button click or a keyboard key press—and runs a function in response.
+
+Q: How does the equals button work?
+A: When equals is clicked, JavaScript takes the previous number, the current number, and the chosen operator. It converts the strings into numbers with parseFloat, performs the math operation with a switch statement, formats the result, and displays it on the LCD.
+
+Q: How did you handle division by zero?
+A: Before dividing, my math function checks if the second number is 0. If it is, the calculator displays "Error" on the screen instead of Infinity, protecting the application from invalid math.
+
+Q: How did you make the calculator responsive?
+A: I centered the calculator with Flexbox, constrained its width with max-width: 100%, and used a CSS media query to scale down button sizes and padding on smaller phone screens.
+
+Q: What was the most challenging part of the project?
+A: The most challenging part was diagnosing and fixing the display overlay specificity bug and managing the calculator's state during chained operations so the display, expression line, and memory all stayed in sync.

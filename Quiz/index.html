@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NavedQuiz — Frontend Web Development Quiz Application</title>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header class="navbar">
+    <div class="nav-container">
+      <div class="nav-brand">
+        <a href="#home" id="brand-link" class="brand-logo">NavedQuiz</a>
+      </div>
+      <div class="nav-right">
+        <nav class="nav-menu" id="main-nav-menu" aria-label="Main Navigation">
+          <a href="#home" class="nav-link active" id="nav-home">Home</a>
+          <a href="#about" class="nav-link" id="nav-about">About</a>
+          <a href="#quiz" class="nav-link" id="nav-quiz">Quiz</a>
+          <a href="#contact" class="nav-link" id="nav-contact">Contact us</a>
+        </nav>
+        <div class="nav-actions">
+          <button class="avatar-button" id="avatar-btn" aria-label="User Profile" title="APCS Candidate Profile">
+            <span class="avatar-circle">
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+                <path d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z"/>
+              </svg>
+            </span>
+          </button>
+          <button class="nav-toggle" id="nav-toggle-btn" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="main-nav-menu">
+            <span class="hamburger-bar"></span>
+            <span class="hamburger-bar"></span>
+            <span class="hamburger-bar"></span>
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="nav-overlay hidden" id="nav-overlay"></div>
+  </header>
+
+  <main class="main-content">
+
+    <section id="view-home" class="page-section">
+      <div class="content-wrapper">
+        <div class="hero-card">
+          <div class="hero-text">
+            <h2>Welcome to NavedQuiz</h2>
+            <p>An interactive frontend development assessment and practice platform. Test, reinforce, and track your proficiency across HTML5, CSS3, and modern Vanilla JavaScript.</p>
+            
+            <div class="category-cards-grid">
+              <div class="category-card" data-category="html">
+                <div class="category-badge html-badge">HTML5</div>
+                <h3>HTML Quiz</h3>
+                <p>15 Questions on semantics, document structure, forms, tables, links, and accessibility.</p>
+                <button type="button" class="btn btn-primary start-cat-btn" data-category="html">Start HTML Quiz</button>
+              </div>
+
+              <div class="category-card" data-category="css">
+                <div class="category-badge css-badge">CSS3</div>
+                <h3>CSS Quiz</h3>
+                <p>15 Questions on selectors, specificity, the box model, Flexbox, Grid, and responsive design.</p>
+                <button type="button" class="btn btn-primary start-cat-btn" data-category="css">Start CSS Quiz</button>
+              </div>
+
+              <div class="category-card" data-category="js">
+                <div class="category-badge js-badge">JS</div>
+                <h3>JavaScript Quiz</h3>
+                <p>15 Questions on data types, functions, scope, DOM manipulation, events, array methods, and async concepts.</p>
+                <button type="button" class="btn btn-primary start-cat-btn" data-category="js">Start JavaScript Quiz</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="stats-header">
+          <h3>Overall Performance Overview</h3>
+        </div>
+        <div class="stats-grid">
+          <div class="stat-card">
+            <span class="stat-label">Total Attempts</span>
+            <span class="stat-value" id="stat-total-attempts">0</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-label">Completed Quizzes</span>
+            <span class="stat-value" id="stat-completed-quizzes">0</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-label">Best Score</span>
+            <span class="stat-value" id="stat-best-score">0%</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-label">Overall Average</span>
+            <span class="stat-value" id="stat-avg-score">0%</span>
+          </div>
+        </div>
+
+        <div class="stats-header">
+          <h3>Category Breakdown</h3>
+        </div>
+        <div class="category-breakdown-grid">
+          <div class="breakdown-card">
+            <div class="breakdown-title-row">
+              <span class="category-pill html-pill">HTML5</span>
+              <span class="breakdown-attempts" id="breakdown-html-attempts">0 attempts</span>
+            </div>
+            <div class="breakdown-metrics">
+              <div>
+                <span class="metric-label">Best:</span>
+                <span class="metric-val" id="breakdown-html-best">0%</span>
+              </div>
+              <div>
+                <span class="metric-label">Average:</span>
+                <span class="metric-val" id="breakdown-html-avg">0%</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="breakdown-card">
+            <div class="breakdown-title-row">
+              <span class="category-pill css-pill">CSS3</span>
+              <span class="breakdown-attempts" id="breakdown-css-attempts">0 attempts</span>
+            </div>
+            <div class="breakdown-metrics">
+              <div>
+                <span class="metric-label">Best:</span>
+                <span class="metric-val" id="breakdown-css-best">0%</span>
+              </div>
+              <div>
+                <span class="metric-label">Average:</span>
+                <span class="metric-val" id="breakdown-css-avg">0%</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="breakdown-card">
+            <div class="breakdown-title-row">
+              <span class="category-pill js-pill">JavaScript</span>
+              <span class="breakdown-attempts" id="breakdown-js-attempts">0 attempts</span>
+            </div>
+            <div class="breakdown-metrics">
+              <div>
+                <span class="metric-label">Best:</span>
+                <span class="metric-val" id="breakdown-js-best">0%</span>
+              </div>
+              <div>
+                <span class="metric-label">Average:</span>
+                <span class="metric-val" id="breakdown-js-avg">0%</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="history-card">
+          <div class="history-header">
+            <h3>Recent Quiz Attempts</h3>
+            <button class="btn btn-outline-danger" id="clear-history-btn">Clear History</button>
+          </div>
+          <div class="history-table-wrapper">
+            <table class="history-table">
+              <thead>
+                <tr>
+                  <th>Date & Time</th>
+                  <th>Category</th>
+                  <th>Score</th>
+                  <th>Correct / Total</th>
+                  <th>Time Taken</th>
+                </tr>
+              </thead>
+              <tbody id="history-table-body">
+                <tr>
+                  <td colspan="5" class="empty-state">No saved attempts found. Select a category above to start practicing!</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="view-quiz" class="page-section hidden">
+      <div class="quiz-container">
+        
+        <div class="quiz-left-column">
+          <div class="quiz-title-bar">
+            <h1 class="quiz-title" id="quiz-title-text">HTML Quiz</h1>
+            <div class="quiz-toolbar">
+              <span class="timer-badge" id="quiz-timer-display">⏱ 00:00</span>
+              <div class="category-switch-wrapper">
+                <label for="quiz-topic-dropdown" class="visually-hidden">Category:</label>
+                <select id="quiz-topic-dropdown" class="topic-select" aria-label="Select Quiz Category">
+                  <option value="html">HTML Quiz (15 Questions)</option>
+                  <option value="css">CSS Quiz (15 Questions)</option>
+                  <option value="js">JavaScript Quiz (15 Questions)</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <div class="progress-section">
+            <div class="progress-track" role="progressbar" aria-label="Quiz completion progress" id="progress-track-wrapper" aria-valuenow="7" aria-valuemin="0" aria-valuemax="100">
+              <div class="progress-bar" id="quiz-progress-bar" style="width: 7%;"></div>
+            </div>
+            <span class="progress-percentage-text" id="quiz-progress-text">Question 1/15 (7%)</span>
+          </div>
+
+          <div class="question-container">
+            <p class="question-prompt" id="question-prompt-text">
+              <strong id="question-index-label">Question 1/15:</strong>
+              <span id="question-body-text">Loading question prompt...</span>
+            </p>
+            <button type="button" class="reference-range-link" id="open-reference-modal-btn">Quick Reference</button>
+          </div>
+
+          <div class="options-list" id="options-list-container">
+          </div>
+
+          <div class="explanation-container hidden" id="explanation-container">
+            <div class="explanation-title">Explanation & Rationale</div>
+            <div class="explanation-body" id="explanation-body-text"></div>
+          </div>
+
+          <div class="quiz-controls-row">
+            <div class="controls-left">
+              <button type="button" class="btn btn-secondary hidden" id="submit-answer-btn">Submit Answer</button>
+              <button type="button" class="btn btn-restart" id="restart-quiz-inline-btn">Restart Quiz</button>
+              <button type="button" class="btn btn-outline hidden" id="back-to-results-btn">Back to Results</button>
+            </div>
+            <div class="controls-right">
+              <button type="button" class="btn btn-prev" id="prev-question-btn" disabled>Previous</button>
+              <button type="button" class="btn btn-next" id="next-question-btn">Next</button>
+            </div>
+          </div>
+        </div>
+
+        <aside class="quiz-right-column">
+          <div class="score-summary-card">
+            <div class="score-percentage-number" id="sidebar-percentage-display">0.0%</div>
+            <div class="score-subtext-message" id="sidebar-subtext-display">You got 0 answers correct</div>
+            <div class="score-status-pill" id="sidebar-status-pill">In Progress (0/15)</div>
+          </div>
+
+          <div class="question-nav-card" id="question-nav-card">
+            <div class="nav-card-title-bar" id="toggle-qnav-btn" role="button" tabindex="0" aria-expanded="true" aria-controls="question-nav-list" title="Toggle Question Navigator">
+              <span class="nav-card-title">Question Navigator</span>
+              <span class="nav-card-toggle-icon" id="qnav-toggle-icon" aria-hidden="true">&#9662;</span>
+            </div>
+            <div class="question-nav-list" id="question-nav-list">
+            </div>
+          </div>
+        </aside>
+
+      </div>
+    </section>
+
+    <section id="view-results" class="page-section hidden">
+      <div class="content-wrapper text-layout">
+        <div class="results-card">
+          <div class="results-header">
+            <span class="results-category-tag" id="results-category-tag">HTML Quiz</span>
+            <h2 id="results-main-title">Quiz Results</h2>
+          </div>
+
+          <div class="results-hero">
+            <div class="results-score-circle" id="results-percentage-badge">0.0%</div>
+            <div class="results-feedback-message" id="results-feedback-title">Great Effort!</div>
+          </div>
+
+          <div class="results-breakdown-grid">
+            <div class="result-tile">
+              <span class="result-tile-label">Category</span>
+              <span class="result-tile-value" id="results-cat-name">HTML5</span>
+            </div>
+            <div class="result-tile">
+              <span class="result-tile-label">Total Questions</span>
+              <span class="result-tile-value" id="results-total-count">15</span>
+            </div>
+            <div class="result-tile">
+              <span class="result-tile-label">Answered</span>
+              <span class="result-tile-value" id="results-answered-count">15</span>
+            </div>
+            <div class="result-tile">
+              <span class="result-tile-label">Correct Answers</span>
+              <span class="result-tile-value text-success" id="results-correct-count">0</span>
+            </div>
+            <div class="result-tile">
+              <span class="result-tile-label">Incorrect Answers</span>
+              <span class="result-tile-value text-danger" id="results-incorrect-count">0</span>
+            </div>
+            <div class="result-tile">
+              <span class="result-tile-label">Unanswered</span>
+              <span class="result-tile-value text-muted" id="results-unanswered-count">0</span>
+            </div>
+            <div class="result-tile full-width">
+              <span class="result-tile-label">Time Taken</span>
+              <span class="result-tile-value" id="results-time-taken">00:00</span>
+            </div>
+          </div>
+
+          <div class="results-actions">
+            <button type="button" class="btn btn-outline" id="review-answers-btn">Review Answers</button>
+            <button type="button" class="btn btn-primary" id="restart-quiz-modal-btn">Try Again</button>
+            <button type="button" class="btn btn-secondary" id="change-category-modal-btn">Choose Another Category</button>
+            <button type="button" class="btn btn-restart" id="results-home-btn">Return to Dashboard</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="view-about" class="page-section hidden">
+      <div class="content-wrapper text-layout">
+        <div class="card">
+          <h2>About NavedQuiz</h2>
+          <p>NavedQuiz is a comprehensive, client-side frontend web development examination and self-study platform developed by Naved for APCS. It is engineered entirely with HTML5, CSS3, and Vanilla JavaScript, without any external dependencies, frameworks, or libraries.</p>
+          
+          <h3>Core Topics Tested</h3>
+          <ul>
+            <li><strong>HTML5 Quiz (15 Questions):</strong> Document structure, doctype declarations, semantic containers, accessible forms, image attributes, links, tables, and WAI-ARIA fundamentals.</li>
+            <li><strong>CSS3 Quiz (15 Questions):</strong> Selectors, inheritance, specificity calculation, the standard and border-box models, Flexbox axis alignment, CSS Grid tracks, positioning contexts, and responsive media queries.</li>
+            <li><strong>JavaScript Quiz (15 Questions):</strong> Primitive types, let vs const vs var scoping, arrow and standard functions, condition branches, array higher-order methods (map, filter, reduce), DOM selectors, event listeners, and asynchronous execution principles.</li>
+          </ul>
+
+          <h3>Design & Technical Highlights</h3>
+          <ul>
+            <li><strong>Fully Responsive Layout:</strong> Seamless adaptation across desktop, tablet, and mobile viewports with fluid CSS Grid and Flexbox structures.</li>
+            <li><strong>Robust State Management:</strong> Reusable quiz engine with real-time score updates, per-question progress tracking, and strict submission locks.</li>
+            <li><strong>In-Depth Review Mode:</strong> Examine every answered and unanswered question post-completion with correct answers and explanations clearly highlighted.</li>
+            <li><strong>Local Performance Tracking:</strong> Safe browser-level localStorage persistence computing overall averages, best scores, and category breakdowns.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="view-contact" class="page-section hidden">
+      <div class="content-wrapper text-layout">
+        <div class="card contact-card">
+          <h2>Contact Us</h2>
+          <p>Have feedback on questions or questions about this APCS project? Submit your inquiry below.</p>
+          
+          <form id="contact-form" class="contact-form" novalidate>
+            <div class="form-group">
+              <label for="contact-name">Full Name</label>
+              <input type="text" id="contact-name" class="form-control" placeholder="Your name" required>
+              <div class="form-error" id="error-name"></div>
+            </div>
+
+            <div class="form-group">
+              <label for="contact-email">Email Address</label>
+              <input type="email" id="contact-email" class="form-control" placeholder="name@example.com" required>
+              <div class="form-error" id="error-email"></div>
+            </div>
+
+            <div class="form-group">
+              <label for="contact-subject">Subject</label>
+              <input type="text" id="contact-subject" class="form-control" placeholder="Subject of your message" required>
+              <div class="form-error" id="error-subject"></div>
+            </div>
+
+            <div class="form-group">
+              <label for="contact-message">Message</label>
+              <textarea id="contact-message" class="form-control" rows="5" placeholder="Write your message here..." required></textarea>
+              <div class="form-error" id="error-message"></div>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Send Message</button>
+            <div class="contact-success-box hidden" id="contact-success-box">
+              Thank you! Your feedback has been recorded locally for this project demonstration.
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="app-footer">
+    <div class="footer-container">
+      <p>NavedQuiz &mdash; Built with pure HTML5, CSS3, and Vanilla JavaScript for APCS.</p>
+    </div>
+  </footer>
+
+  <div class="modal-backdrop hidden" id="reference-modal-backdrop">
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <h3 id="reference-modal-title">Frontend Quick Reference</h3>
+        <button type="button" class="modal-close-btn" id="close-reference-modal-btn" aria-label="Close modal">&times;</button>
+      </div>
+      <div class="modal-body" id="reference-modal-body">
+        <div class="reference-category-section">
+          <h4>HTML5 Semantic Elements</h4>
+          <p>Use structural tags to describe content purpose: <code>&lt;header&gt;</code>, <code>&lt;nav&gt;</code>, <code>&lt;main&gt;</code>, <code>&lt;article&gt;</code>, <code>&lt;section&gt;</code>, <code>&lt;aside&gt;</code>, and <code>&lt;footer&gt;</code>.</p>
+        </div>
+        <div class="reference-category-section">
+          <h4>CSS Specificity Hierarchy</h4>
+          <p>Inline styles (1000) &gt; ID selectors (100) &gt; Classes, pseudo-classes, attributes (10) &gt; Elements, pseudo-elements (1).</p>
+        </div>
+        <div class="reference-category-section">
+          <h4>CSS Box Model</h4>
+          <p><code>box-sizing: border-box</code> ensures width and height include content, padding, and border.</p>
+        </div>
+        <div class="reference-category-section">
+          <h4>JavaScript Variable Scoping</h4>
+          <p><code>const</code> and <code>let</code> are block-scoped <code>{}</code> with temporal dead zone; <code>var</code> is function-scoped.</p>
+        </div>
+        <div class="reference-category-section">
+          <h4>Key Array Methods</h4>
+          <p><code>map()</code> transforms elements into a new array. <code>filter()</code> retains elements matching condition. <code>reduce()</code> accumulates values into a single result.</p>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" id="confirm-reference-modal-btn">Got it</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal-backdrop hidden" id="confirm-modal-backdrop">
+    <div class="modal-dialog confirm-dialog">
+      <div class="modal-header">
+        <h3 id="confirm-modal-title">Confirm Action</h3>
+        <button type="button" class="modal-close-btn" id="confirm-cancel-x-btn" aria-label="Close dialog">&times;</button>
+      </div>
+      <div class="modal-body">
+        <p id="confirm-modal-message">Are you sure you want to proceed?</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline" id="confirm-cancel-btn">Cancel</button>
+        <button type="button" class="btn btn-danger" id="confirm-proceed-btn">Confirm</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

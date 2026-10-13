@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Naved Todo App</title>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="alternate icon" href="favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <div class="app-window">
+    <header class="window-header">
+      <div class="window-controls">
+        <span class="traffic-dot red"></span>
+        <span class="traffic-dot yellow"></span>
+        <span class="traffic-dot green"></span>
+      </div>
+      <div class="window-url-bar">
+        <svg class="url-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+          stroke-linecap="round" stroke-linejoin="round">
+          <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+          <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+        </svg>
+        <span class="url-text">navedtodolist.com</span>
+      </div>
+      <button class="mobile-toggle-btn" id="mobileMenuBtn" aria-label="Toggle navigation menu">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+          stroke-linejoin="round">
+          <line x1="3" y1="12" x2="21" y2="12"></line>
+          <line x1="3" y1="6" x2="21" y2="6"></line>
+          <line x1="3" y1="18" x2="21" y2="18"></line>
+        </svg>
+      </button>
+    </header>
+
+    <div class="app-layout">
+      <aside class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+          <div class="brand-pill" id="brandPill">
+            <span class="brand-title">Naved Todo App</span>
+          </div>
+          <button class="collapse-btn" id="collapseBtn" aria-label="Collapse or expand sidebar">«</button>
+        </div>
+
+        <nav class="sidebar-nav">
+          <button class="nav-item" data-view="welcome" id="navWelcome">
+            <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"></circle>
+              <path d="M8 14s1.5 2 4 2 4-2 4-2"></path>
+              <line x1="9" y1="9" x2="9.01" y2="9"></line>
+              <line x1="15" y1="9" x2="15.01" y2="9"></line>
+            </svg>
+            <span class="nav-text">Welcome</span>
+          </button>
+
+          <button class="nav-item" data-view="dashboard" id="navDashboard">
+            <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 14v-4"></path>
+              <path d="M3.34 17a10 10 0 1 1 17.32 0"></path>
+              <circle cx="12" cy="14" r="2"></circle>
+            </svg>
+            <span class="nav-text">Dashboard</span>
+          </button>
+
+          <button class="nav-item active" data-view="tasks" id="navTasks">
+            <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <rect x="8" y="2" width="8" height="4" rx="1" ry="1"></rect>
+              <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path>
+              <line x1="9" y1="12" x2="15" y2="12"></line>
+              <line x1="9" y1="16" x2="15" y2="16"></line>
+            </svg>
+            <span class="nav-text">Tasks</span>
+          </button>
+
+          <button class="nav-item" data-view="people" id="navPeople">
+            <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path>
+              <circle cx="9" cy="7" r="4"></circle>
+              <path d="M22 21v-2a4 4 0 0 0-3-3.87"></path>
+              <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+            </svg>
+            <span class="nav-text">People</span>
+          </button>
+
+          <button class="nav-item" data-view="reports" id="navReports">
+            <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 20V10"></path>
+              <path d="M18 20V4"></path>
+              <path d="M6 20v-4"></path>
+            </svg>
+            <span class="nav-text">Reports</span>
+          </button>
+
+          <button class="nav-item" data-view="billing" id="navBilling">
+            <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"></circle>
+              <path d="M16 8h-6a2 2 0 1 0 0 4h4a2 2 0 1 1 0 4H8"></path>
+              <path d="M12 6v12"></path>
+            </svg>
+            <span class="nav-text">Billing</span>
+          </button>
+
+          <button class="nav-item" data-view="integrations" id="navIntegrations">
+            <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="3" width="7" height="7" rx="1.5"></rect>
+              <rect x="14" y="3" width="7" height="7" rx="1.5"></rect>
+              <rect x="14" y="14" width="7" height="7" rx="1.5"></rect>
+              <rect x="3" y="14" width="7" height="7" rx="1.5"></rect>
+            </svg>
+            <span class="nav-text">Integrations</span>
+          </button>
+        </nav>
+      </aside>
+
+      <div class="sidebar-backdrop" id="sidebarBackdrop"></div>
+      <div class="filter-backdrop" id="filterBackdrop"></div>
+
+      <main class="main-content" id="mainContent">
+        <section class="view-panel" id="tasksView">
+          <div class="view-header">
+            <h1 class="view-title">To-Do</h1>
+          </div>
+          <div class="header-divider"></div>
+
+          <div class="tasks-toolbar">
+            <div class="toolbar-left">
+              <button class="btn btn-primary" id="newTaskBtn">
+                <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="12" y1="5" x2="12" y2="19"></line>
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                </svg>
+                <span>New Task</span>
+              </button>
+
+              <div class="filter-dropdown-wrapper">
+                <button class="btn btn-secondary" id="filtersToggleBtn">
+                  <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"></polygon>
+                  </svg>
+                  <span>Filters</span>
+                  <span class="active-filter-badge" id="activeFilterBadge" style="display: none;">0</span>
+                </button>
+
+                <div class="filter-popover" id="filterPopover">
+                  <div class="filter-drag-handle" aria-hidden="true"></div>
+                  <div class="filter-popover-header">
+                    <div class="filter-header-left">
+                      <h3>Filter Tasks</h3>
+                      <button class="btn-text" id="clearFiltersBtn">Clear All</button>
+                    </div>
+                    <button class="filter-close-btn" id="filterCloseBtn" aria-label="Close filters">×</button>
+                  </div>
+
+                  <div class="filter-body">
+                    <div class="filter-group">
+                      <label class="filter-label" for="filterStatus">Status</label>
+                      <select class="form-control" id="filterStatus">
+                        <option value="all">All Tasks</option>
+                        <option value="pending">Pending Tasks</option>
+                        <option value="completed">Completed Tasks</option>
+                      </select>
+                    </div>
+
+                    <div class="filter-group">
+                      <label class="filter-label" for="filterPriority">Priority</label>
+                      <select class="form-control" id="filterPriority">
+                        <option value="all">All Priorities</option>
+                        <option value="High">High Priority</option>
+                        <option value="Medium">Medium Priority</option>
+                        <option value="Low">Low Priority</option>
+                      </select>
+                    </div>
+
+                    <div class="filter-group">
+                      <label class="filter-label" for="filterDate">Due Date</label>
+                      <select class="form-control" id="filterDate">
+                        <option value="all">All Dates</option>
+                        <option value="today">Due Today</option>
+                        <option value="overdue">Overdue Tasks</option>
+                        <option value="upcoming">Upcoming</option>
+                      </select>
+                    </div>
+
+                    <div class="filter-group">
+                      <label class="filter-label" for="filterCategory">Category</label>
+                      <select class="form-control" id="filterCategory">
+                        <option value="all">All Categories</option>
+                      </select>
+                    </div>
+                  </div>
+
+                  <div class="filter-popover-footer">
+                    <button type="button" class="btn btn-primary" id="applyFiltersBtn">Apply Filters</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="toolbar-right">
+              <div class="search-box">
+                <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="11" cy="11" r="8"></circle>
+                  <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                </svg>
+                <input type="text" id="searchInput" placeholder="Search tasks..." aria-label="Search tasks">
+                <button class="search-clear-btn" id="searchClearBtn" style="display: none;"
+                  aria-label="Clear search">×</button>
+              </div>
+
+              <div class="sort-box">
+                <label for="sortSelect" class="sr-only">Sort by</label>
+                <select class="form-control sort-select" id="sortSelect" aria-label="Sort tasks">
+                  <option value="created-desc">Sort: Newest</option>
+                  <option value="created-asc">Sort: Oldest</option>
+                  <option value="due-asc">Sort: Due Date</option>
+                  <option value="priority-desc">Sort: Priority</option>
+                  <option value="title-asc">Sort: Title A-Z</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <div class="filter-status-bar" id="filterStatusBar" style="display: none;">
+            <span class="filter-status-text" id="filterStatusText">Showing filtered results</span>
+            <button class="btn-text" id="resetFiltersBarBtn">Reset Filters</button>
+          </div>
+
+          <div class="task-list" id="taskList" role="list"></div>
+        </section>
+
+        <section class="view-panel" id="welcomeView" style="display: none;">
+          <div class="view-header">
+            <h1 class="view-title">Welcome</h1>
+          </div>
+          <div class="header-divider"></div>
+
+          <div class="card welcome-card">
+            <h2>Welcome to Naved Todo App</h2>
+            <p class="lead-text">A modern, clean, and beginner-friendly task management web application built for my
+              APCS college project using pure HTML5, CSS3, and Vanilla JavaScript.</p>
+
+            <div class="welcome-grid">
+              <div class="feature-item">
+                <div class="feature-icon-box">✓</div>
+                <div>
+                  <h3>Task Operations</h3>
+                  <p>Create, update, complete, prioritize, and delete tasks with instant feedback.</p>
+                </div>
+              </div>
+
+              <div class="feature-item">
+                <div class="feature-icon-box">⚡</div>
+                <div>
+                  <h3>Real-time Filtering</h3>
+                  <p>Search tasks instantly and filter by status, priority, category, or due date.</p>
+                </div>
+              </div>
+
+              <div class="feature-item">
+                <div class="feature-icon-box">📊</div>
+                <div>
+                  <h3>Dynamic Analytics</h3>
+                  <p>Live dashboard cards and report distribution charts calculated from saved tasks.</p>
+                </div>
+              </div>
+
+              <div class="feature-item">
+                <div class="feature-icon-box">💾</div>
+                <div>
+                  <h3>Local Storage</h3>
+                  <p>Tasks persist in your browser so your progress is saved across refreshes.</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="welcome-actions">
+              <button class="btn btn-primary" id="welcomeGoTasksBtn">Go to To-Do List</button>
+              <button class="btn btn-secondary" id="welcomeResetSampleBtn">Load Reference Sample Tasks</button>
+            </div>
+          </div>
+        </section>
+
+        <section class="view-panel" id="dashboardView" style="display: none;">
+          <div class="view-header">
+            <h1 class="view-title">Dashboard</h1>
+          </div>
+          <div class="header-divider"></div>
+
+          <div class="stats-grid">
+            <div class="stat-card">
+              <span class="stat-label">Total Tasks</span>
+              <span class="stat-value" id="statTotal">0</span>
+              <span class="stat-sub">All created tasks</span>
+            </div>
+            <div class="stat-card">
+              <span class="stat-label">Pending Tasks</span>
+              <span class="stat-value text-amber" id="statPending">0</span>
+              <span class="stat-sub">Awaiting completion</span>
+            </div>
+            <div class="stat-card">
+              <span class="stat-label">Completed Tasks</span>
+              <span class="stat-value text-indigo" id="statCompleted">0</span>
+              <span class="stat-sub">Finished successfully</span>
+            </div>
+            <div class="stat-card">
+              <span class="stat-label">Overdue Tasks</span>
+              <span class="stat-value text-red" id="statOverdue">0</span>
+              <span class="stat-sub">Past due date</span>
+            </div>
+          </div>
+
+          <div class="card progress-overview-card">
+            <div class="card-header-flex">
+              <h3>Completion Progress</h3>
+              <span class="progress-percent" id="statPercent">0%</span>
+            </div>
+            <div class="progress-bar-track">
+              <div class="progress-bar-fill" id="statProgressBar" style="width: 0%;"></div>
+            </div>
+          </div>
+
+          <div class="dashboard-columns">
+            <div class="card">
+              <h3>Upcoming Deadlines</h3>
+              <div class="mini-task-list" id="dashboardUpcomingList"></div>
+            </div>
+            <div class="card">
+              <h3>Recent Tasks</h3>
+              <div class="mini-task-list" id="dashboardRecentList"></div>
+            </div>
+          </div>
+        </section>
+
+        <section class="view-panel" id="peopleView" style="display: none;">
+          <div class="view-header">
+            <h1 class="view-title">People</h1>
+          </div>
+          <div class="header-divider"></div>
+
+          <div class="notice-box">
+            <strong>Demonstration Notice:</strong> Team member management is a demonstration section for this college
+            project. No external user database, authentication, or live multi-user synchronization is active.
+          </div>
+
+          <div class="card team-card">
+            <h3>Project Team (Sample Showcase)</h3>
+            <div class="people-list">
+              <div class="person-item">
+                <div class="avatar">N</div>
+                <div class="person-info">
+                  <h4>Naved</h4>
+                  <p>Lead Developer • APCS Project Author</p>
+                </div>
+                <span class="badge badge-purple">Owner</span>
+              </div>
+              <div class="person-item">
+                <div class="avatar evaluator">E</div>
+                <div class="person-info">
+                  <h4>APCS Evaluator</h4>
+                  <p>Examiner • Academic Review</p>
+                </div>
+                <span class="badge badge-gray">Reviewer</span>
+              </div>
+              <div class="person-item">
+                <div class="avatar guest">G</div>
+                <div class="person-info">
+                  <h4>Guest User</h4>
+                  <p>Local Browser Client</p>
+                </div>
+                <span class="badge badge-pink">Demo</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="view-panel" id="reportsView" style="display: none;">
+          <div class="view-header">
+            <h1 class="view-title">Reports</h1>
+          </div>
+          <div class="header-divider"></div>
+
+          <div class="reports-grid">
+            <div class="card">
+              <h3>Completion Ratio</h3>
+              <div class="metric-big" id="reportCompletionRate">0%</div>
+              <p class="metric-caption">Ratio of finished tasks over total tasks</p>
+              <div class="progress-bar-track mt-12">
+                <div class="progress-bar-fill" id="reportProgressFill" style="width: 0%;"></div>
+              </div>
+            </div>
+
+            <div class="card">
+              <h3>Status Breakdown</h3>
+              <div class="chart-row">
+                <div class="chart-label-group">
+                  <span>Pending</span>
+                  <span id="reportPendingCount">0</span>
+                </div>
+                <div class="progress-bar-track">
+                  <div class="progress-bar-fill fill-amber" id="reportPendingBar" style="width: 0%;"></div>
+                </div>
+              </div>
+              <div class="chart-row mt-12">
+                <div class="chart-label-group">
+                  <span>Completed</span>
+                  <span id="reportCompletedCount">0</span>
+                </div>
+                <div class="progress-bar-track">
+                  <div class="progress-bar-fill fill-indigo" id="reportCompletedBar" style="width: 0%;"></div>
+                </div>
+              </div>
+            </div>
+
+            <div class="card">
+              <h3>Priority Distribution</h3>
+              <div class="chart-row">
+                <div class="chart-label-group">
+                  <span>High Priority</span>
+                  <span id="reportHighCount">0</span>
+                </div>
+                <div class="progress-bar-track">
+                  <div class="progress-bar-fill fill-red" id="reportHighBar" style="width: 0%;"></div>
+                </div>
+              </div>
+              <div class="chart-row mt-12">
+                <div class="chart-label-group">
+                  <span>Medium Priority</span>
+                  <span id="reportMedCount">0</span>
+                </div>
+                <div class="progress-bar-track">
+                  <div class="progress-bar-fill fill-amber" id="reportMedBar" style="width: 0%;"></div>
+                </div>
+              </div>
+              <div class="chart-row mt-12">
+                <div class="chart-label-group">
+                  <span>Low Priority</span>
+                  <span id="reportLowCount">0</span>
+                </div>
+                <div class="progress-bar-track">
+                  <div class="progress-bar-fill fill-green" id="reportLowBar" style="width: 0%;"></div>
+                </div>
+              </div>
+            </div>
+
+            <div class="card">
+              <h3>Schedule Health</h3>
+              <div class="metric-big text-red" id="reportOverdueCount">0</div>
+              <p class="metric-caption">Tasks currently past their designated deadline</p>
+            </div>
+          </div>
+        </section>
+
+        <section class="view-panel" id="billingView" style="display: none;">
+          <div class="view-header">
+            <h1 class="view-title">Billing</h1>
+          </div>
+          <div class="header-divider"></div>
+
+          <div class="card text-center py-40">
+            <div class="placeholder-icon">💳</div>
+            <h3>Billing & Subscriptions (Demo Mode)</h3>
+            <p class="lead-text max-w-500 mx-auto">This is an educational frontend college project. No payment
+              processors, credit card forms, or subscription models are connected.</p>
+            <div class="demo-tag">Status: Free Academic License</div>
+          </div>
+        </section>
+
+        <section class="view-panel" id="integrationsView" style="display: none;">
+          <div class="view-header">
+            <h1 class="view-title">Integrations</h1>
+          </div>
+          <div class="header-divider"></div>
+
+          <div class="notice-box">
+            <strong>Educational Demonstration:</strong> External third-party APIs are not connected to keep the project
+            lightweight and offline-friendly for academic evaluation.
+          </div>
+
+          <div class="integrations-grid">
+            <div class="card integration-item">
+              <div class="integration-header">
+                <span class="integration-logo">💬</span>
+                <h4>Slack Notifications</h4>
+              </div>
+              <p>Send daily task summaries to your workspace channels.</p>
+              <span class="badge badge-gray">Demonstration Only</span>
+            </div>
+
+            <div class="card integration-item">
+              <div class="integration-header">
+                <span class="integration-logo">🐙</span>
+                <h4>GitHub Issues</h4>
+              </div>
+              <p>Two-way sync between project tasks and GitHub repository issues.</p>
+              <span class="badge badge-gray">Demonstration Only</span>
+            </div>
+
+            <div class="card integration-item">
+              <div class="integration-header">
+                <span class="integration-logo">📅</span>
+                <h4>Google Calendar</h4>
+              </div>
+              <p>Schedule task due dates directly into your personal calendar.</p>
+              <span class="badge badge-gray">Demonstration Only</span>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+  </div>
+
+  <div class="modal-backdrop" id="taskModalBackdrop" style="display: none;">
+    <div class="modal-dialog" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <div class="modal-header">
+        <h2 id="modalTitle">New Task</h2>
+        <button class="modal-close-btn" id="modalCloseBtn" aria-label="Close dialog">×</button>
+      </div>
+
+      <form id="taskForm" novalidate>
+        <div class="modal-form-body">
+          <div class="form-group">
+            <label for="taskTitleInput">Task Title <span class="required-star">*</span></label>
+            <input type="text" id="taskTitleInput" class="form-control" placeholder="What needs to be done?" required>
+            <span class="form-error" id="titleError" style="display: none;">Task title is required.</span>
+          </div>
+
+          <div class="form-group">
+            <label for="taskDescInput">Description (Optional)</label>
+            <textarea id="taskDescInput" class="form-control" rows="3"
+              placeholder="Add additional details or notes..."></textarea>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group form-col">
+              <label for="taskDueDateInput">Due Date (Optional)</label>
+              <input type="date" id="taskDueDateInput" class="form-control">
+            </div>
+
+            <div class="form-group form-col">
+              <label for="taskPriorityInput">Priority</label>
+              <select id="taskPriorityInput" class="form-control">
+                <option value="Medium">Medium</option>
+                <option value="High">High</option>
+                <option value="Low">Low</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group form-col">
+              <label for="taskCategoryInput">Category Label</label>
+              <input type="text" id="taskCategoryInput" class="form-control" placeholder="e.g. LaunchPad, Dabble"
+                list="categorySuggestions">
+              <datalist id="categorySuggestions">
+                <option value="LaunchPad">
+                <option value="Dabble">
+                <option value="Design">
+                <option value="Development">
+                <option value="College">
+                <option value="Personal">
+              </datalist>
+            </div>
+
+            <div class="form-group form-col">
+              <label for="taskStatusInput">Initial Status</label>
+              <select id="taskStatusInput" class="form-control">
+                <option value="pending">Pending</option>
+                <option value="completed">Completed</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group form-col">
+              <label for="taskCommentsInput">Comments Count</label>
+              <input type="number" id="taskCommentsInput" class="form-control" min="0" value="0">
+            </div>
+
+            <div class="form-group form-col">
+              <label for="taskAttachmentsInput">Attachments Count</label>
+              <input type="number" id="taskAttachmentsInput" class="form-control" min="0" value="0">
+            </div>
+          </div>
+
+          <input type="hidden" id="editTaskId" value="">
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" id="modalCancelBtn">Cancel</button>
+          <button type="submit" class="btn btn-primary" id="modalSubmitBtn">Create Task</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div class="modal-backdrop" id="confirmModalBackdrop" style="display: none;">
+    <div class="modal-dialog modal-sm" role="dialog" aria-modal="true" aria-labelledby="confirmTitle">
+      <div class="modal-header">
+        <h2 id="confirmTitle">Delete Task</h2>
+        <button class="modal-close-btn" id="confirmCloseBtn" aria-label="Close dialog">×</button>
+      </div>
+      <div class="modal-body">
+        <p id="confirmMessage">Are you sure you want to permanently delete this task?</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" id="confirmCancelBtn">Cancel</button>
+        <button type="button" class="btn btn-danger" id="confirmOkBtn">Delete</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="toast-container" id="toastContainer" aria-live="polite"></div>
+
+  <script src="script.js"></script>
+</body>
+
+</html>

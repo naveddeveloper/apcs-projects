@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Naved Calculator</title>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+  <link rel="shortcut icon" href="favicon.ico">
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+
+<body>
+  <main class="calculator-container">
+    <div class="calculator">
+      <div class="stripes" aria-hidden="true">
+        <span class="stripe stripe-red"></span>
+        <span class="stripe stripe-yellow"></span>
+        <span class="stripe stripe-blue"></span>
+      </div>
+
+      <div class="display-bezel">
+        <div class="lcd-screen" id="lcdScreen">
+          <div class="lcd-main-view" id="lcdMainView">
+            <div class="lcd-result" id="displayResult">0</div>
+            <div class="lcd-expression" id="displayExpression"></div>
+          </div>
+          <div class="lcd-history-view" id="lcdHistoryView" hidden>
+            <div class="history-header">
+              <span class="history-title">HISTORY</span>
+              <button type="button" class="history-close-btn" id="historyCloseBtn" aria-label="Close history">✕</button>
+            </div>
+            <ul class="history-list" id="historyList"></ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="utility-row">
+        <button type="button" class="btn-utility" id="btnHistory" data-utility="history"
+          aria-label="Calculation history" title="History">↺</button>
+        <button type="button" class="btn-utility" id="btnBackspace" data-utility="backspace" aria-label="Backspace"
+          title="Backspace">⌫</button>
+      </div>
+
+      <div class="keypad-panel">
+        <button type="button" class="btn btn-clear" data-action="clear" aria-label="Clear">C</button>
+        <button type="button" class="btn btn-function" data-action="toggle-sign" aria-label="Toggle sign">±</button>
+        <button type="button" class="btn btn-function" data-action="percent" aria-label="Percentage">%</button>
+        <button type="button" class="btn btn-operator" data-operator="÷" aria-label="Divide">÷</button>
+
+        <button type="button" class="btn btn-number" data-number="7">7</button>
+        <button type="button" class="btn btn-number" data-number="8">8</button>
+        <button type="button" class="btn btn-number" data-number="9">9</button>
+        <button type="button" class="btn btn-operator" data-operator="×" aria-label="Multiply">×</button>
+
+        <button type="button" class="btn btn-number" data-number="4">4</button>
+        <button type="button" class="btn btn-number" data-number="5">5</button>
+        <button type="button" class="btn btn-number" data-number="6">6</button>
+        <button type="button" class="btn btn-operator" data-operator="−" aria-label="Subtract">−</button>
+
+        <button type="button" class="btn btn-number" data-number="1">1</button>
+        <button type="button" class="btn btn-number" data-number="2">2</button>
+        <button type="button" class="btn btn-number" data-number="3">3</button>
+        <button type="button" class="btn btn-operator" data-operator="+" aria-label="Add">+</button>
+
+        <button type="button" class="btn btn-number btn-zero" data-number="0">0</button>
+        <button type="button" class="btn btn-number" data-action="decimal" aria-label="Decimal point">.</button>
+        <button type="button" class="btn btn-equals" data-action="calculate" aria-label="Equals">=</button>
+      </div>
+    </div>
+  </main>
+</body>
+
+</html>

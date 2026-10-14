@@ -1,9 +1,20 @@
 const API_BASE = 'https://api.open-meteo.com/v1/forecast';
 const GEO_BASE = 'https://geocoding-api.open-meteo.com/v1/search';
 const CACHE_KEY = 'weathernow_state_v1';
+const WEATHER_CACHE_TTL = 10 * 60 * 1000; // 10 minutes TTL
 const geoCache = new Map();
+const weatherCache = new Map();
+const formatterCache = new Map();
 let searchAbortController = null;
+let weatherAbortController = null;
 let resizeRaf = null;
+
+function getCachedFormatter(key, options) {
+    if (!formatterCache.has(key)) {
+        formatterCache.set(key, new Intl.DateTimeFormat('en-US', options));
+    }
+    return formatterCache.get(key);
+}
 
 const state = {
     unit: 'celsius',
@@ -16,6 +27,7 @@ const state = {
     isFetching: false,
     requestId: 0,
     lightningInterval: null,
+    lightningTimeouts: [],
     clockInterval: null,
     searchDebounce: null
 };
@@ -75,7 +87,8 @@ function saveCache() {
             cityName: state.cityName,
             countryName: state.countryName,
             timezone: state.timezone,
-            weatherData: state.weatherData
+            weatherData: state.weatherData,
+            timestamp: Date.now()
         };
         localStorage.setItem(CACHE_KEY, JSON.stringify(payload));
     } catch (e) {}
@@ -107,7 +120,14 @@ function init() {
 
         dom.unitToggle.querySelector('.unit-label').textContent = state.unit === 'celsius' ? '°C' : '°F';
         renderDashboard(state.weatherData);
-        fetchWeather(true);
+
+        const cacheKey = `${state.lat.toFixed(3)},${state.lon.toFixed(3)}`;
+        weatherCache.set(cacheKey, { data: state.weatherData, timestamp: cached.timestamp || Date.now() });
+
+        const isStale = !cached.timestamp || (Date.now() - cached.timestamp > WEATHER_CACHE_TTL);
+        if (isStale) {
+            fetchWeather(true);
+        }
     } else {
         fetchWeather(false);
     }
@@ -131,6 +151,21 @@ function bindEvents() {
         hideWelcome();
         handleGeolocation();
     });
+
+    // Delegated click handler on dropdown to eliminate per-item listener allocations
+    dom.searchDropdown.addEventListener('click', (e) => {
+        const el = e.target.closest('.search-result');
+        if (!el) return;
+        const lat = parseFloat(el.dataset.lat);
+        const lon = parseFloat(el.dataset.lon);
+        const name = el.dataset.name;
+        const country = el.dataset.country;
+        const tz = el.dataset.tz;
+        dom.searchInput.value = name;
+        closeDropdown();
+        selectCity(lat, lon, name, country, tz);
+    });
+
     document.addEventListener('click', (e) => {
         if (!dom.searchWrapper.contains(e.target)) {
             closeDropdown();
@@ -169,6 +204,12 @@ async function fetchCitySuggestions(query) {
         if (!res.ok) return;
         const data = await res.json();
         const results = data.results || [];
+
+        // Bound cache size to prevent memory leaks
+        if (geoCache.size >= 50) {
+            const oldestKey = geoCache.keys().next().value;
+            geoCache.delete(oldestKey);
+        }
         geoCache.set(cacheKey, results);
         renderSuggestions(results);
     } catch (e) {
@@ -186,18 +227,6 @@ function renderSuggestions(results) {
         return `<div class="search-result" data-idx="${i}" data-lat="${r.latitude}" data-lon="${r.longitude}" data-name="${r.name}" data-country="${r.country || ''}" data-tz="${r.timezone || 'auto'}">${r.name}${region}<span class="result-country">${r.country || ''}</span></div>`;
     }).join('');
     showDropdown(html);
-    dom.searchDropdown.querySelectorAll('.search-result').forEach((el) => {
-        el.addEventListener('click', () => {
-            const lat = parseFloat(el.dataset.lat);
-            const lon = parseFloat(el.dataset.lon);
-            const name = el.dataset.name;
-            const country = el.dataset.country;
-            const tz = el.dataset.tz;
-            dom.searchInput.value = name;
-            closeDropdown();
-            selectCity(lat, lon, name, country, tz);
-        });
-    });
 }
 
 function showDropdown(html) {
@@ -268,6 +297,27 @@ function handleGeolocation() {
 
 async function fetchWeather(silent = false) {
     if (state.lat === null || state.lon === null) return;
+
+    const cacheKey = `${state.lat.toFixed(3)},${state.lon.toFixed(3)}`;
+    const now = Date.now();
+    const cachedEntry = weatherCache.get(cacheKey);
+
+    // Instant response if fresh data is already cached in memory
+    if (!silent && cachedEntry && (now - cachedEntry.timestamp < WEATHER_CACHE_TTL)) {
+        state.weatherData = cachedEntry.data;
+        hideLoading();
+        hideError();
+        renderDashboard(cachedEntry.data);
+        saveCache();
+        return;
+    }
+
+    // Cancel any in-flight weather request
+    if (weatherAbortController) {
+        weatherAbortController.abort();
+    }
+    weatherAbortController = new AbortController();
+
     state.requestId++;
     const currentRequest = state.requestId;
     if (!silent && !state.isFetching) showLoading('Fetching weather data...');
@@ -284,10 +334,20 @@ async function fetchWeather(silent = false) {
             forecast_days: 7
         });
 
-        const res = await fetch(`${API_BASE}?${params}`);
+        const res = await fetch(`${API_BASE}?${params}`, {
+            signal: weatherAbortController.signal
+        });
         if (!res.ok) throw new Error('Weather API error');
         const data = await res.json();
         if (currentRequest !== state.requestId) return;
+
+        // Keep cache bounded
+        if (weatherCache.size >= 20) {
+            const oldestKey = weatherCache.keys().next().value;
+            weatherCache.delete(oldestKey);
+        }
+        weatherCache.set(cacheKey, { data, timestamp: Date.now() });
+
         state.weatherData = data;
         state.isFetching = false;
         hideLoading();
@@ -296,6 +356,7 @@ async function fetchWeather(silent = false) {
         saveCache();
     } catch (e) {
         state.isFetching = false;
+        if (e.name === 'AbortError') return;
         if (currentRequest !== state.requestId) return;
         if (!silent || !state.weatherData) {
             showError('Failed to load weather data. Please try again.');
@@ -306,6 +367,9 @@ async function fetchWeather(silent = false) {
 function refreshWeather() {
     hideError();
     if (state.lat !== null && state.lon !== null) {
+        // Clear in-memory cache for this location to force fresh network fetch
+        const cacheKey = `${state.lat.toFixed(3)},${state.lon.toFixed(3)}`;
+        weatherCache.delete(cacheKey);
         fetchWeather(false);
     } else {
         showWelcome();
@@ -316,9 +380,34 @@ function toggleUnit() {
     state.unit = state.unit === 'celsius' ? 'fahrenheit' : 'celsius';
     dom.unitToggle.querySelector('.unit-label').textContent = state.unit === 'celsius' ? '°C' : '°F';
     if (state.weatherData) {
-        renderDashboard(state.weatherData);
+        updateTemperaturesOnly(state.weatherData);
     }
     saveCache();
+}
+
+function updateTemperaturesOnly(data) {
+    const current = data.current;
+    if (current) {
+        dom.tempValue.textContent = formatTempDisplay(current.temperature_2m);
+        dom.feelsLike.textContent = `Feels like ${formatTempDisplay(current.apparent_temperature)}° · Wind ${Math.round(current.wind_speed_10m)} km/h`;
+    }
+    const cards = dom.forecastTrack.querySelectorAll('.forecast-day');
+    if (cards.length && data.daily) {
+        cards.forEach((card, i) => {
+            if (data.daily.temperature_2m_max[i] !== undefined) {
+                const tempEl = card.querySelector('.forecast-temp');
+                if (tempEl) {
+                    tempEl.innerHTML = `${formatTempDisplay(data.daily.temperature_2m_max[i])}<span class="forecast-temp-deg">°</span>`;
+                }
+            }
+            if (data.daily.temperature_2m_min[i] !== undefined) {
+                const lowEl = card.querySelector('.forecast-low');
+                if (lowEl) {
+                    lowEl.textContent = `Low: ${formatTempDisplay(data.daily.temperature_2m_min[i])}°`;
+                }
+            }
+        });
+    }
 }
 
 function convertTemp(celsius) {
@@ -492,16 +581,24 @@ function getWeatherTheme(code, isDay) {
     return 'weather-clear-day';
 }
 
+function stopLightning() {
+    if (state.lightningInterval) {
+        clearInterval(state.lightningInterval);
+        state.lightningInterval = null;
+    }
+    if (state.lightningTimeouts && state.lightningTimeouts.length) {
+        state.lightningTimeouts.forEach(clearTimeout);
+        state.lightningTimeouts = [];
+    }
+}
+
 function updateBackgroundTheme(theme) {
     const bg = dom.weatherBg;
     const currentClasses = [...bg.classList].filter(c => c.startsWith('weather-'));
     currentClasses.forEach(c => bg.classList.remove(c));
     bg.classList.add(theme);
 
-    if (state.lightningInterval) {
-        clearInterval(state.lightningInterval);
-        state.lightningInterval = null;
-    }
+    stopLightning();
 
     if (theme === 'weather-thunder') {
         startLightning();
@@ -513,13 +610,17 @@ function startLightning() {
     function flash() {
         if (!lightningEl) return;
         lightningEl.classList.add('flash');
-        setTimeout(() => lightningEl.classList.remove('flash'), 100);
-        setTimeout(() => {
+        const t1 = setTimeout(() => lightningEl.classList.remove('flash'), 100);
+        state.lightningTimeouts.push(t1);
+
+        const t2 = setTimeout(() => {
             if (Math.random() > 0.4) {
                 lightningEl.classList.add('flash');
-                setTimeout(() => lightningEl.classList.remove('flash'), 70);
+                const t3 = setTimeout(() => lightningEl.classList.remove('flash'), 70);
+                state.lightningTimeouts.push(t3);
             }
         }, 180);
+        state.lightningTimeouts.push(t2);
     }
     state.lightningInterval = setInterval(() => {
         if (Math.random() > 0.6) flash();
@@ -745,7 +846,7 @@ function renderForecastCurve(temps, count, highlightIdx = 0) {
     if (temps.length < 2) { svg.innerHTML = ''; return; }
 
     const rect = svg.parentElement.getBoundingClientRect();
-    const w = Math.max(300, rect.width - 72);
+    const w = Math.max(100, (rect.width && rect.width > 72) ? Math.round(rect.width - 72) : 300);
     const h = 60;
     svg.setAttribute('viewBox', `0 0 ${w} ${h}`);
 
@@ -801,15 +902,23 @@ function getWeatherIcon(code, isDay = true) {
 function updateHeaderDate(timezone) {
     try {
         const now = new Date();
-        const options = { day: 'numeric', month: 'short', timeZone: timezone !== 'auto' ? timezone : undefined };
-        const dateStr = now.toLocaleDateString('en-US', options);
-        const timeStr = now.toLocaleTimeString('en-US', {
+        const tz = timezone !== 'auto' ? timezone : undefined;
+        const dateKey = `hdr_date_${tz}`;
+        const timeKey = `hdr_time_${tz}`;
+
+        const dateFmt = getCachedFormatter(dateKey, {
+            day: 'numeric',
+            month: 'short',
+            timeZone: tz
+        });
+        const timeFmt = getCachedFormatter(timeKey, {
             hour: '2-digit',
             minute: '2-digit',
             hour12: false,
-            timeZone: timezone !== 'auto' ? timezone : undefined
+            timeZone: tz
         });
-        dom.headerDate.textContent = `${dateStr} | ${timeStr}`;
+
+        dom.headerDate.textContent = `${dateFmt.format(now)} | ${timeFmt.format(now)}`;
     } catch (e) {
         dom.headerDate.textContent = '28 Aug | 11:52';
     }
@@ -818,14 +927,18 @@ function updateHeaderDate(timezone) {
 function updateLocalTime(timezone) {
     try {
         const now = new Date();
-        const timeStr = now.toLocaleTimeString('en-US', {
+        const tz = timezone !== 'auto' ? timezone : undefined;
+        const timeKey = `local_time_${tz}`;
+
+        const timeFmt = getCachedFormatter(timeKey, {
             hour: '2-digit',
             minute: '2-digit',
             second: '2-digit',
             hour12: true,
-            timeZone: timezone !== 'auto' ? timezone : undefined
+            timeZone: tz
         });
-        dom.localTime.textContent = timeStr;
+
+        dom.localTime.textContent = timeFmt.format(now);
     } catch (e) {
         dom.localTime.textContent = '';
     }
@@ -879,4 +992,8 @@ window.addEventListener('resize', () => {
     });
 });
 
-document.addEventListener('DOMContentLoaded', init);
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+} else {
+    init();
+}

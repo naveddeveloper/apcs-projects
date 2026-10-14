@@ -1,3 +1,76 @@
+const SOUND_PATH = "assets/sounds/button-click.mp3";
+let soundVolume = 0.7;
+let audioContext = null;
+let soundBuffer = null;
+const audioPool = [];
+const POOL_SIZE = 6;
+let poolIndex = 0;
+
+function initAudio() {
+  for (let i = 0; i < POOL_SIZE; i++) {
+    const audio = new Audio(SOUND_PATH);
+    audio.preload = "auto";
+    audio.volume = soundVolume;
+    audioPool.push(audio);
+  }
+
+  const AudioContextClass = window.AudioContext || window.webkitAudioContext;
+  if (AudioContextClass) {
+    try {
+      audioContext = new AudioContextClass();
+      fetch(SOUND_PATH)
+        .then((response) => {
+          if (!response.ok) throw new Error();
+          return response.arrayBuffer();
+        })
+        .then((arrayBuffer) => audioContext.decodeAudioData(arrayBuffer))
+        .then((decodedBuffer) => {
+          soundBuffer = decodedBuffer;
+        })
+        .catch(() => {});
+    } catch (e) {}
+  }
+}
+
+function playClickSound() {
+  try {
+    if (audioContext && soundBuffer) {
+      if (audioContext.state === "suspended") {
+        audioContext.resume().catch(() => {});
+      }
+      const source = audioContext.createBufferSource();
+      source.buffer = soundBuffer;
+      const gainNode = audioContext.createGain();
+      gainNode.gain.value = soundVolume;
+      gainNode.connect(audioContext.destination);
+      source.connect(gainNode);
+      source.start(0);
+      return;
+    }
+
+    if (audioPool.length > 0) {
+      const audio = audioPool[poolIndex];
+      poolIndex = (poolIndex + 1) % audioPool.length;
+      audio.currentTime = 0;
+      audio.volume = soundVolume;
+      const promise = audio.play();
+      if (promise !== undefined) {
+        promise.catch(() => {});
+      }
+    }
+  } catch (e) {}
+}
+
+function setSoundVolume(volume) {
+  const clamped = Math.max(0, Math.min(1, volume));
+  soundVolume = clamped;
+  audioPool.forEach((audio) => {
+    audio.volume = clamped;
+  });
+}
+
+window.setSoundVolume = setSoundVolume;
+
 let displayResult;
 let displayExpression;
 let lcdHistoryView;
@@ -36,6 +109,7 @@ function updateDisplay() {
 }
 
 function triggerButtonEffect(buttonElement) {
+  playClickSound();
   if (!buttonElement) return;
   buttonElement.classList.add("is-pressed");
   setTimeout(() => {
@@ -423,6 +497,7 @@ function handleKeyDown(event) {
 }
 
 function initCalculator() {
+  initAudio();
   displayResult = document.getElementById("displayResult");
   displayExpression = document.getElementById("displayExpression");
   lcdHistoryView = document.getElementById("lcdHistoryView");
@@ -455,6 +530,7 @@ function initCalculator() {
     historyCloseBtn.addEventListener("click", (event) => {
       event.stopPropagation();
       historyCloseBtn.blur();
+      triggerButtonEffect(historyCloseBtn);
       closeHistory();
     });
   }

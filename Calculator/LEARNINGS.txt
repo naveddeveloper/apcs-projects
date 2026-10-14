@@ -46,7 +46,7 @@ To make the calculator fast and enjoyable to use on a computer, I added full key
 - Escape, Delete, and the letter C reset the calculator.
 - The percent key (%) calculates percentages.
 - I used event.preventDefault() on special keys like Slash and Enter to prevent default browser shortcuts.
-- When a key is pressed, JavaScript adds an active class to the corresponding on-screen button with visible tactile feedback, so the user sees the physical button push down even while using their keyboard.
+- When a key is pressed, JavaScript adds an active class to the corresponding on-screen button with visible tactile feedback and plays the satisfying button click sound, so the user sees and hears the physical button push down even while using their keyboard.
 - I also blurred focused buttons after clicks to prevent keyboard events from triggering the wrong button.
 
 8. Responsive Design
@@ -96,5 +96,9 @@ A: Before dividing, my math function checks if the second number is 0. If it is,
 Q: How did you make the calculator responsive?
 A: I centered the calculator with Flexbox, constrained its width with max-width: 100%, and used a CSS media query to scale down button sizes and padding on smaller phone screens.
 
+Q: How did you add tactile audio sound effects to the buttons?
+A: I extracted a clean 170ms mechanical button click from my original 15-second audio file, applied micro fade-in and fade-out curves to eliminate pops, and loaded it using the Web Audio API with an HTML5 Audio object pool as fallback. This allows instant zero-latency feedback on rapid taps without cutting off previous sounds.
+
 Q: What was the most challenging part of the project?
-A: The most challenging part was diagnosing and fixing the display overlay specificity bug and managing the calculator's state during chained operations so the display, expression line, and memory all stayed in sync.
+A: The most challenging part was diagnosing and fixing the display overlay specificity bug, managing the calculator's state during chained operations, and engineering low-latency audio playback that responds immediately and seamlessly to both mouse clicks, mobile taps, and physical keyboard presses.
+

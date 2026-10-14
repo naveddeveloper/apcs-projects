@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Search Results | Navedi Mall</title>
+
+  <!-- Favicon -->
+  <link rel="shortcut icon" href="./assets/images/logo/favicon.ico" type="image/x-icon">
+  <link rel="icon" type="image/svg+xml" href="./assets/images/logo/favicon.svg">
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="./assets/css/style-prefix.css">
+  <link rel="stylesheet" href="./assets/css/ecommerce.css">
+
+  <!-- Google Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+  <div class="overlay" data-overlay></div>
+
+  <!-- HEADER -->
+  <header>
+    <div class="header-top">
+      <div class="container">
+        <ul class="header-social-container">
+          <li><a href="#" class="social-link"><ion-icon name="logo-facebook"></ion-icon></a></li>
+          <li><a href="#" class="social-link"><ion-icon name="logo-twitter"></ion-icon></a></li>
+          <li><a href="#" class="social-link"><ion-icon name="logo-instagram"></ion-icon></a></li>
+          <li><a href="#" class="social-link"><ion-icon name="logo-linkedin"></ion-icon></a></li>
+        </ul>
+
+        <div class="header-alert-news">
+          <p><b>Free Shipping</b> on all orders over $55 this week!</p>
+        </div>
+
+        <div class="header-top-actions">
+          <select name="currency">
+            <option value="usd">USD &dollar;</option>
+            <option value="eur">EUR &euro;</option>
+          </select>
+
+          <select name="language">
+            <option value="en-US">English</option>
+            <option value="es-ES">Espa&ntilde;ol</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <div class="header-main">
+      <div class="container">
+        <a href="index.html" class="header-logo">
+          <img src="./assets/images/logo/logo.svg" alt="Navedi Mall logo" width="168" height="36">
+        </a>
+
+        <div class="header-search-container">
+          <input type="search" name="search" id="page-search-field" class="search-field" placeholder="Search products, brands, or categories...">
+          <button class="search-btn" id="btn-search-trigger" aria-label="Search">
+            <ion-icon name="search-outline"></ion-icon>
+          </button>
+        </div>
+
+        <div class="header-user-actions">
+          <button class="action-btn" data-action="account" title="My Account" aria-label="Account">
+            <ion-icon name="person-outline"></ion-icon>
+          </button>
+
+          <button class="action-btn" data-action="wishlist" title="My Wishlist" aria-label="Wishlist">
+            <ion-icon name="heart-outline"></ion-icon>
+            <span class="count" data-wishlist-count>0</span>
+          </button>
+
+          <button class="action-btn" data-action="cart" title="Shopping Cart" aria-label="Cart">
+            <ion-icon name="bag-handle-outline"></ion-icon>
+            <span class="count" data-cart-count>0</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <nav class="desktop-navigation-menu">
+      <div class="container">
+        <ul class="desktop-menu-category-list">
+          <li class="menu-category"><a href="index.html" class="menu-title">Home</a></li>
+          <li class="menu-category"><a href="shop.html" class="menu-title">Shop Catalog</a></li>
+          <li class="menu-category"><a href="shop.html?category=Mens" class="menu-title">Men's</a></li>
+          <li class="menu-category"><a href="shop.html?category=Womens" class="menu-title">Women's</a></li>
+          <li class="menu-category"><a href="shop.html?category=Jewelry" class="menu-title">Jewelry</a></li>
+          <li class="menu-category"><a href="shop.html?category=Watches" class="menu-title">Watches</a></li>
+          <li class="menu-category"><a href="shop.html?category=Cosmetics" class="menu-title">Perfume & Beauty</a></li>
+          <li class="menu-category"><a href="about.html" class="menu-title">About Us</a></li>
+          <li class="menu-category"><a href="contact.html" class="menu-title">Contact Us</a></li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+
+  <!-- BREADCRUMBS -->
+  <div class="breadcrumb-container">
+    <div class="container">
+      <ul class="breadcrumb-list">
+        <li class="breadcrumb-item"><a href="index.html"><ion-icon name="home-outline"></ion-icon> Home</a></li>
+        <li class="breadcrumb-separator">/</li>
+        <li class="breadcrumb-item active">Search Results</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- SEARCH BANNER -->
+  <div class="page-title-banner">
+    <div class="container banner-inner">
+      <h1 id="search-title-text">Search Results</h1>
+      <p id="search-subtitle-text">Displaying matching items from our catalog.</p>
+    </div>
+  </div>
+
+  <!-- RESULTS CONTAINER -->
+  <main class="container" style="margin-bottom: 60px;">
+    <!-- Search Controls -->
+    <div class="shop-toolbar">
+      <div class="toolbar-left">
+        <span class="product-count-text" id="search-count-text">Found 0 products</span>
+      </div>
+
+      <div class="toolbar-right">
+        <div class="sort-select-box">
+          <label for="search-sort-select">Sort by:</label>
+          <select id="search-sort-select" class="sort-select">
+            <option value="default">Relevance</option>
+            <option value="price-low">Price: Low to High</option>
+            <option value="price-high">Price: High to Low</option>
+            <option value="rating">Highest Rated</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <!-- Product Grid -->
+    <div class="product-grid" id="search-product-grid">
+      <!-- Dynamically populated -->
+    </div>
+
+    <!-- Empty State -->
+    <div class="empty-state-box" id="search-empty-state" style="display: none;">
+      <div class="empty-state-icon">
+        <ion-icon name="search-outline"></ion-icon>
+      </div>
+      <h3 class="empty-state-title">No matching products found</h3>
+      <p class="empty-state-desc">We couldn't find any products matching your search term. Try searching for "jacket", "shirt", "watch", "ring", or explore our popular categories.</p>
+      
+      <div style="display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; margin-bottom: 24px;">
+        <a href="search.html?q=jacket" class="filter-chip" style="font-size: 13px; padding: 6px 14px;">Jackets</a>
+        <a href="search.html?q=shirt" class="filter-chip" style="font-size: 13px; padding: 6px 14px;">Shirts</a>
+        <a href="search.html?q=watch" class="filter-chip" style="font-size: 13px; padding: 6px 14px;">Watches</a>
+        <a href="search.html?q=earrings" class="filter-chip" style="font-size: 13px; padding: 6px 14px;">Earrings</a>
+        <a href="search.html?q=perfume" class="filter-chip" style="font-size: 13px; padding: 6px 14px;">Perfume</a>
+        <a href="search.html?q=shoes" class="filter-chip" style="font-size: 13px; padding: 6px 14px;">Shoes</a>
+      </div>
+
+      <a href="shop.html" class="btn-primary-action">
+        Browse Full Catalog
+      </a>
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-bottom">
+      <div class="container">
+        <img src="./assets/images/payment.png" alt="payment methods" class="payment-img">
+        <p class="copyright">Copyright &copy; <a href="index.html">Navedi Mall</a>. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="./assets/js/products.js"></script>
+  <script src="./assets/js/storage.js"></script>
+  <script src="./assets/js/app.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const urlParams = new URLSearchParams(window.location.search);
+      let query = urlParams.get('q') || '';
+      
+      const searchField = document.getElementById('page-search-field');
+      const searchTitle = document.getElementById('search-title-text');
+      const searchSubtitle = document.getElementById('search-subtitle-text');
+      const countEl = document.getElementById('search-count-text');
+      const gridEl = document.getElementById('search-product-grid');
+      const emptyStateEl = document.getElementById('search-empty-state');
+      const sortSelect = document.getElementById('search-sort-select');
+
+      if (searchField) searchField.value = query;
+
+      function performSearch() {
+        if (!query.trim()) {
+          searchTitle.textContent = "Explore Catalog";
+          searchSubtitle.textContent = "Please enter a search keyword to find items.";
+          gridEl.style.display = 'none';
+          emptyStateEl.style.display = 'block';
+          countEl.textContent = 'Found 0 products';
+          return;
+        }
+
+        searchTitle.textContent = `Search results for "${query}"`;
+        let results = window.ProductDB.search(query);
+
+        // Sorting
+        const sortVal = sortSelect.value;
+        if (sortVal === 'price-low') {
+          results.sort((a, b) => a.price - b.price);
+        } else if (sortVal === 'price-high') {
+          results.sort((a, b) => b.price - a.price);
+        } else if (sortVal === 'rating') {
+          results.sort((a, b) => b.rating - a.rating);
+        }
+
+        countEl.textContent = `Found ${results.length} product${results.length === 1 ? '' : 's'}`;
+
+        if (results.length === 0) {
+          gridEl.style.display = 'none';
+          emptyStateEl.style.display = 'block';
+        } else {
+          emptyStateEl.style.display = 'none';
+          gridEl.style.display = 'grid';
+          gridEl.innerHTML = results.map(p => window.renderProductCard(p)).join('');
+        }
+      }
+
+      if (sortSelect) {
+        sortSelect.addEventListener('change', performSearch);
+      }
+
+      performSearch();
+    });
+  </script>
+  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+</body>
+
+</html>

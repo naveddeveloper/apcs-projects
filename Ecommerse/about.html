@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Us | Navedi Mall</title>
+
+  <!-- Favicon -->
+  <link rel="shortcut icon" href="./assets/images/logo/favicon.ico" type="image/x-icon">
+  <link rel="icon" type="image/svg+xml" href="./assets/images/logo/favicon.svg">
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="./assets/css/style-prefix.css">
+  <link rel="stylesheet" href="./assets/css/ecommerce.css">
+
+  <!-- Google Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+  <div class="overlay" data-overlay></div>
+
+  <!-- HEADER -->
+  <header>
+    <div class="header-top">
+      <div class="container">
+        <div class="header-alert-news">
+          <p><b>Free Shipping</b> on all orders over $55 this week!</p>
+        </div>
+
+        <div class="header-top-actions">
+          <select name="currency">
+            <option value="usd">USD &dollar;</option>
+            <option value="eur">EUR &euro;</option>
+          </select>
+          <select name="language">
+            <option value="en-US">English</option>
+            <option value="es-ES">Espa&ntilde;ol</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <div class="header-main">
+      <div class="container">
+        <a href="index.html" class="header-logo">
+          <img src="./assets/images/logo/logo.svg" alt="Navedi Mall logo" width="168" height="36">
+        </a>
+
+        <div class="header-search-container">
+          <input type="search" name="search" class="search-field" placeholder="Search products, brands, or categories...">
+          <button class="search-btn" aria-label="Search">
+            <ion-icon name="search-outline"></ion-icon>
+          </button>
+        </div>
+
+        <div class="header-user-actions">
+          <button class="action-btn" data-action="account" title="My Account" aria-label="Account">
+            <ion-icon name="person-outline"></ion-icon>
+          </button>
+          <button class="action-btn" data-action="wishlist" title="My Wishlist" aria-label="Wishlist">
+            <ion-icon name="heart-outline"></ion-icon>
+            <span class="count" data-wishlist-count>0</span>
+          </button>
+          <button class="action-btn" data-action="cart" title="Shopping Cart" aria-label="Cart">
+            <ion-icon name="bag-handle-outline"></ion-icon>
+            <span class="count" data-cart-count>0</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <nav class="desktop-navigation-menu">
+      <div class="container">
+        <ul class="desktop-menu-category-list">
+          <li class="menu-category"><a href="index.html" class="menu-title">Home</a></li>
+          <li class="menu-category"><a href="shop.html" class="menu-title">Shop Catalog</a></li>
+          <li class="menu-category"><a href="shop.html?category=Mens" class="menu-title">Men's</a></li>
+          <li class="menu-category"><a href="shop.html?category=Womens" class="menu-title">Women's</a></li>
+          <li class="menu-category"><a href="about.html" class="menu-title active" style="color: var(--secondary, #4F46E5);">About Us</a></li>
+          <li class="menu-category"><a href="contact.html" class="menu-title">Contact Us</a></li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+
+  <!-- BREADCRUMBS -->
+  <div class="breadcrumb-container">
+    <div class="container">
+      <ul class="breadcrumb-list">
+        <li class="breadcrumb-item"><a href="index.html"><ion-icon name="home-outline"></ion-icon> Home</a></li>
+        <li class="breadcrumb-separator">/</li>
+        <li class="breadcrumb-item active">About Us</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- BANNER -->
+  <div class="page-title-banner">
+    <div class="container banner-inner">
+      <h1>Our Story, Mission &amp; Values</h1>
+      <p>Delivering premium fashion, authentic accessories, and exceptional shopping experiences worldwide.</p>
+    </div>
+  </div>
+
+  <!-- MAIN ABOUT CONTENT -->
+  <main class="container" style="margin-bottom: 60px;">
+
+    <!-- Brand Introduction -->
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; margin-bottom: 60px;">
+      <div>
+        <span style="font-size: 13px; font-weight: 700; color: var(--secondary, #4F46E5); text-transform: uppercase; letter-spacing: 1px;">Welcome to Navedi Mall</span>
+        <h2 style="font-size: 28px; font-weight: 800; color: #0F172A; margin: 8px 0 16px 0; line-height: 1.3;">Crafted for Elegance, Built for Everyday Life</h2>
+        <p style="font-size: 15px; color: #475569; line-height: 1.7; margin-bottom: 16px;">
+          Founded with a simple yet ambitious vision: to bridge the gap between luxury designer craftsmanship and accessible everyday pricing. At Navedi Mall, we believe high fashion and durability should never be mutually exclusive.
+        </p>
+        <p style="font-size: 15px; color: #475569; line-height: 1.7; margin-bottom: 24px;">
+          From genuine leather jackets and precision timepieces to hand-set zirconia jewelry and organic beauty essentials, every item in our storefront is handpicked and inspected to meet our exacting standards.
+        </p>
+        <a href="shop.html" class="btn-primary-action" style="padding: 12px 24px; font-size: 15px;">
+          Explore Our Collection <ion-icon name="arrow-forward-outline"></ion-icon>
+        </a>
+      </div>
+
+      <div>
+        <img src="./assets/images/cta-banner.jpg" alt="Navedi Mall store collection" style="width: 100%; border-radius: 16px; box-shadow: 0 10px 25px -5px rgba(0,0,0,0.1); border: 1px solid #E2E8F0;">
+      </div>
+    </div>
+
+    <!-- Statistics Grid -->
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; background: linear-gradient(135deg, #1E293B, #0F172A); border-radius: 16px; padding: 40px 24px; color: #FFFFFF; text-align: center; margin-bottom: 60px;">
+      <div>
+        <div style="font-size: 36px; font-weight: 900; color: #F59E0B; margin-bottom: 4px;">50,000+</div>
+        <div style="font-size: 14px; color: #94A3B8;">Satisfied Shoppers</div>
+      </div>
+      <div>
+        <div style="font-size: 36px; font-weight: 900; color: #10B981; margin-bottom: 4px;">1,200+</div>
+        <div style="font-size: 14px; color: #94A3B8;">Curated Products</div>
+      </div>
+      <div>
+        <div style="font-size: 36px; font-weight: 900; color: #60A5FA; margin-bottom: 4px;">99.4%</div>
+        <div style="font-size: 14px; color: #94A3B8;">Positive Ratings</div>
+      </div>
+      <div>
+        <div style="font-size: 36px; font-weight: 900; color: #F472B6; margin-bottom: 4px;">45+</div>
+        <div style="font-size: 14px; color: #94A3B8;">Countries Served</div>
+      </div>
+    </div>
+
+    <!-- Core Values -->
+    <div style="margin-bottom: 60px;">
+      <h2 style="font-size: 24px; font-weight: 700; color: #0F172A; text-align: center; margin-bottom: 30px;">Why Choose Navedi Mall</h2>
+
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 24px;">
+        <div style="background: #FFFFFF; border: 1px solid #E2E8F0; border-radius: 12px; padding: 24px; text-align: center;">
+          <div class="toast-icon-box" style="margin: 0 auto 16px auto; background: #EEF2FF; color: var(--secondary, #4F46E5); width: 50px; height: 50px; font-size: 26px;">
+            <ion-icon name="ribbon-outline"></ion-icon>
+          </div>
+          <h3 style="font-size: 16px; font-weight: 700; color: #0F172A; margin-bottom: 8px;">Authentic Quality</h3>
+          <p style="font-size: 13px; color: #64748B; line-height: 1.6; margin: 0;">We partner exclusively with verified artisan suppliers and certified manufacturers.</p>
+        </div>
+
+        <div style="background: #FFFFFF; border: 1px solid #E2E8F0; border-radius: 12px; padding: 24px; text-align: center;">
+          <div class="toast-icon-box" style="margin: 0 auto 16px auto; background: #ECFDF5; color: #10B981; width: 50px; height: 50px; font-size: 26px;">
+            <ion-icon name="rocket-outline"></ion-icon>
+          </div>
+          <h3 style="font-size: 16px; font-weight: 700; color: #0F172A; margin-bottom: 8px;">Fast Tracked Shipping</h3>
+          <p style="font-size: 13px; color: #64748B; line-height: 1.6; margin: 0;">Every parcel is assigned an end-to-end tracking code and dispatched within 24 hours.</p>
+        </div>
+
+        <div style="background: #FFFFFF; border: 1px solid #E2E8F0; border-radius: 12px; padding: 24px; text-align: center;">
+          <div class="toast-icon-box" style="margin: 0 auto 16px auto; background: #FEF3C7; color: #D97706; width: 50px; height: 50px; font-size: 26px;">
+            <ion-icon name="refresh-outline"></ion-icon>
+          </div>
+          <h3 style="font-size: 16px; font-weight: 700; color: #0F172A; margin-bottom: 8px;">Hassle-Free Returns</h3>
+          <p style="font-size: 13px; color: #64748B; line-height: 1.6; margin: 0;">If something isn't right, return it within 30 days with no restocking penalties.</p>
+        </div>
+
+        <div style="background: #FFFFFF; border: 1px solid #E2E8F0; border-radius: 12px; padding: 24px; text-align: center;">
+          <div class="toast-icon-box" style="margin: 0 auto 16px auto; background: #FCE7F3; color: #DB2777; width: 50px; height: 50px; font-size: 26px;">
+            <ion-icon name="headset-outline"></ion-icon>
+          </div>
+          <h3 style="font-size: 16px; font-weight: 700; color: #0F172A; margin-bottom: 8px;">Dedicated Support</h3>
+          <p style="font-size: 13px; color: #64748B; line-height: 1.6; margin: 0;">Real humans ready to answer questions, guide fit decisions, and ensure satisfaction.</p>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-bottom">
+      <div class="container">
+        <p class="copyright">Copyright &copy; <a href="index.html">Navedi Mall</a>. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="./assets/js/products.js"></script>
+  <script src="./assets/js/storage.js"></script>
+  <script src="./assets/js/app.js"></script>
+  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+</body>
+
+</html>

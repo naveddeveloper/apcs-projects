@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Checkout | Navedi Mall</title>
+
+  <!-- Favicon -->
+  <link rel="shortcut icon" href="./assets/images/logo/favicon.ico" type="image/x-icon">
+  <link rel="icon" type="image/svg+xml" href="./assets/images/logo/favicon.svg">
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="./assets/css/style-prefix.css">
+  <link rel="stylesheet" href="./assets/css/ecommerce.css">
+
+  <!-- Google Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+  <div class="overlay" data-overlay></div>
+
+  <!-- HEADER -->
+  <header>
+    <div class="header-top">
+      <div class="container">
+        <div class="header-alert-news">
+          <p><b>Secure Checkout</b> &bull; Free Returns on all orders</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="header-main">
+      <div class="container">
+        <a href="index.html" class="header-logo">
+          <img src="./assets/images/logo/logo.svg" alt="Navedi Mall logo" width="168" height="36">
+        </a>
+
+        <div style="margin-left: auto; display: flex; align-items: center; gap: 8px; font-size: 13px; color: #10B981; font-weight: 600;">
+          <ion-icon name="lock-closed" style="font-size: 16px;"></ion-icon> 256-Bit SSL Demo Encryption
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- BREADCRUMBS -->
+  <div class="breadcrumb-container">
+    <div class="container">
+      <ul class="breadcrumb-list">
+        <li class="breadcrumb-item"><a href="index.html"><ion-icon name="home-outline"></ion-icon> Home</a></li>
+        <li class="breadcrumb-separator">/</li>
+        <li class="breadcrumb-item"><a href="cart.html">Cart</a></li>
+        <li class="breadcrumb-separator">/</li>
+        <li class="breadcrumb-item active">Checkout</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- CHECKOUT MAIN -->
+  <main class="container" style="margin-bottom: 60px;">
+    <h1 style="font-size: 26px; font-weight: 700; color: #0F172A; margin-bottom: 24px;">Complete Your Order</h1>
+
+    <div class="checkout-layout">
+
+      <!-- LEFT: Form Steps -->
+      <form id="checkout-form" class="checkout-forms-wrap">
+
+        <!-- STEP 1: Contact Information -->
+        <div class="checkout-step-card">
+          <div class="step-header">
+            <div class="step-number">1</div>
+            <h3 class="step-title">Contact Information</h3>
+          </div>
+
+          <div class="form-grid-2">
+            <div class="form-group">
+              <label class="form-label" for="checkout-fullname">Full Name *</label>
+              <input type="text" id="checkout-fullname" class="form-input" placeholder="e.g. Alex Morgan" required>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="checkout-email">Email Address *</label>
+              <input type="email" id="checkout-email" class="form-input" placeholder="e.g. alex.morgan@example.com" required>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="checkout-phone">Phone Number *</label>
+            <input type="tel" id="checkout-phone" class="form-input" placeholder="+1 (555) 234-5678" required>
+          </div>
+        </div>
+
+        <!-- STEP 2: Shipping Address -->
+        <div class="checkout-step-card">
+          <div class="step-header">
+            <div class="step-number">2</div>
+            <h3 class="step-title">Delivery Address</h3>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="checkout-street">Street Address *</label>
+            <input type="text" id="checkout-street" class="form-input" placeholder="123 Main Street, Apt 4B" required>
+          </div>
+
+          <div class="form-grid-2">
+            <div class="form-group">
+              <label class="form-label" for="checkout-city">City *</label>
+              <input type="text" id="checkout-city" class="form-input" placeholder="Springfield" required>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="checkout-state">State / Province *</label>
+              <input type="text" id="checkout-state" class="form-input" placeholder="Oregon" required>
+            </div>
+          </div>
+
+          <div class="form-grid-2">
+            <div class="form-group">
+              <label class="form-label" for="checkout-zip">Postal / Zip Code *</label>
+              <input type="text" id="checkout-zip" class="form-input" placeholder="97477" required>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="checkout-country">Country *</label>
+              <select id="checkout-country" class="form-select">
+                <option value="US">United States</option>
+                <option value="CA">Canada</option>
+                <option value="UK">United Kingdom</option>
+                <option value="AU">Australia</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <!-- STEP 3: Shipping Method -->
+        <div class="checkout-step-card">
+          <div class="step-header">
+            <div class="step-number">3</div>
+            <h3 class="step-title">Shipping Method</h3>
+          </div>
+
+          <label class="payment-option-card active" style="margin-bottom: 10px;">
+            <input type="radio" name="shipping-method" value="standard" data-name="Standard Shipping (3-5 Business Days)" checked>
+            <div>
+              <div style="font-size: 14px; font-weight: 700; color: #0F172A;">Standard Shipping</div>
+              <div style="font-size: 12px; color: #64748B;">Delivered in 3 to 5 business days (Free over $55)</div>
+            </div>
+          </label>
+
+          <label class="payment-option-card">
+            <input type="radio" name="shipping-method" value="express" data-name="Express Priority Shipping (1-2 Days)">
+            <div>
+              <div style="font-size: 14px; font-weight: 700; color: #0F172A;">Express Priority (+$15.00)</div>
+              <div style="font-size: 12px; color: #64748B;">Guaranteed delivery in 1 to 2 business days</div>
+            </div>
+          </label>
+        </div>
+
+        <!-- STEP 4: Demo Payment Method -->
+        <div class="checkout-step-card">
+          <div class="step-header">
+            <div class="step-number">4</div>
+            <h3 class="step-title">Simulated Payment Method</h3>
+          </div>
+
+          <div class="demo-warning-banner" style="margin-bottom: 16px;">
+            <ion-icon name="information-circle" style="font-size: 18px; flex-shrink: 0;"></ion-icon>
+            <div>
+              <strong>Demonstration Storefront Notice:</strong> All options below are simulated. No real credit card, bank, or payment account is charged.
+            </div>
+          </div>
+
+          <label class="payment-option-card active">
+            <input type="radio" name="payment-method" value="card" data-name="Demo Credit Card (•••• 4242)" checked>
+            <div style="flex: 1;">
+              <div style="font-size: 14px; font-weight: 700; color: #0F172A;">Simulated Credit Card</div>
+              <div style="font-size: 12px; color: #64748B;">Pre-filled demo card (Visa / Mastercard)</div>
+              <div style="display: flex; gap: 8px; margin-top: 8px;">
+                <input type="text" value="•••• •••• •••• 4242" disabled class="form-input" style="background: #F1F5F9; font-size: 12px; padding: 6px 10px;">
+                <input type="text" value="12/28" disabled class="form-input" style="width: 70px; background: #F1F5F9; font-size: 12px; padding: 6px 10px;">
+              </div>
+            </div>
+          </label>
+
+          <label class="payment-option-card">
+            <input type="radio" name="payment-method" value="cod" data-name="Cash on Delivery (Demo)">
+            <div>
+              <div style="font-size: 14px; font-weight: 700; color: #0F172A;">Cash on Delivery (COD)</div>
+              <div style="font-size: 12px; color: #64748B;">Simulate paying in cash upon order delivery</div>
+            </div>
+          </label>
+
+          <label class="payment-option-card">
+            <input type="radio" name="payment-method" value="paypal" data-name="Demo PayPal Express">
+            <div>
+              <div style="font-size: 14px; font-weight: 700; color: #0F172A;">Demo PayPal</div>
+              <div style="font-size: 12px; color: #64748B;">Simulated one-click sandbox approval</div>
+            </div>
+          </label>
+
+          <label class="payment-option-card">
+            <input type="radio" name="payment-method" value="upi" data-name="Demo UPI / Instant Transfer">
+            <div>
+              <div style="font-size: 14px; font-weight: 700; color: #0F172A;">Demo UPI / Instant Pay</div>
+              <div style="font-size: 12px; color: #64748B;">Simulate QR code scanning or VPA transfer</div>
+            </div>
+          </label>
+
+          <button type="submit" id="btn-place-order" class="btn-checkout-link" style="margin-top: 24px; font-size: 16px; padding: 14px 24px;">
+            Place Order (Simulated)
+          </button>
+        </div>
+
+      </form>
+
+      <!-- RIGHT: Order Summary -->
+      <aside class="cart-summary-card">
+        <h3 class="summary-title">Order Review</h3>
+
+        <div id="checkout-review-items" style="max-height: 240px; overflow-y: auto; margin-bottom: 16px;">
+          <!-- Dynamically populated -->
+        </div>
+
+        <div class="summary-row">
+          <span>Subtotal</span>
+          <span id="checkout-subtotal">$0.00</span>
+        </div>
+
+        <div class="summary-row" id="checkout-discount-row" style="display: none; color: #10B981; font-weight: 600;">
+          <span>Discount</span>
+          <span id="checkout-discount">-$0.00</span>
+        </div>
+
+        <div class="summary-row">
+          <span>Shipping</span>
+          <span id="checkout-shipping">$0.00</span>
+        </div>
+
+        <div class="summary-row">
+          <span>Estimated Tax</span>
+          <span id="checkout-tax">$0.00</span>
+        </div>
+
+        <div class="summary-row total-row">
+          <span>Total</span>
+          <span id="checkout-total" style="color: var(--secondary, #4F46E5);">$0.00</span>
+        </div>
+
+        <div style="margin-top: 20px; font-size: 12px; color: #64748B; line-height: 1.5; border-top: 1px solid #F1F5F9; padding-top: 14px;">
+          <ion-icon name="checkbox-outline" style="color: #10B981; vertical-align: middle;"></ion-icon> 
+          By completing this demo order you confirm this is a test transaction and understand that no actual charge will occur.
+        </div>
+      </aside>
+
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-bottom">
+      <div class="container">
+        <img src="./assets/images/payment.png" alt="payment methods" class="payment-img">
+        <p class="copyright">Copyright &copy; <a href="index.html">Navedi Mall</a>. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="./assets/js/products.js"></script>
+  <script src="./assets/js/storage.js"></script>
+  <script src="./assets/js/app.js"></script>
+  <script src="./assets/js/checkout.js"></script>
+  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+</body>
+
+</html>

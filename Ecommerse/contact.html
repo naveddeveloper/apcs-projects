@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Us | Navedi Mall</title>
+
+  <!-- Favicon -->
+  <link rel="shortcut icon" href="./assets/images/logo/favicon.ico" type="image/x-icon">
+  <link rel="icon" type="image/svg+xml" href="./assets/images/logo/favicon.svg">
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="./assets/css/style-prefix.css">
+  <link rel="stylesheet" href="./assets/css/ecommerce.css">
+
+  <!-- Google Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+  <div class="overlay" data-overlay></div>
+
+  <!-- HEADER -->
+  <header>
+    <div class="header-top">
+      <div class="container">
+        <div class="header-alert-news">
+          <p><b>Customer Support</b> &bull; We are here 24/7 to assist you</p>
+        </div>
+
+        <div class="header-top-actions">
+          <select name="currency">
+            <option value="usd">USD &dollar;</option>
+            <option value="eur">EUR &euro;</option>
+          </select>
+          <select name="language">
+            <option value="en-US">English</option>
+            <option value="es-ES">Espa&ntilde;ol</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <div class="header-main">
+      <div class="container">
+        <a href="index.html" class="header-logo">
+          <img src="./assets/images/logo/logo.svg" alt="Navedi Mall logo" width="168" height="36">
+        </a>
+
+        <div class="header-search-container">
+          <input type="search" name="search" class="search-field" placeholder="Search products, brands, or categories...">
+          <button class="search-btn" aria-label="Search">
+            <ion-icon name="search-outline"></ion-icon>
+          </button>
+        </div>
+
+        <div class="header-user-actions">
+          <button class="action-btn" data-action="account" title="My Account" aria-label="Account">
+            <ion-icon name="person-outline"></ion-icon>
+          </button>
+          <button class="action-btn" data-action="wishlist" title="My Wishlist" aria-label="Wishlist">
+            <ion-icon name="heart-outline"></ion-icon>
+            <span class="count" data-wishlist-count>0</span>
+          </button>
+          <button class="action-btn" data-action="cart" title="Shopping Cart" aria-label="Cart">
+            <ion-icon name="bag-handle-outline"></ion-icon>
+            <span class="count" data-cart-count>0</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <nav class="desktop-navigation-menu">
+      <div class="container">
+        <ul class="desktop-menu-category-list">
+          <li class="menu-category"><a href="index.html" class="menu-title">Home</a></li>
+          <li class="menu-category"><a href="shop.html" class="menu-title">Shop Catalog</a></li>
+          <li class="menu-category"><a href="shop.html?category=Mens" class="menu-title">Men's</a></li>
+          <li class="menu-category"><a href="shop.html?category=Womens" class="menu-title">Women's</a></li>
+          <li class="menu-category"><a href="about.html" class="menu-title">About Us</a></li>
+          <li class="menu-category"><a href="contact.html" class="menu-title active" style="color: var(--secondary, #4F46E5);">Contact Us</a></li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+
+  <!-- BREADCRUMBS -->
+  <div class="breadcrumb-container">
+    <div class="container">
+      <ul class="breadcrumb-list">
+        <li class="breadcrumb-item"><a href="index.html"><ion-icon name="home-outline"></ion-icon> Home</a></li>
+        <li class="breadcrumb-separator">/</li>
+        <li class="breadcrumb-item active">Contact Us</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- BANNER -->
+  <div class="page-title-banner">
+    <div class="container banner-inner">
+      <h1>Get in Touch with Our Team</h1>
+      <p>Have a question about an order, product sizing, or delivery? We're here to help.</p>
+    </div>
+  </div>
+
+  <!-- MAIN CONTACT CONTENT -->
+  <main class="container" style="margin-bottom: 60px;">
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: start;">
+
+      <!-- Left Column: Info Cards -->
+      <div>
+        <h2 style="font-size: 22px; font-weight: 700; color: #0F172A; margin-bottom: 16px;">Contact Information</h2>
+        <p style="font-size: 14px; color: #64748B; line-height: 1.6; margin-bottom: 24px;">
+          Our customer happiness specialists are available Monday through Saturday. Send us a message and we'll reply promptly!
+        </p>
+
+        <div style="display: flex; flex-direction: column; gap: 16px; margin-bottom: 28px;">
+          <div style="display: flex; gap: 16px; background: #FFFFFF; border: 1px solid #E2E8F0; border-radius: 12px; padding: 18px;">
+            <div class="toast-icon-box" style="background: #EEF2FF; color: var(--secondary, #4F46E5); font-size: 22px;">
+              <ion-icon name="location-outline"></ion-icon>
+            </div>
+            <div>
+              <h4 style="font-size: 15px; font-weight: 700; color: #0F172A; margin: 0 0 2px 0;">Headquarters</h4>
+              <p style="font-size: 13px; color: #64748B; margin: 0;">742 Evergreen Terrace, Suite 400<br>Springfield, OR 97477, USA</p>
+            </div>
+          </div>
+
+          <div style="display: flex; gap: 16px; background: #FFFFFF; border: 1px solid #E2E8F0; border-radius: 12px; padding: 18px;">
+            <div class="toast-icon-box" style="background: #ECFDF5; color: #10B981; font-size: 22px;">
+              <ion-icon name="call-outline"></ion-icon>
+            </div>
+            <div>
+              <h4 style="font-size: 15px; font-weight: 700; color: #0F172A; margin: 0 0 2px 0;">Phone Support</h4>
+              <p style="font-size: 13px; color: #64748B; margin: 0;">Toll-free: +1 (555) 234-5678<br>Mon - Sat: 9:00 AM - 8:00 PM EST</p>
+            </div>
+          </div>
+
+          <div style="display: flex; gap: 16px; background: #FFFFFF; border: 1px solid #E2E8F0; border-radius: 12px; padding: 18px;">
+            <div class="toast-icon-box" style="background: #FEF3C7; color: #D97706; font-size: 22px;">
+              <ion-icon name="mail-outline"></ion-icon>
+            </div>
+            <div>
+              <h4 style="font-size: 15px; font-weight: 700; color: #0F172A; margin: 0 0 2px 0;">Email Support</h4>
+              <p style="font-size: 13px; color: #64748B; margin: 0;">support@navedimall.com<br>orders@navedimall.com</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Quick Help Note -->
+        <div style="background: #F8FAFC; border: 1px dashed #CBD5E1; border-radius: 12px; padding: 18px;">
+          <h4 style="font-size: 14px; font-weight: 700; color: #0F172A; margin-bottom: 6px;">Looking for immediate answers?</h4>
+          <p style="font-size: 13px; color: #64748B; margin-bottom: 12px;">Check out our comprehensive FAQ section covering shipping, tracking, and demo returns.</p>
+          <a href="faq.html" class="btn-clear-filters" style="font-size: 13px;">View All FAQs &rarr;</a>
+        </div>
+      </div>
+
+      <!-- Right Column: Interactive Contact Form -->
+      <div style="background: #FFFFFF; border: 1px solid #E2E8F0; border-radius: 16px; padding: 32px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);">
+        <h3 style="font-size: 18px; font-weight: 700; color: #0F172A; margin-bottom: 6px;">Send Us a Message</h3>
+        <p style="font-size: 13px; color: #64748B; margin-bottom: 20px;">Fill out the form below and we will get back to you within 24 hours.</p>
+
+        <form id="contact-us-form">
+          <div class="form-grid-2">
+            <div class="form-group">
+              <label class="form-label" for="contact-name">Your Name *</label>
+              <input type="text" id="contact-name" class="form-input" placeholder="e.g. Jessica Taylor" required>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="contact-email">Email Address *</label>
+              <input type="email" id="contact-email" class="form-input" placeholder="e.g. jessica@example.com" required>
+            </div>
+          </div>
+
+          <div class="form-grid-2">
+            <div class="form-group">
+              <label class="form-label" for="contact-subject">Inquiry Topic</label>
+              <select id="contact-subject" class="form-select">
+                <option value="order">Order Tracking / Status</option>
+                <option value="product">Product Details & Sizing</option>
+                <option value="returns">Returns & Refunds</option>
+                <option value="billing">Billing & Demo Payment</option>
+                <option value="other">General Feedback</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="contact-order-id">Order ID (Optional)</label>
+              <input type="text" id="contact-order-id" class="form-input" placeholder="e.g. NM-84920">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="contact-message">Your Message *</label>
+            <textarea id="contact-message" class="form-input" rows="5" placeholder="Please describe how we can assist you..." required></textarea>
+          </div>
+
+          <button type="submit" class="btn-primary-action" style="width: 100%; justify-content: center; padding: 12px; font-size: 15px;">
+            <ion-icon name="paper-plane-outline"></ion-icon> Send Message
+          </button>
+        </form>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-bottom">
+      <div class="container">
+        <p class="copyright">Copyright &copy; <a href="index.html">Navedi Mall</a>. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="./assets/js/products.js"></script>
+  <script src="./assets/js/storage.js"></script>
+  <script src="./assets/js/app.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const form = document.getElementById('contact-us-form');
+      if (form) {
+        form.addEventListener('submit', function(e) {
+          e.preventDefault();
+          const name = document.getElementById('contact-name').value.trim();
+          window.NavediStore.showToast(
+            'Message Dispatched!',
+            `Thank you, ${name}! Your inquiry has been sent to our customer care team.`,
+            'success'
+          );
+          form.reset();
+        });
+      }
+    });
+  </script>
+  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Wishlist | Navedi Mall</title>
+
+  <!-- Favicon -->
+  <link rel="shortcut icon" href="./assets/images/logo/favicon.ico" type="image/x-icon">
+  <link rel="icon" type="image/svg+xml" href="./assets/images/logo/favicon.svg">
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="./assets/css/style-prefix.css">
+  <link rel="stylesheet" href="./assets/css/ecommerce.css">
+
+  <!-- Google Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+  <div class="overlay" data-overlay></div>
+
+  <!-- HEADER -->
+  <header>
+    <div class="header-top">
+      <div class="container">
+        <div class="header-alert-news">
+          <p><b>Free Shipping</b> on all orders over $55 this week!</p>
+        </div>
+
+        <div class="header-top-actions">
+          <select name="currency">
+            <option value="usd">USD &dollar;</option>
+            <option value="eur">EUR &euro;</option>
+          </select>
+
+          <select name="language">
+            <option value="en-US">English</option>
+            <option value="es-ES">Espa&ntilde;ol</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <div class="header-main">
+      <div class="container">
+        <a href="index.html" class="header-logo">
+          <img src="./assets/images/logo/logo.svg" alt="Navedi Mall logo" width="168" height="36">
+        </a>
+
+        <div class="header-search-container">
+          <input type="search" name="search" class="search-field" placeholder="Search products, brands, or categories...">
+          <button class="search-btn" aria-label="Search">
+            <ion-icon name="search-outline"></ion-icon>
+          </button>
+        </div>
+
+        <div class="header-user-actions">
+          <button class="action-btn" data-action="account" title="My Account" aria-label="Account">
+            <ion-icon name="person-outline"></ion-icon>
+          </button>
+
+          <button class="action-btn" data-action="wishlist" title="My Wishlist" aria-label="Wishlist">
+            <ion-icon name="heart-outline"></ion-icon>
+            <span class="count" data-wishlist-count>0</span>
+          </button>
+
+          <button class="action-btn" data-action="cart" title="Shopping Cart" aria-label="Cart">
+            <ion-icon name="bag-handle-outline"></ion-icon>
+            <span class="count" data-cart-count>0</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <nav class="desktop-navigation-menu">
+      <div class="container">
+        <ul class="desktop-menu-category-list">
+          <li class="menu-category"><a href="index.html" class="menu-title">Home</a></li>
+          <li class="menu-category"><a href="shop.html" class="menu-title">Shop Catalog</a></li>
+          <li class="menu-category"><a href="shop.html?category=Mens" class="menu-title">Men's</a></li>
+          <li class="menu-category"><a href="shop.html?category=Womens" class="menu-title">Women's</a></li>
+          <li class="menu-category"><a href="shop.html?category=Jewelry" class="menu-title">Jewelry</a></li>
+          <li class="menu-category"><a href="shop.html?category=Watches" class="menu-title">Watches</a></li>
+          <li class="menu-category"><a href="about.html" class="menu-title">About Us</a></li>
+          <li class="menu-category"><a href="contact.html" class="menu-title">Contact Us</a></li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+
+  <!-- BREADCRUMBS -->
+  <div class="breadcrumb-container">
+    <div class="container">
+      <ul class="breadcrumb-list">
+        <li class="breadcrumb-item"><a href="index.html"><ion-icon name="home-outline"></ion-icon> Home</a></li>
+        <li class="breadcrumb-separator">/</li>
+        <li class="breadcrumb-item active">Wishlist</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- MAIN WISHLIST CONTENT -->
+  <main class="container" style="margin-bottom: 60px;">
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px; flex-wrap: wrap; gap: 12px;">
+      <div>
+        <h1 style="font-size: 26px; font-weight: 700; color: #0F172A; margin: 0 0 4px 0;">My Saved Wishlist</h1>
+        <p style="font-size: 14px; color: #64748B; margin: 0;">You have <strong id="wishlist-total-count">0</strong> item(s) saved in your list.</p>
+      </div>
+
+      <button type="button" id="btn-clear-wishlist" style="background: none; border: 1px solid #CBD5E1; color: #64748B; padding: 8px 16px; border-radius: 8px; font-size: 13px; font-weight: 600; cursor: pointer; display: none;">
+        Clear All Items
+      </button>
+    </div>
+
+    <!-- WISHLIST PRODUCTS GRID -->
+    <div class="product-grid" id="wishlist-product-grid">
+      <!-- Dynamically populated -->
+    </div>
+
+    <!-- EMPTY WISHLIST STATE -->
+    <div class="empty-state-box" id="wishlist-empty-state" style="display: none;">
+      <div class="empty-state-icon" style="color: #EF4444;">
+        <ion-icon name="heart-dislike-outline"></ion-icon>
+      </div>
+      <h2 class="empty-state-title">Your wishlist is currently empty</h2>
+      <p class="empty-state-desc">You haven't saved any items yet. Browse our collections and click the heart icon on any product to save it for later!</p>
+      <a href="shop.html" class="btn-primary-action">
+        Explore Collections
+      </a>
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-bottom">
+      <div class="container">
+        <img src="./assets/images/payment.png" alt="payment methods" class="payment-img">
+        <p class="copyright">Copyright &copy; <a href="index.html">Navedi Mall</a>. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="./assets/js/products.js"></script>
+  <script src="./assets/js/storage.js"></script>
+  <script src="./assets/js/app.js"></script>
+  <script src="./assets/js/wishlist.js"></script>
+  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+</body>
+
+</html>

@@ -17,6 +17,7 @@
     - custom css link
   -->
   <link rel="stylesheet" href="./assets/css/style-prefix.css">
+  <link rel="stylesheet" href="./assets/css/ecommerce.css">
 
   <!--
     - google font link
@@ -189,36 +190,31 @@
 
       <div class="container">
 
-        <a href="#" class="header-logo">
+        <a href="index.html" class="header-logo">
           <img src="./assets/images/logo/logo.svg" alt="Navedi Mall logo" width="168" height="36">
         </a>
 
         <div class="header-search-container">
-
           <input type="search" name="search" class="search-field" placeholder="Enter your product name...">
-
-          <button class="search-btn">
+          <button class="search-btn" aria-label="Search">
             <ion-icon name="search-outline"></ion-icon>
           </button>
-
         </div>
 
         <div class="header-user-actions">
-
-          <button class="action-btn">
+          <button class="action-btn" data-action="account" title="My Account" aria-label="Account">
             <ion-icon name="person-outline"></ion-icon>
           </button>
 
-          <button class="action-btn">
+          <button class="action-btn" data-action="wishlist" title="My Wishlist" aria-label="Wishlist">
             <ion-icon name="heart-outline"></ion-icon>
-            <span class="count">0</span>
+            <span class="count" data-wishlist-count>0</span>
           </button>
 
-          <button class="action-btn">
+          <button class="action-btn" data-action="cart" title="Shopping Cart" aria-label="Cart">
             <ion-icon name="bag-handle-outline"></ion-icon>
-            <span class="count">0</span>
+            <span class="count" data-cart-count>0</span>
           </button>
-
         </div>
 
       </div>
@@ -232,42 +228,42 @@
         <ul class="desktop-menu-category-list">
 
           <li class="menu-category">
-            <a href="#" class="menu-title">Home</a>
+            <a href="index.html" class="menu-title">Home</a>
           </li>
 
           <li class="menu-category">
-            <a href="#" class="menu-title">Categories</a>
+            <a href="shop.html" class="menu-title">Categories</a>
 
             <div class="dropdown-panel">
 
               <ul class="dropdown-panel-list">
 
                 <li class="menu-title">
-                  <a href="#">Electronics</a>
+                  <a href="shop.html?category=Accessories">Electronics & Gear</a>
                 </li>
 
                 <li class="panel-list-item">
-                  <a href="#">Desktop</a>
+                  <a href="shop.html?category=Accessories">Desktop Audio</a>
                 </li>
 
                 <li class="panel-list-item">
-                  <a href="#">Laptop</a>
+                  <a href="shop.html?category=Accessories">Laptop Bags</a>
                 </li>
 
                 <li class="panel-list-item">
-                  <a href="#">Camera</a>
+                  <a href="shop.html?category=Accessories">Cameras & Lenses</a>
                 </li>
 
                 <li class="panel-list-item">
-                  <a href="#">Tablet</a>
+                  <a href="shop.html?category=Accessories">Tablet Sleeves</a>
                 </li>
 
                 <li class="panel-list-item">
-                  <a href="#">Headphone</a>
+                  <a href="shop.html?category=Accessories">Headphones</a>
                 </li>
 
                 <li class="panel-list-item">
-                  <a href="#">
+                  <a href="shop.html?category=Accessories">
                     <img src="./assets/images/electronics-banner-1.jpg" alt="headphone collection" width="250"
                       height="119">
                   </a>
@@ -278,31 +274,31 @@
               <ul class="dropdown-panel-list">
 
                 <li class="menu-title">
-                  <a href="#">Men's</a>
+                  <a href="shop.html?category=Mens">Men's Fashion</a>
                 </li>
 
                 <li class="panel-list-item">
-                  <a href="#">Formal</a>
+                  <a href="shop.html?category=Mens">Formal Shirts</a>
                 </li>
 
                 <li class="panel-list-item">
-                  <a href="#">Casual</a>
+                  <a href="shop.html?category=Mens">Casual Tees</a>
                 </li>
 
                 <li class="panel-list-item">
-                  <a href="#">Sports</a>
+                  <a href="shop.html?category=Footwear">Sports Shoes</a>
                 </li>
 
                 <li class="panel-list-item">
-                  <a href="#">Jacket</a>
+                  <a href="shop.html?category=Mens">Winter Jackets</a>
                 </li>
 
                 <li class="panel-list-item">
-                  <a href="#">Sunglasses</a>
+                  <a href="shop.html?category=Accessories">Sunglasses</a>
                 </li>
 
                 <li class="panel-list-item">
-                  <a href="#">
+                  <a href="shop.html?category=Mens">
                     <img src="./assets/images/mens-banner.jpg" alt="men's fashion" width="250" height="119">
                   </a>
                 </li>
@@ -312,31 +308,31 @@
               <ul class="dropdown-panel-list">
 
                 <li class="menu-title">
-                  <a href="#">Women's</a>
+                  <a href="shop.html?category=Womens">Women's Fashion</a>
                 </li>
 
                 <li class="panel-list-item">
-                  <a href="#">Formal</a>
+                  <a href="shop.html?category=Womens">Formal Dresses</a>
                 </li>
 
                 <li class="panel-list-item">
-                  <a href="#">Casual</a>
+                  <a href="shop.html?category=Womens">Casual Tops</a>
                 </li>
 
                 <li class="panel-list-item">
-                  <a href="#">Perfume</a>
+                  <a href="shop.html?category=Cosmetics">Perfumes</a>
                 </li>
 
                 <li class="panel-list-item">
-                  <a href="#">Cosmetics</a>
+                  <a href="shop.html?category=Cosmetics">Cosmetics</a>
                 </li>
 
                 <li class="panel-list-item">
-                  <a href="#">Bags</a>
+                  <a href="shop.html?category=Accessories">Handbags</a>
                 </li>
 
                 <li class="panel-list-item">
-                  <a href="#">
+                  <a href="shop.html?category=Womens">
                     <img src="./assets/images/womens-banner.jpg" alt="women's fashion" width="250" height="119">
                   </a>
                 </li>
@@ -346,31 +342,31 @@
               <ul class="dropdown-panel-list">
 
                 <li class="menu-title">
-                  <a href="#">Electronics</a>
+                  <a href="shop.html?category=Watches">Watches & Smart Gear</a>
                 </li>
 
                 <li class="panel-list-item">
-                  <a href="#">Smart Watch</a>
+                  <a href="shop.html?category=Watches">Smart Watch</a>
                 </li>
 
                 <li class="panel-list-item">
-                  <a href="#">Smart TV</a>
+                  <a href="shop.html?category=Watches">Sports Watch</a>
                 </li>
 
                 <li class="panel-list-item">
-                  <a href="#">Keyboard</a>
+                  <a href="shop.html?category=Watches">Luxury Watch</a>
                 </li>
 
                 <li class="panel-list-item">
-                  <a href="#">Mouse</a>
+                  <a href="shop.html?category=Accessories">Leather Belts</a>
                 </li>
 
                 <li class="panel-list-item">
-                  <a href="#">Microphone</a>
+                  <a href="shop.html?category=Accessories">Wallets</a>
                 </li>
 
                 <li class="panel-list-item">
-                  <a href="#">
+                  <a href="shop.html?category=Watches">
                     <img src="./assets/images/electronics-banner-2.jpg" alt="mouse collection" width="250" height="119">
                   </a>
                 </li>
@@ -381,107 +377,107 @@
           </li>
 
           <li class="menu-category">
-            <a href="#" class="menu-title">Men's</a>
+            <a href="shop.html?category=Mens" class="menu-title">Men's</a>
 
             <ul class="dropdown-list">
 
               <li class="dropdown-item">
-                <a href="#">Shirt</a>
+                <a href="shop.html?category=Mens">Shirt</a>
               </li>
 
               <li class="dropdown-item">
-                <a href="#">Shorts & Jeans</a>
+                <a href="shop.html?category=Mens">Shorts & Jeans</a>
               </li>
 
               <li class="dropdown-item">
-                <a href="#">Safety Shoes</a>
+                <a href="shop.html?category=Footwear">Safety Shoes</a>
               </li>
 
               <li class="dropdown-item">
-                <a href="#">Wallet</a>
+                <a href="shop.html?category=Accessories">Wallet</a>
               </li>
 
             </ul>
           </li>
 
           <li class="menu-category">
-            <a href="#" class="menu-title">Women's</a>
+            <a href="shop.html?category=Womens" class="menu-title">Women's</a>
 
             <ul class="dropdown-list">
 
               <li class="dropdown-item">
-                <a href="#">Dress & Frock</a>
+                <a href="shop.html?category=Womens">Dress & Frock</a>
               </li>
 
               <li class="dropdown-item">
-                <a href="#">Earrings</a>
+                <a href="shop.html?category=Jewelry">Earrings</a>
               </li>
 
               <li class="dropdown-item">
-                <a href="#">Necklace</a>
+                <a href="shop.html?category=Jewelry">Necklace</a>
               </li>
 
               <li class="dropdown-item">
-                <a href="#">Makeup Kit</a>
+                <a href="shop.html?category=Cosmetics">Makeup Kit</a>
               </li>
 
             </ul>
           </li>
 
           <li class="menu-category">
-            <a href="#" class="menu-title">Jewelry</a>
+            <a href="shop.html?category=Jewelry" class="menu-title">Jewelry</a>
 
             <ul class="dropdown-list">
 
               <li class="dropdown-item">
-                <a href="#">Earrings</a>
+                <a href="shop.html?category=Jewelry">Earrings</a>
               </li>
 
               <li class="dropdown-item">
-                <a href="#">Couple Rings</a>
+                <a href="shop.html?category=Jewelry">Couple Rings</a>
               </li>
 
               <li class="dropdown-item">
-                <a href="#">Necklace</a>
+                <a href="shop.html?category=Jewelry">Necklace</a>
               </li>
 
               <li class="dropdown-item">
-                <a href="#">Bracelets</a>
+                <a href="shop.html?category=Jewelry">Bracelets</a>
               </li>
 
             </ul>
           </li>
 
           <li class="menu-category">
-            <a href="#" class="menu-title">Perfume</a>
+            <a href="shop.html?category=Cosmetics" class="menu-title">Perfume</a>
 
             <ul class="dropdown-list">
 
               <li class="dropdown-item">
-                <a href="#">Clothes Perfume</a>
+                <a href="shop.html?category=Cosmetics">Clothes Perfume</a>
               </li>
 
               <li class="dropdown-item">
-                <a href="#">Deodorant</a>
+                <a href="shop.html?category=Cosmetics">Deodorant</a>
               </li>
 
               <li class="dropdown-item">
-                <a href="#">Flower Fragrance</a>
+                <a href="shop.html?category=Cosmetics">Flower Fragrance</a>
               </li>
 
               <li class="dropdown-item">
-                <a href="#">Air Freshener</a>
+                <a href="shop.html?category=Cosmetics">Air Freshener</a>
               </li>
 
             </ul>
           </li>
 
           <li class="menu-category">
-            <a href="#" class="menu-title">Blog</a>
+            <a href="about.html" class="menu-title">About Us</a>
           </li>
 
           <li class="menu-category">
-            <a href="#" class="menu-title">Hot Offers</a>
+            <a href="shop.html?tag=deal" class="menu-title">Hot Offers</a>
           </li>
 
         </ul>
@@ -492,27 +488,25 @@
 
     <div class="mobile-bottom-navigation">
 
-      <button class="action-btn" data-mobile-menu-open-btn>
+      <button class="action-btn" data-mobile-menu-open-btn aria-label="Menu">
         <ion-icon name="menu-outline"></ion-icon>
       </button>
 
-      <button class="action-btn">
+      <button class="action-btn" onclick="window.location.href='cart.html'" aria-label="Cart">
         <ion-icon name="bag-handle-outline"></ion-icon>
-
-        <span class="count">0</span>
+        <span class="count" data-cart-count>0</span>
       </button>
 
-      <button class="action-btn">
+      <button class="action-btn" onclick="window.location.href='index.html'" aria-label="Home">
         <ion-icon name="home-outline"></ion-icon>
       </button>
 
-      <button class="action-btn">
+      <button class="action-btn" onclick="window.location.href='wishlist.html'" aria-label="Wishlist">
         <ion-icon name="heart-outline"></ion-icon>
-
-        <span class="count">0</span>
+        <span class="count" data-wishlist-count>0</span>
       </button>
 
-      <button class="action-btn" data-mobile-menu-open-btn>
+      <button class="action-btn" onclick="window.location.href='shop.html'" aria-label="Shop">
         <ion-icon name="grid-outline"></ion-icon>
       </button>
 
@@ -531,7 +525,11 @@
       <ul class="mobile-menu-category-list">
 
         <li class="menu-category">
-          <a href="#" class="menu-title">Home</a>
+          <a href="index.html" class="menu-title">Home</a>
+        </li>
+
+        <li class="menu-category">
+          <a href="shop.html" class="menu-title">All Products</a>
         </li>
 
         <li class="menu-category">
@@ -548,19 +546,15 @@
           <ul class="submenu-category-list" data-accordion>
 
             <li class="submenu-category">
-              <a href="#" class="submenu-title">Shirt</a>
+              <a href="shop.html?category=Mens" class="submenu-title">Shirt & Jackets</a>
             </li>
 
             <li class="submenu-category">
-              <a href="#" class="submenu-title">Shorts & Jeans</a>
+              <a href="shop.html?category=Footwear" class="submenu-title">Footwear</a>
             </li>
 
             <li class="submenu-category">
-              <a href="#" class="submenu-title">Safety Shoes</a>
-            </li>
-
-            <li class="submenu-category">
-              <a href="#" class="submenu-title">Wallet</a>
+              <a href="shop.html?category=Accessories" class="submenu-title">Watches & Belts</a>
             </li>
 
           </ul>
@@ -581,19 +575,15 @@
           <ul class="submenu-category-list" data-accordion>
 
             <li class="submenu-category">
-              <a href="#" class="submenu-title">Dress & Frock</a>
+              <a href="shop.html?category=Womens" class="submenu-title">Dress & Apparel</a>
             </li>
 
             <li class="submenu-category">
-              <a href="#" class="submenu-title">Earrings</a>
+              <a href="shop.html?category=Jewelry" class="submenu-title">Jewelry</a>
             </li>
 
             <li class="submenu-category">
-              <a href="#" class="submenu-title">Necklace</a>
-            </li>
-
-            <li class="submenu-category">
-              <a href="#" class="submenu-title">Makeup Kit</a>
+              <a href="shop.html?category=Cosmetics" class="submenu-title">Cosmetics & Perfumes</a>
             </li>
 
           </ul>
@@ -614,19 +604,15 @@
           <ul class="submenu-category-list" data-accordion>
 
             <li class="submenu-category">
-              <a href="#" class="submenu-title">Earrings</a>
+              <a href="shop.html?category=Jewelry" class="submenu-title">Earrings</a>
             </li>
 
             <li class="submenu-category">
-              <a href="#" class="submenu-title">Couple Rings</a>
+              <a href="shop.html?category=Jewelry" class="submenu-title">Rings & Pendants</a>
             </li>
 
             <li class="submenu-category">
-              <a href="#" class="submenu-title">Necklace</a>
-            </li>
-
-            <li class="submenu-category">
-              <a href="#" class="submenu-title">Bracelets</a>
+              <a href="shop.html?category=Jewelry" class="submenu-title">Necklaces</a>
             </li>
 
           </ul>
@@ -636,7 +622,7 @@
         <li class="menu-category">
 
           <button class="accordion-menu" data-accordion-btn>
-            <p class="menu-title">Perfume</p>
+            <p class="menu-title">Cosmetics & Perfume</p>
 
             <div>
               <ion-icon name="add-outline" class="add-icon"></ion-icon>
@@ -647,19 +633,11 @@
           <ul class="submenu-category-list" data-accordion>
 
             <li class="submenu-category">
-              <a href="#" class="submenu-title">Clothes Perfume</a>
+              <a href="shop.html?category=Cosmetics" class="submenu-title">Luxury Perfumes</a>
             </li>
 
             <li class="submenu-category">
-              <a href="#" class="submenu-title">Deodorant</a>
-            </li>
-
-            <li class="submenu-category">
-              <a href="#" class="submenu-title">Flower Fragrance</a>
-            </li>
-
-            <li class="submenu-category">
-              <a href="#" class="submenu-title">Air Freshener</a>
+              <a href="shop.html?category=Cosmetics" class="submenu-title">Hair & Body Care</a>
             </li>
 
           </ul>
@@ -667,11 +645,19 @@
         </li>
 
         <li class="menu-category">
-          <a href="#" class="menu-title">Blog</a>
+          <a href="about.html" class="menu-title">About Us</a>
         </li>
 
         <li class="menu-category">
-          <a href="#" class="menu-title">Hot Offers</a>
+          <a href="contact.html" class="menu-title">Contact Us</a>
+        </li>
+
+        <li class="menu-category">
+          <a href="orders.html" class="menu-title">Track Orders</a>
+        </li>
+
+        <li class="menu-category">
+          <a href="shop.html?tag=deal" class="menu-title">Hot Offers</a>
         </li>
 
       </ul>
@@ -793,7 +779,7 @@
                 starting at &dollar; <b>20</b>.00
               </p>
 
-              <a href="#" class="banner-btn">Shop now</a>
+              <a href="shop.html?category=Womens" class="banner-btn">Shop now</a>
 
             </div>
 
@@ -813,7 +799,7 @@
                 starting at &dollar; <b>15</b>.00
               </p>
 
-              <a href="#" class="banner-btn">Shop now</a>
+              <a href="shop.html?category=Accessories" class="banner-btn">Shop now</a>
 
             </div>
 
@@ -833,7 +819,7 @@
                 starting at &dollar; <b>29</b>.99
               </p>
 
-              <a href="#" class="banner-btn">Shop now</a>
+              <a href="shop.html?tag=deal" class="banner-btn">Shop now</a>
 
             </div>
 
@@ -873,7 +859,7 @@
                 <p class="category-item-amount">(53)</p>
               </div>
 
-              <a href="#" class="category-btn">Show all</a>
+              <a href="shop.html?category=Womens" class="category-btn">Show all</a>
 
             </div>
 
@@ -893,7 +879,7 @@
                 <p class="category-item-amount">(58)</p>
               </div>
 
-              <a href="#" class="category-btn">Show all</a>
+              <a href="shop.html?category=Mens" class="category-btn">Show all</a>
 
             </div>
 
@@ -913,7 +899,7 @@
                 <p class="category-item-amount">(68)</p>
               </div>
 
-              <a href="#" class="category-btn">Show all</a>
+              <a href="shop.html?category=Accessories" class="category-btn">Show all</a>
 
             </div>
 
@@ -933,7 +919,7 @@
                 <p class="category-item-amount">(84)</p>
               </div>
 
-              <a href="#" class="category-btn">Show all</a>
+              <a href="shop.html?category=Mens" class="category-btn">Show all</a>
 
             </div>
 
@@ -953,7 +939,7 @@
                 <p class="category-item-amount">(35)</p>
               </div>
 
-              <a href="#" class="category-btn">Show all</a>
+              <a href="shop.html?category=Mens" class="category-btn">Show all</a>
 
             </div>
 
@@ -973,7 +959,7 @@
                 <p class="category-item-amount">(16)</p>
               </div>
 
-              <a href="#" class="category-btn">Show all</a>
+              <a href="shop.html?category=Mens" class="category-btn">Show all</a>
 
             </div>
 
@@ -993,7 +979,7 @@
                 <p class="category-item-amount">(27)</p>
               </div>
 
-              <a href="#" class="category-btn">Show all</a>
+              <a href="shop.html?category=Watches" class="category-btn">Show all</a>
 
             </div>
 
@@ -1013,7 +999,7 @@
                 <p class="category-item-amount">(39)</p>
               </div>
 
-              <a href="#" class="category-btn">Show all</a>
+              <a href="shop.html?category=Accessories" class="category-btn">Show all</a>
 
             </div>
 
@@ -1077,29 +1063,29 @@
                 <ul class="sidebar-submenu-category-list" data-accordion>
 
                   <li class="sidebar-submenu-category">
-                    <a href="#" class="sidebar-submenu-title">
+                    <a href="shop.html?category=Mens" class="sidebar-submenu-title">
                       <p class="product-name">Shirt</p>
                       <data value="300" class="stock" title="Available Stock">300</data>
                     </a>
                   </li>
 
                   <li class="sidebar-submenu-category">
-                    <a href="#" class="sidebar-submenu-title">
-                      <p class="product-name">shorts & jeans</p>
+                    <a href="shop.html?category=Mens" class="sidebar-submenu-title">
+                      <p class="product-name">Shorts & Jeans</p>
                       <data value="60" class="stock" title="Available Stock">60</data>
                     </a>
                   </li>
 
                   <li class="sidebar-submenu-category">
-                    <a href="#" class="sidebar-submenu-title">
-                      <p class="product-name">jacket</p>
+                    <a href="shop.html?category=Mens" class="sidebar-submenu-title">
+                      <p class="product-name">Jacket</p>
                       <data value="50" class="stock" title="Available Stock">50</data>
                     </a>
                   </li>
 
                   <li class="sidebar-submenu-category">
-                    <a href="#" class="sidebar-submenu-title">
-                      <p class="product-name">dress & frock</p>
+                    <a href="shop.html?category=Womens" class="sidebar-submenu-title">
+                      <p class="product-name">Dress & Frock</p>
                       <data value="87" class="stock" title="Available Stock">87</data>
                     </a>
                   </li>
@@ -1129,28 +1115,28 @@
                 <ul class="sidebar-submenu-category-list" data-accordion>
 
                   <li class="sidebar-submenu-category">
-                    <a href="#" class="sidebar-submenu-title">
+                    <a href="shop.html?category=Footwear" class="sidebar-submenu-title">
                       <p class="product-name">Sports</p>
                       <data value="45" class="stock" title="Available Stock">45</data>
                     </a>
                   </li>
 
                   <li class="sidebar-submenu-category">
-                    <a href="#" class="sidebar-submenu-title">
+                    <a href="shop.html?category=Footwear" class="sidebar-submenu-title">
                       <p class="product-name">Formal</p>
                       <data value="75" class="stock" title="Available Stock">75</data>
                     </a>
                   </li>
 
                   <li class="sidebar-submenu-category">
-                    <a href="#" class="sidebar-submenu-title">
+                    <a href="shop.html?category=Footwear" class="sidebar-submenu-title">
                       <p class="product-name">Casual</p>
                       <data value="35" class="stock" title="Available Stock">35</data>
                     </a>
                   </li>
 
                   <li class="sidebar-submenu-category">
-                    <a href="#" class="sidebar-submenu-title">
+                    <a href="shop.html?category=Footwear" class="sidebar-submenu-title">
                       <p class="product-name">Safety Shoes</p>
                       <data value="26" class="stock" title="Available Stock">26</data>
                     </a>
@@ -1181,21 +1167,21 @@
                 <ul class="sidebar-submenu-category-list" data-accordion>
 
                   <li class="sidebar-submenu-category">
-                    <a href="#" class="sidebar-submenu-title">
+                    <a href="shop.html?category=Jewelry" class="sidebar-submenu-title">
                       <p class="product-name">Earrings</p>
                       <data value="46" class="stock" title="Available Stock">46</data>
                     </a>
                   </li>
 
                   <li class="sidebar-submenu-category">
-                    <a href="#" class="sidebar-submenu-title">
+                    <a href="shop.html?category=Jewelry" class="sidebar-submenu-title">
                       <p class="product-name">Couple Rings</p>
                       <data value="73" class="stock" title="Available Stock">73</data>
                     </a>
                   </li>
 
                   <li class="sidebar-submenu-category">
-                    <a href="#" class="sidebar-submenu-title">
+                    <a href="shop.html?category=Jewelry" class="sidebar-submenu-title">
                       <p class="product-name">Necklace</p>
                       <data value="61" class="stock" title="Available Stock">61</data>
                     </a>
@@ -1226,29 +1212,29 @@
                 <ul class="sidebar-submenu-category-list" data-accordion>
 
                   <li class="sidebar-submenu-category">
-                    <a href="#" class="sidebar-submenu-title">
+                    <a href="shop.html?category=Cosmetics" class="sidebar-submenu-title">
                       <p class="product-name">Clothes Perfume</p>
                       <data value="12" class="stock" title="Available Stock">12 pcs</data>
                     </a>
                   </li>
 
                   <li class="sidebar-submenu-category">
-                    <a href="#" class="sidebar-submenu-title">
+                    <a href="shop.html?category=Cosmetics" class="sidebar-submenu-title">
                       <p class="product-name">Deodorant</p>
                       <data value="60" class="stock" title="Available Stock">60 pcs</data>
                     </a>
                   </li>
 
                   <li class="sidebar-submenu-category">
-                    <a href="#" class="sidebar-submenu-title">
-                      <p class="product-name">jacket</p>
+                    <a href="shop.html?category=Cosmetics" class="sidebar-submenu-title">
+                      <p class="product-name">Flower Fragrance</p>
                       <data value="50" class="stock" title="Available Stock">50 pcs</data>
                     </a>
                   </li>
 
                   <li class="sidebar-submenu-category">
-                    <a href="#" class="sidebar-submenu-title">
-                      <p class="product-name">dress & frock</p>
+                    <a href="shop.html?category=Cosmetics" class="sidebar-submenu-title">
+                      <p class="product-name">Air Freshener</p>
                       <data value="87" class="stock" title="Available Stock">87 pcs</data>
                     </a>
                   </li>
@@ -1278,28 +1264,28 @@
                 <ul class="sidebar-submenu-category-list" data-accordion>
 
                   <li class="sidebar-submenu-category">
-                    <a href="#" class="sidebar-submenu-title">
+                    <a href="shop.html?category=Cosmetics" class="sidebar-submenu-title">
                       <p class="product-name">Shampoo</p>
                       <data value="68" class="stock" title="Available Stock">68</data>
                     </a>
                   </li>
 
                   <li class="sidebar-submenu-category">
-                    <a href="#" class="sidebar-submenu-title">
+                    <a href="shop.html?category=Cosmetics" class="sidebar-submenu-title">
                       <p class="product-name">Sunscreen</p>
                       <data value="46" class="stock" title="Available Stock">46</data>
                     </a>
                   </li>
 
                   <li class="sidebar-submenu-category">
-                    <a href="#" class="sidebar-submenu-title">
+                    <a href="shop.html?category=Cosmetics" class="sidebar-submenu-title">
                       <p class="product-name">Body Wash</p>
                       <data value="79" class="stock" title="Available Stock">79</data>
                     </a>
                   </li>
 
                   <li class="sidebar-submenu-category">
-                    <a href="#" class="sidebar-submenu-title">
+                    <a href="shop.html?category=Cosmetics" class="sidebar-submenu-title">
                       <p class="product-name">Makeup Kit</p>
                       <data value="23" class="stock" title="Available Stock">23</data>
                     </a>
@@ -1330,14 +1316,14 @@
                 <ul class="sidebar-submenu-category-list" data-accordion>
 
                   <li class="sidebar-submenu-category">
-                    <a href="#" class="sidebar-submenu-title">
+                    <a href="shop.html?category=Accessories" class="sidebar-submenu-title">
                       <p class="product-name">Sunglasses</p>
                       <data value="50" class="stock" title="Available Stock">50</data>
                     </a>
                   </li>
 
                   <li class="sidebar-submenu-category">
-                    <a href="#" class="sidebar-submenu-title">
+                    <a href="shop.html?category=Accessories" class="sidebar-submenu-title">
                       <p class="product-name">Lenses</p>
                       <data value="48" class="stock" title="Available Stock">48</data>
                     </a>
@@ -1354,7 +1340,7 @@
                   <div class="menu-title-flex">
                     <img src="./assets/images/icons/bag.svg" alt="bags" class="menu-title-img" width="20" height="20">
 
-                    <p class="menu-title">Bags</p>
+                    <p class="menu-title">Bags & Watches</p>
                   </div>
 
                   <div>
@@ -1367,29 +1353,29 @@
                 <ul class="sidebar-submenu-category-list" data-accordion>
 
                   <li class="sidebar-submenu-category">
-                    <a href="#" class="sidebar-submenu-title">
+                    <a href="shop.html?category=Accessories" class="sidebar-submenu-title">
                       <p class="product-name">Shopping Bag</p>
                       <data value="62" class="stock" title="Available Stock">62</data>
                     </a>
                   </li>
 
                   <li class="sidebar-submenu-category">
-                    <a href="#" class="sidebar-submenu-title">
+                    <a href="shop.html?category=Accessories" class="sidebar-submenu-title">
                       <p class="product-name">Gym Backpack</p>
                       <data value="35" class="stock" title="Available Stock">35</data>
                     </a>
                   </li>
 
                   <li class="sidebar-submenu-category">
-                    <a href="#" class="sidebar-submenu-title">
-                      <p class="product-name">Purse</p>
+                    <a href="shop.html?category=Watches" class="sidebar-submenu-title">
+                      <p class="product-name">Smart Watch</p>
                       <data value="80" class="stock" title="Available Stock">80</data>
                     </a>
                   </li>
 
                   <li class="sidebar-submenu-category">
-                    <a href="#" class="sidebar-submenu-title">
-                      <p class="product-name">Wallet</p>
+                    <a href="shop.html?category=Accessories" class="sidebar-submenu-title">
+                      <p class="product-name">Leather Wallet</p>
                       <data value="75" class="stock" title="Available Stock">75</data>
                     </a>
                   </li>
@@ -2202,22 +2188,21 @@
                       <ion-icon name="star-outline"></ion-icon>
                     </div>
 
-                    <a href="#">
-                      <h3 class="showcase-title">shampoo, conditioner & facewash packs</h3>
+                    <a href="product.html?id=114">
+                      <h3 class="showcase-title">Organic Argan Oil Shampoo & Conditioner</h3>
                     </a>
 
                     <p class="showcase-desc">
-                      Lorem ipsum dolor sit amet consectetur Lorem ipsum
-                      dolor dolor sit amet consectetur Lorem ipsum dolor
+                      Sulfate-free nourishing hair care duo enriched with cold-pressed Moroccan argan oil and keratin protein.
                     </p>
 
                     <div class="price-box">
-                      <p class="price">$150.00</p>
+                      <p class="price">$25.00</p>
 
-                      <del>$200.00</del>
+                      <del>$38.00</del>
                     </div>
 
-                    <button class="add-cart-btn">add to cart</button>
+                    <button class="add-cart-btn" data-action="quick-cart" data-product-id="114">add to cart</button>
 
                     <div class="showcase-status">
                       <div class="wrapper">
@@ -2293,20 +2278,19 @@
                     </div>
               
                     <h3 class="showcase-title">
-                      <a href="#" class="showcase-title">Rose Gold diamonds Earring</a>
+                      <a href="product.html?id=107" class="showcase-title">Rose Gold Peacock Earrings</a>
                     </h3>
               
                     <p class="showcase-desc">
-                      Lorem ipsum dolor sit amet consectetur Lorem ipsum
-                      dolor dolor sit amet consectetur Lorem ipsum dolor
+                      Stunning handcrafted peacock motif drop earrings electroplated in 18K rose gold and adorned with sparkling micro-cubic zirconia stones.
                     </p>
               
                     <div class="price-box">
-                      <p class="price">$1990.00</p>
-                      <del>$2000.00</del>
+                      <p class="price">$20.00</p>
+                      <del>$32.00</del>
                     </div>
               
-                    <button class="add-cart-btn">add to cart</button>
+                    <button class="add-cart-btn" data-action="quick-cart" data-product-id="107">add to cart</button>
               
                     <div class="showcase-status">
                       <div class="wrapper">
@@ -2366,7 +2350,7 @@
 
             <h2 class="title">New Products</h2>
 
-            <div class="product-grid">
+            <div class="product-grid" id="home-featured-grid">
 
               <div class="showcase">
 
@@ -3434,23 +3418,23 @@
           </li>
         
           <li class="footer-nav-item">
-            <a href="#" class="footer-nav-link">Delivery</a>
+            <a href="about.html" class="footer-nav-link">About Us</a>
           </li>
         
           <li class="footer-nav-item">
-            <a href="#" class="footer-nav-link">Legal Notice</a>
+            <a href="faq.html" class="footer-nav-link">Delivery &amp; FAQs</a>
           </li>
         
           <li class="footer-nav-item">
-            <a href="#" class="footer-nav-link">Terms and conditions</a>
+            <a href="privacy.html" class="footer-nav-link">Privacy Policy</a>
           </li>
         
           <li class="footer-nav-item">
-            <a href="#" class="footer-nav-link">About us</a>
+            <a href="terms.html" class="footer-nav-link">Terms &amp; Conditions</a>
           </li>
         
           <li class="footer-nav-item">
-            <a href="#" class="footer-nav-link">Secure payment</a>
+            <a href="contact.html" class="footer-nav-link">Contact Support</a>
           </li>
         
         </ul>
@@ -3458,27 +3442,27 @@
         <ul class="footer-nav-list">
         
           <li class="footer-nav-item">
-            <h2 class="nav-title">Services</h2>
+            <h2 class="nav-title">Customer Care</h2>
           </li>
         
           <li class="footer-nav-item">
-            <a href="#" class="footer-nav-link">Prices drop</a>
+            <a href="orders.html" class="footer-nav-link">Track Your Order</a>
           </li>
         
           <li class="footer-nav-item">
-            <a href="#" class="footer-nav-link">New products</a>
+            <a href="cart.html" class="footer-nav-link">Shopping Cart</a>
           </li>
         
           <li class="footer-nav-item">
-            <a href="#" class="footer-nav-link">Best sales</a>
+            <a href="wishlist.html" class="footer-nav-link">My Wishlist</a>
           </li>
         
           <li class="footer-nav-item">
-            <a href="#" class="footer-nav-link">Contact us</a>
+            <a href="account.html" class="footer-nav-link">My Account</a>
           </li>
         
           <li class="footer-nav-item">
-            <a href="#" class="footer-nav-link">Sitemap</a>
+            <a href="shop.html?tag=deal" class="footer-nav-link">Special Deals</a>
           </li>
         
         </ul>
@@ -3584,6 +3568,9 @@
   <!--
     - custom js link
   -->
+  <script src="./assets/js/products.js"></script>
+  <script src="./assets/js/storage.js"></script>
+  <script src="./assets/js/app.js"></script>
   <script src="./assets/js/script.js"></script>
 
   <!--

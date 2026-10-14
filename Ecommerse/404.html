@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>404 Page Not Found | Navedi Mall</title>
+
+  <!-- Favicon -->
+  <link rel="shortcut icon" href="./assets/images/logo/favicon.ico" type="image/x-icon">
+  <link rel="icon" type="image/svg+xml" href="./assets/images/logo/favicon.svg">
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="./assets/css/style-prefix.css">
+  <link rel="stylesheet" href="./assets/css/ecommerce.css">
+
+  <!-- Google Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+  <div class="overlay" data-overlay></div>
+
+  <!-- HEADER -->
+  <header>
+    <div class="header-main">
+      <div class="container">
+        <a href="index.html" class="header-logo">
+          <img src="./assets/images/logo/logo.svg" alt="Navedi Mall logo" width="168" height="36">
+        </a>
+
+        <div style="margin-left: auto; display: flex; align-items: center; gap: 14px;">
+          <a href="shop.html" style="font-size: 13px; font-weight: 600; color: #0F172A;">Browse Shop</a>
+          <a href="contact.html" style="font-size: 13px; font-weight: 600; color: var(--secondary, #4F46E5);">Contact Us</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- BREADCRUMBS -->
+  <div class="breadcrumb-container">
+    <div class="container">
+      <ul class="breadcrumb-list">
+        <li class="breadcrumb-item"><a href="index.html"><ion-icon name="home-outline"></ion-icon> Home</a></li>
+        <li class="breadcrumb-separator">/</li>
+        <li class="breadcrumb-item active">404 Not Found</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- 404 MAIN CONTENT -->
+  <main class="container" style="margin-bottom: 60px;">
+    <div class="error-404-box">
+      <div class="error-404-code">404</div>
+      <h1 style="font-size: 26px; font-weight: 700; color: #0F172A; margin-bottom: 10px;">Oops! Page Not Found</h1>
+      <p style="font-size: 15px; color: #64748B; max-width: 500px; margin: 0 auto 28px auto; line-height: 1.6;">
+        The page you are looking for may have been moved, removed, or is temporarily unavailable. Try searching our store or jump straight to popular categories.
+      </p>
+
+      <!-- Search Input -->
+      <div style="max-width: 440px; margin: 0 auto 28px auto;">
+        <div class="header-search-container" style="margin: 0; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);">
+          <input type="search" id="error-search-input" class="search-field" placeholder="Search jackets, watches, shirts...">
+          <button type="button" id="btn-error-search" class="search-btn">
+            <ion-icon name="search-outline"></ion-icon>
+          </button>
+        </div>
+      </div>
+
+      <!-- Popular Tags -->
+      <div style="display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; margin-bottom: 36px;">
+        <a href="shop.html?category=Mens" class="filter-chip" style="font-size: 13px; padding: 6px 14px;">Men's Fashion</a>
+        <a href="shop.html?category=Womens" class="filter-chip" style="font-size: 13px; padding: 6px 14px;">Women's Fashion</a>
+        <a href="shop.html?category=Watches" class="filter-chip" style="font-size: 13px; padding: 6px 14px;">Watches</a>
+        <a href="shop.html?category=Jewelry" class="filter-chip" style="font-size: 13px; padding: 6px 14px;">Jewelry</a>
+        <a href="shop.html?category=Cosmetics" class="filter-chip" style="font-size: 13px; padding: 6px 14px;">Perfume</a>
+      </div>
+
+      <!-- Action buttons -->
+      <div style="display: flex; gap: 14px; justify-content: center; flex-wrap: wrap;">
+        <a href="index.html" class="btn-primary-action" style="padding: 12px 24px;">
+          <ion-icon name="home-outline"></ion-icon> Back to Home Page
+        </a>
+        <a href="shop.html" style="display: inline-flex; align-items: center; gap: 8px; padding: 12px 24px; border: 1px solid #CBD5E1; border-radius: 8px; font-size: 14px; font-weight: 600; color: #0F172A; background: #FFFFFF;">
+          <ion-icon name="grid-outline"></ion-icon> Browse All Products
+        </a>
+      </div>
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-bottom">
+      <div class="container">
+        <p class="copyright">Copyright &copy; <a href="index.html">Navedi Mall</a>. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="./assets/js/products.js"></script>
+  <script src="./assets/js/storage.js"></script>
+  <script src="./assets/js/app.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const input = document.getElementById('error-search-input');
+      const btn = document.getElementById('btn-error-search');
+
+      const doSearch = () => {
+        const q = input ? input.value.trim() : '';
+        if (q) window.location.href = `search.html?q=${encodeURIComponent(q)}`;
+      };
+
+      if (btn) btn.addEventListener('click', doSearch);
+      if (input) {
+        input.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter') doSearch();
+        });
+      }
+    });
+  </script>
+  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+</body>
+
+</html>

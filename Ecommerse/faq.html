@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Frequently Asked Questions | Navedi Mall</title>
+
+  <!-- Favicon -->
+  <link rel="shortcut icon" href="./assets/images/logo/favicon.ico" type="image/x-icon">
+  <link rel="icon" type="image/svg+xml" href="./assets/images/logo/favicon.svg">
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="./assets/css/style-prefix.css">
+  <link rel="stylesheet" href="./assets/css/ecommerce.css">
+
+  <!-- Google Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+  <div class="overlay" data-overlay></div>
+
+  <!-- HEADER -->
+  <header>
+    <div class="header-top">
+      <div class="container">
+        <div class="header-alert-news">
+          <p><b>Free Shipping</b> on all orders over $55 this week!</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="header-main">
+      <div class="container">
+        <a href="index.html" class="header-logo">
+          <img src="./assets/images/logo/logo.svg" alt="Navedi Mall logo" width="168" height="36">
+        </a>
+
+        <div class="header-search-container">
+          <input type="search" name="search" class="search-field" placeholder="Search products, brands, or categories...">
+          <button class="search-btn" aria-label="Search">
+            <ion-icon name="search-outline"></ion-icon>
+          </button>
+        </div>
+
+        <div class="header-user-actions">
+          <button class="action-btn" data-action="account" title="My Account" aria-label="Account">
+            <ion-icon name="person-outline"></ion-icon>
+          </button>
+          <button class="action-btn" data-action="wishlist" title="My Wishlist" aria-label="Wishlist">
+            <ion-icon name="heart-outline"></ion-icon>
+            <span class="count" data-wishlist-count>0</span>
+          </button>
+          <button class="action-btn" data-action="cart" title="Shopping Cart" aria-label="Cart">
+            <ion-icon name="bag-handle-outline"></ion-icon>
+            <span class="count" data-cart-count>0</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <nav class="desktop-navigation-menu">
+      <div class="container">
+        <ul class="desktop-menu-category-list">
+          <li class="menu-category"><a href="index.html" class="menu-title">Home</a></li>
+          <li class="menu-category"><a href="shop.html" class="menu-title">Shop Catalog</a></li>
+          <li class="menu-category"><a href="orders.html" class="menu-title">My Orders</a></li>
+          <li class="menu-category"><a href="faq.html" class="menu-title active" style="color: var(--secondary, #4F46E5);">Help &amp; FAQs</a></li>
+          <li class="menu-category"><a href="about.html" class="menu-title">About Us</a></li>
+          <li class="menu-category"><a href="contact.html" class="menu-title">Contact Us</a></li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+
+  <!-- BREADCRUMBS -->
+  <div class="breadcrumb-container">
+    <div class="container">
+      <ul class="breadcrumb-list">
+        <li class="breadcrumb-item"><a href="index.html"><ion-icon name="home-outline"></ion-icon> Home</a></li>
+        <li class="breadcrumb-separator">/</li>
+        <li class="breadcrumb-item active">Frequently Asked Questions</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- BANNER -->
+  <div class="page-title-banner">
+    <div class="container banner-inner">
+      <h1>Frequently Asked Questions</h1>
+      <p>Answers to common questions about orders, simulated checkout, shipping times, and returns.</p>
+    </div>
+  </div>
+
+  <!-- MAIN FAQ CONTENT -->
+  <main class="container" style="margin-bottom: 60px; max-width: 860px;">
+
+    <!-- Search FAQ input -->
+    <div style="margin-bottom: 30px;">
+      <input type="text" id="faq-search-input" class="form-input" placeholder="Type keywords (e.g. shipping, coupon, cancel, returns)..." style="padding: 12px 18px; font-size: 15px; border-radius: 10px;">
+    </div>
+
+    <!-- FAQ Category 1: Orders & Tracking -->
+    <div class="faq-category-block" style="margin-bottom: 30px;">
+      <h3 style="font-size: 18px; font-weight: 700; color: #0F172A; margin-bottom: 14px; display: flex; align-items: center; gap: 8px;">
+        <ion-icon name="cube-outline" style="color: var(--secondary, #4F46E5);"></ion-icon> Orders &amp; Tracking
+      </h3>
+
+      <div class="faq-accordion-item active">
+        <button type="button" class="faq-question-btn">
+          <span>How can I track my order?</span>
+          <ion-icon name="chevron-down-outline"></ion-icon>
+        </button>
+        <div class="faq-answer-panel">
+          You can track any active order at any time by visiting <a href="orders.html" style="color: var(--secondary, #4F46E5); text-decoration: underline;">My Orders</a> and clicking "Track Package". You'll receive a live interactive timeline of packaging, dispatch, and delivery milestones.
+        </div>
+      </div>
+
+      <div class="faq-accordion-item">
+        <button type="button" class="faq-question-btn">
+          <span>Can I cancel or modify an order after placing it?</span>
+          <ion-icon name="chevron-down-outline"></ion-icon>
+        </button>
+        <div class="faq-answer-panel">
+          Yes! Orders in the "Processing" state can be cancelled immediately from the <a href="orders.html" style="color: var(--secondary, #4F46E5); text-decoration: underline;">My Orders</a> page by clicking the "Cancel Order" button.
+        </div>
+      </div>
+    </div>
+
+    <!-- FAQ Category 2: Shipping & Delivery -->
+    <div class="faq-category-block" style="margin-bottom: 30px;">
+      <h3 style="font-size: 18px; font-weight: 700; color: #0F172A; margin-bottom: 14px; display: flex; align-items: center; gap: 8px;">
+        <ion-icon name="airplane-outline" style="color: #10B981;"></ion-icon> Shipping &amp; Delivery
+      </h3>
+
+      <div class="faq-accordion-item">
+        <button type="button" class="faq-question-btn">
+          <span>How do I qualify for Free Shipping?</span>
+          <ion-icon name="chevron-down-outline"></ion-icon>
+        </button>
+        <div class="faq-answer-panel">
+          All orders with a subtotal of $55 or more automatically qualify for Free Standard Delivery! You can also apply promo code <strong>FREESHIP</strong> at cart checkout.
+        </div>
+      </div>
+
+      <div class="faq-accordion-item">
+        <button type="button" class="faq-question-btn">
+          <span>How long does delivery take?</span>
+          <ion-icon name="chevron-down-outline"></ion-icon>
+        </button>
+        <div class="faq-answer-panel">
+          Standard delivery typically arrives within 3 to 5 business days. Express Priority shipping arrives in 1 to 2 business days.
+        </div>
+      </div>
+    </div>
+
+    <!-- FAQ Category 3: Coupons & Demo Payments -->
+    <div class="faq-category-block" style="margin-bottom: 30px;">
+      <h3 style="font-size: 18px; font-weight: 700; color: #0F172A; margin-bottom: 14px; display: flex; align-items: center; gap: 8px;">
+        <ion-icon name="card-outline" style="color: #F59E0B;"></ion-icon> Coupons &amp; Payments
+      </h3>
+
+      <div class="faq-accordion-item">
+        <button type="button" class="faq-question-btn">
+          <span>What promo coupons can I test in this demo?</span>
+          <ion-icon name="chevron-down-outline"></ion-icon>
+        </button>
+        <div class="faq-answer-panel">
+          You can test the following active demo coupons in your cart or checkout:
+          <ul style="padding-left: 20px; margin-top: 8px; line-height: 1.6;">
+            <li><strong>SAVE10</strong> - 10% off your entire order</li>
+            <li><strong>WELCOME20</strong> - 20% discount on first purchase</li>
+            <li><strong>FREESHIP</strong> - Free standard delivery</li>
+            <li><strong>SUMMER50</strong> - $50 off orders over $200</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="faq-accordion-item">
+        <button type="button" class="faq-question-btn">
+          <span>Are real payments processed on this website?</span>
+          <ion-icon name="chevron-down-outline"></ion-icon>
+        </button>
+        <div class="faq-answer-panel">
+          No. Navedi Mall is currently a complete frontend demonstration storefront built exclusively with HTML, CSS, and Vanilla JavaScript. All transactions, orders, and payment options are securely simulated in browser localStorage.
+        </div>
+      </div>
+    </div>
+
+    <!-- Need More Help Card -->
+    <div style="background: #F8FAFC; border: 1px solid #E2E8F0; border-radius: 14px; padding: 24px; text-align: center; margin-top: 40px;">
+      <h3 style="font-size: 18px; font-weight: 700; color: #0F172A; margin-bottom: 6px;">Still have questions?</h3>
+      <p style="font-size: 14px; color: #64748B; margin-bottom: 16px;">Our support team is standing by to assist with any questions or custom inquiries.</p>
+      <a href="contact.html" class="btn-primary-action">
+        Contact Customer Support
+      </a>
+    </div>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-bottom">
+      <div class="container">
+        <p class="copyright">Copyright &copy; <a href="index.html">Navedi Mall</a>. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="./assets/js/products.js"></script>
+  <script src="./assets/js/storage.js"></script>
+  <script src="./assets/js/app.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Accordion toggles
+      const items = document.querySelectorAll('.faq-accordion-item');
+      items.forEach(item => {
+        const btn = item.querySelector('.faq-question-btn');
+        btn.addEventListener('click', () => {
+          const isOpen = item.classList.contains('active');
+          item.classList.toggle('active', !isOpen);
+        });
+      });
+
+      // Filter search
+      const searchInput = document.getElementById('faq-search-input');
+      if (searchInput) {
+        searchInput.addEventListener('input', function() {
+          const q = this.value.toLowerCase().trim();
+          items.forEach(item => {
+            const text = item.textContent.toLowerCase();
+            if (!q || text.includes(q)) {
+              item.style.display = 'block';
+              if (q) item.classList.add('active');
+            } else {
+              item.style.display = 'none';
+            }
+          });
+        });
+      }
+    });
+  </script>
+  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+</body>
+
+</html>

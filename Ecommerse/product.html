@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Product Details | Navedi Mall</title>
+
+  <!-- Favicon -->
+  <link rel="shortcut icon" href="./assets/images/logo/favicon.ico" type="image/x-icon">
+  <link rel="icon" type="image/svg+xml" href="./assets/images/logo/favicon.svg">
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="./assets/css/style-prefix.css">
+  <link rel="stylesheet" href="./assets/css/ecommerce.css">
+
+  <!-- Google Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+  <div class="overlay" data-overlay></div>
+
+  <!-- HEADER -->
+  <header>
+    <div class="header-top">
+      <div class="container">
+        <ul class="header-social-container">
+          <li><a href="#" class="social-link"><ion-icon name="logo-facebook"></ion-icon></a></li>
+          <li><a href="#" class="social-link"><ion-icon name="logo-twitter"></ion-icon></a></li>
+          <li><a href="#" class="social-link"><ion-icon name="logo-instagram"></ion-icon></a></li>
+          <li><a href="#" class="social-link"><ion-icon name="logo-linkedin"></ion-icon></a></li>
+        </ul>
+
+        <div class="header-alert-news">
+          <p><b>Free Shipping</b> on all orders over $55 this week!</p>
+        </div>
+
+        <div class="header-top-actions">
+          <select name="currency">
+            <option value="usd">USD &dollar;</option>
+            <option value="eur">EUR &euro;</option>
+          </select>
+
+          <select name="language">
+            <option value="en-US">English</option>
+            <option value="es-ES">Espa&ntilde;ol</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <div class="header-main">
+      <div class="container">
+        <a href="index.html" class="header-logo">
+          <img src="./assets/images/logo/logo.svg" alt="Navedi Mall logo" width="168" height="36">
+        </a>
+
+        <div class="header-search-container">
+          <input type="search" name="search" class="search-field" placeholder="Search products, brands, or categories...">
+          <button class="search-btn" aria-label="Search">
+            <ion-icon name="search-outline"></ion-icon>
+          </button>
+        </div>
+
+        <div class="header-user-actions">
+          <button class="action-btn" data-action="account" title="My Account" aria-label="Account">
+            <ion-icon name="person-outline"></ion-icon>
+          </button>
+
+          <button class="action-btn" data-action="wishlist" title="My Wishlist" aria-label="Wishlist">
+            <ion-icon name="heart-outline"></ion-icon>
+            <span class="count" data-wishlist-count>0</span>
+          </button>
+
+          <button class="action-btn" data-action="cart" title="Shopping Cart" aria-label="Cart">
+            <ion-icon name="bag-handle-outline"></ion-icon>
+            <span class="count" data-cart-count>0</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <nav class="desktop-navigation-menu">
+      <div class="container">
+        <ul class="desktop-menu-category-list">
+          <li class="menu-category"><a href="index.html" class="menu-title">Home</a></li>
+          <li class="menu-category"><a href="shop.html" class="menu-title">Shop Catalog</a></li>
+          <li class="menu-category"><a href="shop.html?category=Mens" class="menu-title">Men's</a></li>
+          <li class="menu-category"><a href="shop.html?category=Womens" class="menu-title">Women's</a></li>
+          <li class="menu-category"><a href="shop.html?category=Jewelry" class="menu-title">Jewelry</a></li>
+          <li class="menu-category"><a href="shop.html?category=Watches" class="menu-title">Watches</a></li>
+          <li class="menu-category"><a href="shop.html?category=Cosmetics" class="menu-title">Perfume & Beauty</a></li>
+          <li class="menu-category"><a href="about.html" class="menu-title">About Us</a></li>
+          <li class="menu-category"><a href="contact.html" class="menu-title">Contact Us</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <!-- Mobile Bottom Navigation -->
+    <div class="mobile-bottom-navigation">
+      <button class="action-btn" data-mobile-menu-open-btn aria-label="Menu">
+        <ion-icon name="menu-outline"></ion-icon>
+      </button>
+      <button class="action-btn" onclick="window.location.href='cart.html'" aria-label="Cart">
+        <ion-icon name="bag-handle-outline"></ion-icon>
+        <span class="count" data-cart-count>0</span>
+      </button>
+      <button class="action-btn" onclick="window.location.href='index.html'" aria-label="Home">
+        <ion-icon name="home-outline"></ion-icon>
+      </button>
+      <button class="action-btn" onclick="window.location.href='wishlist.html'" aria-label="Wishlist">
+        <ion-icon name="heart-outline"></ion-icon>
+        <span class="count" data-wishlist-count>0</span>
+      </button>
+      <button class="action-btn" onclick="window.location.href='shop.html'" aria-label="Shop">
+        <ion-icon name="grid-outline"></ion-icon>
+      </button>
+    </div>
+  </header>
+
+  <!-- BREADCRUMBS -->
+  <div class="breadcrumb-container">
+    <div class="container">
+      <ul class="breadcrumb-list">
+        <li class="breadcrumb-item"><a href="index.html"><ion-icon name="home-outline"></ion-icon> Home</a></li>
+        <li class="breadcrumb-separator">/</li>
+        <li class="breadcrumb-item"><a href="shop.html">Shop</a></li>
+        <li class="breadcrumb-separator">/</li>
+        <li class="breadcrumb-item"><a href="#" id="breadcrumb-category">Category</a></li>
+        <li class="breadcrumb-separator">/</li>
+        <li class="breadcrumb-item active" id="breadcrumb-product-name">Product Name</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- PRODUCT DETAIL SECTION -->
+  <main class="container">
+    <div class="product-detail-layout">
+
+      <!-- LEFT: Image Gallery -->
+      <div class="product-gallery">
+        <div class="gallery-main-img-wrap">
+          <img src="./assets/images/products/1.jpg" alt="Product Image" id="product-main-img" class="gallery-main-img">
+        </div>
+        <div class="gallery-thumbnails" id="product-thumbnails">
+          <!-- Thumbnail images dynamically generated -->
+        </div>
+      </div>
+
+      <!-- RIGHT: Product Info & Actions -->
+      <div class="product-info-wrap">
+        <div class="product-meta-top">
+          <span class="product-brand-tag" id="product-brand">Brand Name</span>
+          <span class="stock-badge in-stock" id="product-stock-badge">
+            <ion-icon name="checkmark-circle"></ion-icon> In Stock
+          </span>
+        </div>
+
+        <h1 class="product-detail-title" id="product-title">Product Name</h1>
+
+        <div class="product-rating-row">
+          <div class="rating-stars" id="product-rating-stars">
+            <!-- Stars -->
+          </div>
+          <a href="#reviews-tab" class="rating-count-link" id="product-reviews-count">(0 reviews)</a>
+        </div>
+
+        <div class="product-price-row">
+          <span class="current-price" id="product-current-price">$0.00</span>
+          <del class="original-price" id="product-original-price">$0.00</del>
+          <span class="discount-pill" id="product-discount-pill">0% OFF</span>
+        </div>
+
+        <p class="product-short-desc" id="product-description">
+          Detailed product description will load here dynamically.
+        </p>
+
+        <!-- Color Options -->
+        <div class="variant-group">
+          <span class="variant-label">Color: <strong id="selected-color-label">Default</strong></span>
+          <div class="variant-options-flex" id="product-color-options">
+            <!-- Colors dynamically rendered -->
+          </div>
+        </div>
+
+        <!-- Size Options -->
+        <div class="variant-group">
+          <span class="variant-label">Size: <strong id="selected-size-label">Standard</strong></span>
+          <div class="variant-options-flex" id="product-size-options">
+            <!-- Sizes dynamically rendered -->
+          </div>
+        </div>
+
+        <!-- Quantity & Action Buttons -->
+        <div class="product-actions-row">
+          <div class="qty-stepper">
+            <button type="button" class="qty-btn" id="qty-minus-btn" aria-label="Decrease quantity">&minus;</button>
+            <input type="number" id="qty-input-field" class="qty-input" value="1" min="1" max="99" aria-label="Product quantity">
+            <button type="button" class="qty-btn" id="qty-plus-btn" aria-label="Increase quantity">&plus;</button>
+          </div>
+
+          <button type="button" class="btn-add-to-cart" id="btn-add-cart-detail">
+            <ion-icon name="bag-handle-outline"></ion-icon> Add to Cart
+          </button>
+
+          <button type="button" class="btn-buy-now" id="btn-buy-now-detail">
+            Buy Now
+          </button>
+
+          <button type="button" class="btn-detail-wishlist" id="btn-wishlist-detail" title="Add to Wishlist" aria-label="Wishlist">
+            <ion-icon name="heart-outline"></ion-icon>
+          </button>
+        </div>
+
+        <!-- Postal Code & Delivery Estimate Calculator -->
+        <div class="delivery-estimate-card">
+          <div class="delivery-perk-row">
+            <ion-icon name="cube-outline" class="delivery-perk-icon"></ion-icon>
+            <div>
+              <div class="delivery-perk-title">Free Standard Delivery</div>
+              <div class="delivery-perk-desc">Orders over $55 qualify for fast, tracked shipping.</div>
+            </div>
+          </div>
+
+          <div style="display: flex; gap: 8px; margin-top: 10px;">
+            <input type="text" id="delivery-zip-input" class="form-input" placeholder="Enter Zip / Postal Code" style="padding: 6px 10px; font-size: 13px;">
+            <button type="button" id="btn-check-delivery" class="btn-apply-price" style="white-space: nowrap;">Check Availability</button>
+          </div>
+          <div id="delivery-calc-result" style="font-size: 12px; margin-top: 6px;"></div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- TABS: Description, Specs, Customer Reviews -->
+    <div class="product-tabs-container" id="reviews-tab">
+      <div class="tabs-nav">
+        <button type="button" class="tab-nav-btn active" data-tab="tab-description">Overview & Highlights</button>
+        <button type="button" class="tab-nav-btn" data-tab="tab-specs">Technical Specifications</button>
+        <button type="button" class="tab-nav-btn" data-tab="tab-reviews">Customer Reviews</button>
+      </div>
+
+      <!-- TAB 1: Overview -->
+      <div class="tab-content active" id="tab-description">
+        <h3 style="font-size: 18px; font-weight: 700; color: #0F172A; margin-bottom: 12px;">Key Features</h3>
+        <ul id="product-features-list" style="padding-left: 20px; line-height: 1.8; color: #475569; font-size: 14px; list-style: disc;">
+          <!-- Dynamically populated -->
+        </ul>
+      </div>
+
+      <!-- TAB 2: Specifications -->
+      <div class="tab-content" id="tab-specs">
+        <table class="specs-table" id="product-specs-table">
+          <!-- Dynamically populated -->
+        </table>
+      </div>
+
+      <!-- TAB 3: Reviews -->
+      <div class="tab-content" id="tab-reviews">
+        <div style="display: grid; grid-template-columns: 1fr 340px; gap: 30px; align-items: start;">
+          <!-- Left: Existing Reviews -->
+          <div>
+            <h3 style="font-size: 18px; font-weight: 700; color: #0F172A; margin-bottom: 16px;">Verified Customer Ratings</h3>
+            <div id="reviews-list-container">
+              <div class="review-item-card" style="padding: 16px; border: 1px solid #E2E8F0; border-radius: 10px; margin-bottom: 14px; background: #FAFAFA;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+                  <div style="display: flex; align-items: center; gap: 8px;">
+                    <strong style="color: #0F172A; font-size: 14px;">Samantha R.</strong>
+                    <span style="font-size: 11px; background: #ECFDF5; color: #10B981; padding: 2px 8px; border-radius: 10px; font-weight: 600;">Verified Buyer</span>
+                  </div>
+                  <div style="color: #F59E0B; font-size: 14px;">
+                    <ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon>
+                  </div>
+                </div>
+                <p style="font-size: 13px; color: #475569; line-height: 1.5; margin: 0;">
+                  Exceeded my expectations! The craftsmanship is incredible and shipping was super fast. Highly recommend this store!
+                </p>
+                <span style="font-size: 11px; color: #94A3B8; display: block; margin-top: 6px;">Reviewed 4 days ago</span>
+              </div>
+
+              <div class="review-item-card" style="padding: 16px; border: 1px solid #E2E8F0; border-radius: 10px; margin-bottom: 14px; background: #FAFAFA;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+                  <div style="display: flex; align-items: center; gap: 8px;">
+                    <strong style="color: #0F172A; font-size: 14px;">David Miller</strong>
+                    <span style="font-size: 11px; background: #ECFDF5; color: #10B981; padding: 2px 8px; border-radius: 10px; font-weight: 600;">Verified Buyer</span>
+                  </div>
+                  <div style="color: #F59E0B; font-size: 14px;">
+                    <ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star-half-outline"></ion-icon>
+                  </div>
+                </div>
+                <p style="font-size: 13px; color: #475569; line-height: 1.5; margin: 0;">
+                  Fits true to size and the color matches the photographs accurately. Great quality for the price.
+                </p>
+                <span style="font-size: 11px; color: #94A3B8; display: block; margin-top: 6px;">Reviewed 1 week ago</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right: Write a Review Form -->
+          <div style="background: #F8FAFC; border: 1px solid #E2E8F0; border-radius: 12px; padding: 20px;">
+            <h4 style="font-size: 16px; font-weight: 700; color: #0F172A; margin-bottom: 14px;">Write a Review</h4>
+            <form id="new-review-form">
+              <div class="form-group">
+                <label class="form-label" for="review-author-name">Your Name</label>
+                <input type="text" id="review-author-name" class="form-input" placeholder="e.g. Jessica Taylor" required>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="review-rating-select">Rating</label>
+                <select id="review-rating-select" class="form-select">
+                  <option value="5">&#9733;&#9733;&#9733;&#9733;&#9733; (5/5 Stars)</option>
+                  <option value="4">&#9733;&#9733;&#9733;&#9733;&#9734; (4/5 Stars)</option>
+                  <option value="3">&#9733;&#9733;&#9733;&#9734;&#9734; (3/5 Stars)</option>
+                  <option value="2">&#9733;&#9733;&#9734;&#9734;&#9734; (2/5 Stars)</option>
+                  <option value="1">&#9733;&#9734;&#9734;&#9734;&#9734; (1/5 Stars)</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="review-text-content">Review Details</label>
+                <textarea id="review-text-content" class="form-input" rows="3" placeholder="What did you like or dislike about this product?" required></textarea>
+              </div>
+
+              <button type="submit" class="btn-primary-action" style="width: 100%; justify-content: center;">
+                Submit Review
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- RELATED PRODUCTS SECTION -->
+    <div style="margin-bottom: 60px;">
+      <h2 style="font-size: 22px; font-weight: 700; color: #0F172A; margin-bottom: 20px;">You May Also Like</h2>
+      <div class="product-grid" id="related-products-grid">
+        <!-- Dynamically rendered -->
+      </div>
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-nav">
+      <div class="container">
+        <ul class="footer-nav-list">
+          <li class="footer-nav-item"><h2 class="nav-title">Categories</h2></li>
+          <li class="footer-nav-item"><a href="shop.html?category=Mens" class="footer-nav-link">Men's Fashion</a></li>
+          <li class="footer-nav-item"><a href="shop.html?category=Womens" class="footer-nav-link">Women's Fashion</a></li>
+          <li class="footer-nav-item"><a href="shop.html?category=Jewelry" class="footer-nav-link">Fine Jewelry</a></li>
+          <li class="footer-nav-item"><a href="shop.html?category=Watches" class="footer-nav-link">Watches</a></li>
+        </ul>
+
+        <ul class="footer-nav-list">
+          <li class="footer-nav-item"><h2 class="nav-title">Quick Links</h2></li>
+          <li class="footer-nav-item"><a href="about.html" class="footer-nav-link">About Us</a></li>
+          <li class="footer-nav-item"><a href="contact.html" class="footer-nav-link">Contact Support</a></li>
+          <li class="footer-nav-item"><a href="faq.html" class="footer-nav-link">Shipping & FAQs</a></li>
+          <li class="footer-nav-item"><a href="privacy.html" class="footer-nav-link">Privacy Policy</a></li>
+        </ul>
+
+        <ul class="footer-nav-list">
+          <li class="footer-nav-item"><h2 class="nav-title">Customer Care</h2></li>
+          <li class="footer-nav-item"><a href="orders.html" class="footer-nav-link">My Orders</a></li>
+          <li class="footer-nav-item"><a href="cart.html" class="footer-nav-link">Shopping Cart</a></li>
+          <li class="footer-nav-item"><a href="wishlist.html" class="footer-nav-link">Wishlist</a></li>
+          <li class="footer-nav-item"><a href="account.html" class="footer-nav-link">My Account</a></li>
+        </ul>
+
+        <ul class="footer-nav-list">
+          <li class="footer-nav-item"><h2 class="nav-title">Contact</h2></li>
+          <li class="footer-nav-item flex">
+            <div class="icon-box"><ion-icon name="location-outline"></ion-icon></div>
+            <address class="content">742 Evergreen Terrace, Springfield, OR</address>
+          </li>
+          <li class="footer-nav-item flex">
+            <div class="icon-box"><ion-icon name="call-outline"></ion-icon></div>
+            <a href="tel:+15552345678" class="footer-nav-link">+1 (555) 234-5678</a>
+          </li>
+          <li class="footer-nav-item flex">
+            <div class="icon-box"><ion-icon name="mail-outline"></ion-icon></div>
+            <a href="mailto:support@navedimall.com" class="footer-nav-link">support@navedimall.com</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="container">
+        <img src="./assets/images/payment.png" alt="payment methods" class="payment-img">
+        <p class="copyright">Copyright &copy; <a href="index.html">Navedi Mall</a>. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="./assets/js/products.js"></script>
+  <script src="./assets/js/storage.js"></script>
+  <script src="./assets/js/app.js"></script>
+  <script src="./assets/js/product.js"></script>
+  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+</body>
+
+</html>

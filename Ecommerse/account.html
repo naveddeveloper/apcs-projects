@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Account | Navedi Mall</title>
+
+  <!-- Favicon -->
+  <link rel="shortcut icon" href="./assets/images/logo/favicon.ico" type="image/x-icon">
+  <link rel="icon" type="image/svg+xml" href="./assets/images/logo/favicon.svg">
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="./assets/css/style-prefix.css">
+  <link rel="stylesheet" href="./assets/css/ecommerce.css">
+
+  <!-- Google Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+  <div class="overlay" data-overlay></div>
+
+  <!-- HEADER -->
+  <header>
+    <div class="header-top">
+      <div class="container">
+        <div class="header-alert-news">
+          <p><b>Free Shipping</b> on all orders over $55 this week!</p>
+        </div>
+
+        <div class="header-top-actions">
+          <select name="currency">
+            <option value="usd">USD &dollar;</option>
+            <option value="eur">EUR &euro;</option>
+          </select>
+
+          <select name="language">
+            <option value="en-US">English</option>
+            <option value="es-ES">Espa&ntilde;ol</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <div class="header-main">
+      <div class="container">
+        <a href="index.html" class="header-logo">
+          <img src="./assets/images/logo/logo.svg" alt="Navedi Mall logo" width="168" height="36">
+        </a>
+
+        <div class="header-search-container">
+          <input type="search" name="search" class="search-field" placeholder="Search products, brands, or categories...">
+          <button class="search-btn" aria-label="Search">
+            <ion-icon name="search-outline"></ion-icon>
+          </button>
+        </div>
+
+        <div class="header-user-actions">
+          <button class="action-btn" data-action="account" title="My Account" aria-label="Account">
+            <ion-icon name="person-outline"></ion-icon>
+          </button>
+
+          <button class="action-btn" data-action="wishlist" title="My Wishlist" aria-label="Wishlist">
+            <ion-icon name="heart-outline"></ion-icon>
+            <span class="count" data-wishlist-count>0</span>
+          </button>
+
+          <button class="action-btn" data-action="cart" title="Shopping Cart" aria-label="Cart">
+            <ion-icon name="bag-handle-outline"></ion-icon>
+            <span class="count" data-cart-count>0</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <nav class="desktop-navigation-menu">
+      <div class="container">
+        <ul class="desktop-menu-category-list">
+          <li class="menu-category"><a href="index.html" class="menu-title">Home</a></li>
+          <li class="menu-category"><a href="shop.html" class="menu-title">Shop Catalog</a></li>
+          <li class="menu-category"><a href="shop.html?category=Mens" class="menu-title">Men's</a></li>
+          <li class="menu-category"><a href="shop.html?category=Womens" class="menu-title">Women's</a></li>
+          <li class="menu-category"><a href="shop.html?category=Jewelry" class="menu-title">Jewelry</a></li>
+          <li class="menu-category"><a href="orders.html" class="menu-title">My Orders</a></li>
+          <li class="menu-category"><a href="about.html" class="menu-title">About Us</a></li>
+          <li class="menu-category"><a href="contact.html" class="menu-title">Contact Us</a></li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+
+  <!-- BREADCRUMBS -->
+  <div class="breadcrumb-container">
+    <div class="container">
+      <ul class="breadcrumb-list">
+        <li class="breadcrumb-item"><a href="index.html"><ion-icon name="home-outline"></ion-icon> Home</a></li>
+        <li class="breadcrumb-separator">/</li>
+        <li class="breadcrumb-item active">My Account</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- MAIN ACCOUNT CONTAINER -->
+  <main class="container" style="margin-bottom: 60px;">
+
+    <!-- 1. GUEST / SIGN IN & REGISTER SECTION -->
+    <div id="account-auth-section" style="max-width: 480px; margin: 40px auto; background: #FFFFFF; border: 1px solid #E2E8F0; border-radius: 16px; padding: 32px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); display: none;">
+      <!-- Tabs -->
+      <div style="display: flex; border-bottom: 1px solid #E2E8F0; margin-bottom: 24px;">
+        <button type="button" class="tab-nav-btn auth-tab-btn active" data-target="form-signin" style="flex: 1; text-align: center;">Sign In</button>
+        <button type="button" class="tab-nav-btn auth-tab-btn" data-target="form-register" style="flex: 1; text-align: center;">Create Account</button>
+      </div>
+
+      <!-- Sign In Form -->
+      <div class="auth-form-wrap active" id="form-signin">
+        <form id="account-signin-form">
+          <div class="form-group">
+            <label class="form-label" for="signin-email">Email Address</label>
+            <input type="email" id="signin-email" class="form-input" value="alex.morgan@example.com" required>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="signin-password">Password</label>
+            <input type="password" id="signin-password" class="form-input" value="••••••••" required>
+          </div>
+
+          <button type="submit" class="btn-primary-action" style="width: 100%; justify-content: center; padding: 12px; margin-top: 10px;">
+            Sign In (Demo Session)
+          </button>
+        </form>
+      </div>
+
+      <!-- Register Form -->
+      <div class="auth-form-wrap" id="form-register" style="display: none;">
+        <form id="account-register-form">
+          <div class="form-group">
+            <label class="form-label" for="register-name">Full Name</label>
+            <input type="text" id="register-name" class="form-input" placeholder="e.g. Alex Morgan" required>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="register-email">Email Address</label>
+            <input type="email" id="register-email" class="form-input" placeholder="e.g. alex@example.com" required>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="register-password">Create Password</label>
+            <input type="password" id="register-password" class="form-input" placeholder="At least 6 characters" required>
+          </div>
+
+          <button type="submit" class="btn-primary-action" style="width: 100%; justify-content: center; padding: 12px; margin-top: 10px;">
+            Create Demo Account
+          </button>
+        </form>
+      </div>
+
+      <div style="font-size: 12px; color: #64748B; text-align: center; margin-top: 20px; line-height: 1.5;">
+        This is a demo frontend authentication experience. Password and session are simulated safely in localStorage.
+      </div>
+    </div>
+
+    <!-- 2. LOGGED IN DASHBOARD SECTION -->
+    <div id="account-dashboard-section" class="account-layout">
+
+      <!-- LEFT: Profile & Navigation Card -->
+      <aside class="account-nav-card">
+        <div class="account-profile-summary">
+          <img src="./assets/images/testimonial-1.jpg" alt="User avatar" class="profile-avatar-img">
+          <div>
+            <h4 style="font-size: 15px; font-weight: 700; color: #0F172A; margin: 0;" id="dashboard-user-name">Alex Morgan</h4>
+            <span style="font-size: 12px; color: #64748B;" id="dashboard-user-email">alex.morgan@example.com</span>
+          </div>
+        </div>
+
+        <nav class="account-nav-list">
+          <button class="account-nav-btn active">
+            <ion-icon name="person-outline"></ion-icon> Personal Profile
+          </button>
+          <a href="orders.html" class="account-nav-btn">
+            <ion-icon name="bag-check-outline"></ion-icon> Order History
+          </a>
+          <a href="wishlist.html" class="account-nav-btn">
+            <ion-icon name="heart-outline"></ion-icon> My Wishlist
+          </a>
+          <a href="cart.html" class="account-nav-btn">
+            <ion-icon name="cart-outline"></ion-icon> Shopping Cart
+          </a>
+          <button type="button" class="account-nav-btn" id="btn-account-signout" style="color: #EF4444;">
+            <ion-icon name="log-out-outline"></ion-icon> Sign Out
+          </button>
+        </nav>
+      </aside>
+
+      <!-- RIGHT: Dashboard Content -->
+      <div class="account-content-area">
+        
+        <!-- Profile Form Card -->
+        <div class="checkout-step-card" style="margin-bottom: 24px;">
+          <div class="step-header">
+            <h3 class="step-title">Personal Details</h3>
+          </div>
+
+          <form id="profile-edit-form">
+            <div class="form-grid-2">
+              <div class="form-group">
+                <label class="form-label" for="edit-profile-name">Full Name</label>
+                <input type="text" id="edit-profile-name" class="form-input" required>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="edit-profile-email">Email Address</label>
+                <input type="email" id="edit-profile-email" class="form-input" required>
+              </div>
+            </div>
+
+            <div class="form-grid-2">
+              <div class="form-group">
+                <label class="form-label" for="edit-profile-phone">Phone Number</label>
+                <input type="tel" id="edit-profile-phone" class="form-input">
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">Member Since</label>
+                <input type="text" id="dashboard-user-since" class="form-input" value="May 2024" disabled style="background: #F8FAFC;">
+              </div>
+            </div>
+
+            <button type="submit" class="btn-primary-action" style="padding: 10px 20px;">
+              Save Profile Changes
+            </button>
+          </form>
+        </div>
+
+        <!-- Saved Addresses Card -->
+        <div class="checkout-step-card" style="margin-bottom: 24px;">
+          <div class="step-header" style="justify-content: space-between;">
+            <h3 class="step-title">Saved Delivery Addresses</h3>
+            <button type="button" id="btn-open-add-address" class="btn-clear-filters" style="font-size: 13px;">
+              + Add New Address
+            </button>
+          </div>
+
+          <div id="saved-addresses-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px;">
+            <!-- Addresses dynamically rendered -->
+          </div>
+        </div>
+
+        <!-- Recent Orders Snapshot -->
+        <div class="checkout-step-card">
+          <div class="step-header" style="justify-content: space-between;">
+            <h3 class="step-title">Recent Orders</h3>
+            <a href="orders.html" style="font-size: 13px; font-weight: 600; color: var(--secondary, #4F46E5);">
+              View All Orders &rarr;
+            </a>
+          </div>
+
+          <div id="dashboard-recent-orders">
+            <!-- Dynamically populated -->
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- ADD ADDRESS MODAL -->
+    <div id="add-address-modal" class="modal closed" style="display: none; position: fixed; inset: 0; z-index: 10000; background: rgba(0,0,0,0.5);">
+      <div style="max-width: 500px; margin: 80px auto; background: #FFFFFF; border-radius: 14px; padding: 24px; position: relative; box-shadow: 0 10px 25px rgba(0,0,0,0.2);">
+        <button type="button" id="btn-close-add-address" style="position: absolute; top: 16px; right: 16px; background: none; border: none; font-size: 22px; cursor: pointer; color: #64748B;">
+          <ion-icon name="close-outline"></ion-icon>
+        </button>
+
+        <h3 style="font-size: 18px; font-weight: 700; color: #0F172A; margin-bottom: 16px;">Add New Address</h3>
+
+        <form id="new-address-form">
+          <div class="form-grid-2">
+            <div class="form-group">
+              <label class="form-label" for="new-addr-label">Address Label</label>
+              <input type="text" id="new-addr-label" class="form-input" placeholder="Home, Office, etc." required>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="new-addr-name">Recipient Name</label>
+              <input type="text" id="new-addr-name" class="form-input" required>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="new-addr-street">Street Address</label>
+            <input type="text" id="new-addr-street" class="form-input" required>
+          </div>
+
+          <div class="form-grid-2">
+            <div class="form-group">
+              <label class="form-label" for="new-addr-city">City</label>
+              <input type="text" id="new-addr-city" class="form-input" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="new-addr-state">State</label>
+              <input type="text" id="new-addr-state" class="form-input" required>
+            </div>
+          </div>
+
+          <div class="form-grid-2">
+            <div class="form-group">
+              <label class="form-label" for="new-addr-zip">Zip Code</label>
+              <input type="text" id="new-addr-zip" class="form-input" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="new-addr-phone">Phone</label>
+              <input type="tel" id="new-addr-phone" class="form-input" required>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label style="display: flex; align-items: center; gap: 8px; font-size: 13px; cursor: pointer;">
+              <input type="checkbox" id="new-addr-default">
+              <span>Set as default delivery address</span>
+            </label>
+          </div>
+
+          <button type="submit" class="btn-primary-action" style="width: 100%; justify-content: center; padding: 12px;">
+            Save Address
+          </button>
+        </form>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-bottom">
+      <div class="container">
+        <img src="./assets/images/payment.png" alt="payment methods" class="payment-img">
+        <p class="copyright">Copyright &copy; <a href="index.html">Navedi Mall</a>. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="./assets/js/products.js"></script>
+  <script src="./assets/js/storage.js"></script>
+  <script src="./assets/js/app.js"></script>
+  <script src="./assets/js/account.js"></script>
+  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+</body>
+
+</html>

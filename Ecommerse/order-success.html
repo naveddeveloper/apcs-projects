@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Order Confirmed | Navedi Mall</title>
+
+  <!-- Favicon -->
+  <link rel="shortcut icon" href="./assets/images/logo/favicon.ico" type="image/x-icon">
+  <link rel="icon" type="image/svg+xml" href="./assets/images/logo/favicon.svg">
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="./assets/css/style-prefix.css">
+  <link rel="stylesheet" href="./assets/css/ecommerce.css">
+
+  <!-- Google Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+  <div class="overlay" data-overlay></div>
+
+  <!-- HEADER -->
+  <header>
+    <div class="header-main">
+      <div class="container">
+        <a href="index.html" class="header-logo">
+          <img src="./assets/images/logo/logo.svg" alt="Navedi Mall logo" width="168" height="36">
+        </a>
+
+        <div style="margin-left: auto; display: flex; align-items: center; gap: 14px;">
+          <a href="orders.html" style="font-size: 13px; font-weight: 600; color: #0F172A;">My Orders</a>
+          <a href="shop.html" style="font-size: 13px; font-weight: 600; color: var(--secondary, #4F46E5);">Continue Shopping &rarr;</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- CONFIRMATION MAIN CONTENT -->
+  <main class="container">
+    <div class="order-success-card">
+      <div class="success-check-badge">
+        <ion-icon name="checkmark-outline"></ion-icon>
+      </div>
+
+      <div class="order-success-header">
+        <h2>Thank You for Your Order!</h2>
+        <p style="color: #64748B; font-size: 14px;">
+          Your simulated demo order has been received and confirmed. A confirmation receipt has been sent to your email.
+        </p>
+        <span class="order-number-tag" id="success-order-id">Order #NM-00000</span>
+      </div>
+
+      <!-- Order Details Grid -->
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; background: #F8FAFC; border: 1px solid #E2E8F0; border-radius: 12px; padding: 20px; margin-bottom: 24px;">
+        <div>
+          <span style="font-size: 12px; font-weight: 600; color: #64748B; text-transform: uppercase;">Shipping To</span>
+          <div style="font-size: 13px; color: #0F172A; margin-top: 4px; line-height: 1.5;" id="success-shipping-info">
+            Loading shipping details...
+          </div>
+        </div>
+
+        <div>
+          <span style="font-size: 12px; font-weight: 600; color: #64748B; text-transform: uppercase;">Payment &amp; Delivery</span>
+          <div style="font-size: 13px; color: #0F172A; margin-top: 4px; line-height: 1.5;" id="success-payment-info">
+            Loading payment details...
+          </div>
+        </div>
+      </div>
+
+      <!-- Itemized Receipt -->
+      <h3 style="font-size: 16px; font-weight: 700; color: #0F172A; margin-bottom: 14px;">Order Summary</h3>
+      <div id="success-items-list" style="margin-bottom: 20px;">
+        <!-- Dynamically rendered -->
+      </div>
+
+      <!-- Financial Totals -->
+      <div style="border-top: 1px solid #E2E8F0; padding-top: 14px; margin-bottom: 24px;">
+        <div class="summary-row">
+          <span>Subtotal</span>
+          <span id="success-subtotal">$0.00</span>
+        </div>
+        <div class="summary-row" id="success-discount-row" style="display: none; color: #10B981; font-weight: 600;">
+          <span>Discount</span>
+          <span id="success-discount">-$0.00</span>
+        </div>
+        <div class="summary-row">
+          <span>Shipping</span>
+          <span id="success-shipping">$0.00</span>
+        </div>
+        <div class="summary-row">
+          <span>Tax</span>
+          <span id="success-tax">$0.00</span>
+        </div>
+        <div class="summary-row total-row">
+          <span>Total Paid (Simulated)</span>
+          <span id="success-total" style="color: var(--secondary, #4F46E5);">$0.00</span>
+        </div>
+      </div>
+
+      <!-- Tracking Stepper Preview -->
+      <div style="background: #FFFFFF; border: 1px solid #E2E8F0; border-radius: 12px; padding: 20px; margin-bottom: 28px;">
+        <h4 style="font-size: 14px; font-weight: 700; color: #0F172A; margin-bottom: 12px;">Delivery Tracking Timeline</h4>
+        <div class="tracking-stepper">
+          <div class="stepper-item completed">
+            <div class="stepper-dot"></div>
+            <div class="stepper-label">Order Placed</div>
+            <div class="stepper-time">Just now</div>
+          </div>
+          <div class="stepper-item completed current">
+            <div class="stepper-dot"></div>
+            <div class="stepper-label">Simulated Payment Confirmed</div>
+            <div class="stepper-time">Approved</div>
+          </div>
+          <div class="stepper-item">
+            <div class="stepper-dot"></div>
+            <div class="stepper-label">Packaging &amp; Fulfillment</div>
+            <div class="stepper-time">Expected tomorrow</div>
+          </div>
+          <div class="stepper-item">
+            <div class="stepper-dot"></div>
+            <div class="stepper-label">Out for Delivery</div>
+            <div class="stepper-time">Expected in 3-5 business days</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Action Buttons -->
+      <div style="display: flex; gap: 14px; justify-content: center; flex-wrap: wrap;">
+        <a href="orders.html" class="btn-primary-action" style="padding: 12px 24px;">
+          <ion-icon name="list-outline"></ion-icon> View All Orders
+        </a>
+        <a href="shop.html" style="display: inline-flex; align-items: center; gap: 8px; padding: 12px 24px; border: 1px solid #CBD5E1; border-radius: 8px; font-size: 14px; font-weight: 600; color: #0F172A; background: #FFFFFF;">
+          Continue Shopping
+        </a>
+      </div>
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-bottom">
+      <div class="container">
+        <p class="copyright">Copyright &copy; <a href="index.html">Navedi Mall</a>. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="./assets/js/products.js"></script>
+  <script src="./assets/js/storage.js"></script>
+  <script src="./assets/js/app.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const urlParams = new URLSearchParams(window.location.search);
+      const orderId = urlParams.get('orderId');
+      
+      const orders = window.NavediStore.getOrders();
+      let order = orders.find(o => o.orderId === orderId);
+      if (!order && orders.length > 0) {
+        order = orders[0];
+      }
+
+      if (!order) {
+        window.location.href = 'index.html';
+        return;
+      }
+
+      document.getElementById('success-order-id').textContent = `Order #${order.orderId}`;
+
+      const addr = order.shippingAddress;
+      document.getElementById('success-shipping-info').innerHTML = `
+        <strong>${addr.fullName}</strong><br>
+        ${addr.street}<br>
+        ${addr.city}, ${addr.state} ${addr.zipCode}<br>
+        ${addr.country} &bull; ${addr.phone}
+      `;
+
+      document.getElementById('success-payment-info').innerHTML = `
+        <strong>Payment:</strong> ${order.paymentMethod}<br>
+        <strong>Shipping:</strong> ${order.shippingMethod}<br>
+        <strong>Est. Delivery:</strong> ${order.estimatedDelivery}
+      `;
+
+      document.getElementById('success-items-list').innerHTML = order.items.map(item => `
+        <div style="display: flex; align-items: center; gap: 14px; padding: 10px 0; border-bottom: 1px solid #F1F5F9;">
+          <img src="${item.image}" alt="${item.name}" style="width: 50px; height: 50px; object-fit: cover; border-radius: 6px; border: 1px solid #E2E8F0;">
+          <div style="flex: 1; min-width: 0;">
+            <div style="font-size: 13px; font-weight: 600; color: #0F172A;">${item.name}</div>
+            <div style="font-size: 12px; color: #64748B;">Qty: ${item.quantity} | Size: ${item.size || 'Standard'} | Color: ${item.color || 'Default'}</div>
+          </div>
+          <div style="font-size: 13px; font-weight: 700; color: #0F172A;">
+            $${(item.price * item.quantity).toFixed(2)}
+          </div>
+        </div>
+      `).join('');
+
+      document.getElementById('success-subtotal').textContent = `$${order.totals.subtotal.toFixed(2)}`;
+      if (order.totals.discount > 0) {
+        document.getElementById('success-discount-row').style.display = 'flex';
+        document.getElementById('success-discount').textContent = `-$${order.totals.discount.toFixed(2)}`;
+      }
+      document.getElementById('success-shipping').textContent = order.totals.shipping === 0 ? 'FREE' : `$${order.totals.shipping.toFixed(2)}`;
+      document.getElementById('success-tax').textContent = `$${order.totals.tax.toFixed(2)}`;
+      document.getElementById('success-total').textContent = `$${order.totals.total.toFixed(2)}`;
+    });
+  </script>
+  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+</body>
+
+</html>

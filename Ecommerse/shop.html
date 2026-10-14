@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shop Products | Navedi Mall</title>
+
+  <!-- Favicon -->
+  <link rel="shortcut icon" href="./assets/images/logo/favicon.ico" type="image/x-icon">
+  <link rel="icon" type="image/svg+xml" href="./assets/images/logo/favicon.svg">
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="./assets/css/style-prefix.css">
+  <link rel="stylesheet" href="./assets/css/ecommerce.css">
+
+  <!-- Google Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+  <div class="overlay" data-overlay></div>
+
+  <!-- HEADER -->
+  <header>
+    <div class="header-top">
+      <div class="container">
+        <ul class="header-social-container">
+          <li><a href="#" class="social-link"><ion-icon name="logo-facebook"></ion-icon></a></li>
+          <li><a href="#" class="social-link"><ion-icon name="logo-twitter"></ion-icon></a></li>
+          <li><a href="#" class="social-link"><ion-icon name="logo-instagram"></ion-icon></a></li>
+          <li><a href="#" class="social-link"><ion-icon name="logo-linkedin"></ion-icon></a></li>
+        </ul>
+
+        <div class="header-alert-news">
+          <p><b>Free Shipping</b> on all orders over $55 this week!</p>
+        </div>
+
+        <div class="header-top-actions">
+          <select name="currency">
+            <option value="usd">USD &dollar;</option>
+            <option value="eur">EUR &euro;</option>
+          </select>
+
+          <select name="language">
+            <option value="en-US">English</option>
+            <option value="es-ES">Espa&ntilde;ol</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <div class="header-main">
+      <div class="container">
+        <a href="index.html" class="header-logo">
+          <img src="./assets/images/logo/logo.svg" alt="Navedi Mall logo" width="168" height="36">
+        </a>
+
+        <div class="header-search-container">
+          <input type="search" name="search" class="search-field" placeholder="Search products, brands, or categories...">
+          <button class="search-btn" aria-label="Search">
+            <ion-icon name="search-outline"></ion-icon>
+          </button>
+        </div>
+
+        <div class="header-user-actions">
+          <button class="action-btn" data-action="account" title="My Account" aria-label="Account">
+            <ion-icon name="person-outline"></ion-icon>
+          </button>
+
+          <button class="action-btn" data-action="wishlist" title="My Wishlist" aria-label="Wishlist">
+            <ion-icon name="heart-outline"></ion-icon>
+            <span class="count" data-wishlist-count>0</span>
+          </button>
+
+          <button class="action-btn" data-action="cart" title="Shopping Cart" aria-label="Cart">
+            <ion-icon name="bag-handle-outline"></ion-icon>
+            <span class="count" data-cart-count>0</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <nav class="desktop-navigation-menu">
+      <div class="container">
+        <ul class="desktop-menu-category-list">
+          <li class="menu-category"><a href="index.html" class="menu-title">Home</a></li>
+          <li class="menu-category"><a href="shop.html" class="menu-title active" style="color: var(--secondary, #4F46E5);">Shop Catalog</a></li>
+          <li class="menu-category"><a href="shop.html?category=Mens" class="menu-title">Men's</a></li>
+          <li class="menu-category"><a href="shop.html?category=Womens" class="menu-title">Women's</a></li>
+          <li class="menu-category"><a href="shop.html?category=Jewelry" class="menu-title">Jewelry</a></li>
+          <li class="menu-category"><a href="shop.html?category=Watches" class="menu-title">Watches</a></li>
+          <li class="menu-category"><a href="shop.html?category=Cosmetics" class="menu-title">Perfume & Beauty</a></li>
+          <li class="menu-category"><a href="about.html" class="menu-title">About Us</a></li>
+          <li class="menu-category"><a href="contact.html" class="menu-title">Contact Us</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <!-- Mobile Bottom Navigation -->
+    <div class="mobile-bottom-navigation">
+      <button class="action-btn" data-mobile-menu-open-btn aria-label="Menu">
+        <ion-icon name="menu-outline"></ion-icon>
+      </button>
+      <button class="action-btn" onclick="window.location.href='cart.html'" aria-label="Cart">
+        <ion-icon name="bag-handle-outline"></ion-icon>
+        <span class="count" data-cart-count>0</span>
+      </button>
+      <button class="action-btn" onclick="window.location.href='index.html'" aria-label="Home">
+        <ion-icon name="home-outline"></ion-icon>
+      </button>
+      <button class="action-btn" onclick="window.location.href='wishlist.html'" aria-label="Wishlist">
+        <ion-icon name="heart-outline"></ion-icon>
+        <span class="count" data-wishlist-count>0</span>
+      </button>
+      <button class="action-btn" onclick="window.location.href='shop.html'" aria-label="Shop">
+        <ion-icon name="grid-outline"></ion-icon>
+      </button>
+    </div>
+  </header>
+
+  <!-- BREADCRUMBS -->
+  <div class="breadcrumb-container">
+    <div class="container">
+      <ul class="breadcrumb-list">
+        <li class="breadcrumb-item"><a href="index.html"><ion-icon name="home-outline"></ion-icon> Home</a></li>
+        <li class="breadcrumb-separator">/</li>
+        <li class="breadcrumb-item active">Shop Products</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- PAGE TITLE BANNER -->
+  <div class="page-title-banner">
+    <div class="container banner-inner">
+      <h1>All Products & Collections</h1>
+      <p>Browse through our premium selection of apparel, luxury accessories, footwear, and designer fragrances.</p>
+    </div>
+  </div>
+
+  <!-- MAIN SHOP CONTENT -->
+  <main class="container">
+    <div class="shop-layout">
+
+      <!-- SIDEBAR FILTERS -->
+      <aside class="shop-sidebar has-scrollbar" id="shop-sidebar">
+        <div class="sidebar-header">
+          <h3>Filters</h3>
+          <button type="button" class="btn-clear-filters" id="btn-clear-all-filters">Reset All</button>
+          <button type="button" class="sidebar-close-btn" id="btn-mobile-filter-close" style="display:none;" aria-label="Close">
+            <ion-icon name="close-outline"></ion-icon>
+          </button>
+        </div>
+
+        <!-- Category Filter -->
+        <div class="filter-group">
+          <div class="filter-group-title">Category</div>
+          <div class="filter-list" id="category-filter-list">
+            <!-- Dynamically populated -->
+          </div>
+        </div>
+
+        <!-- Brand Filter -->
+        <div class="filter-group">
+          <div class="filter-group-title">Brand</div>
+          <div class="filter-list" id="brand-filter-list">
+            <!-- Dynamically populated -->
+          </div>
+        </div>
+
+        <!-- Price Range Filter -->
+        <div class="filter-group">
+          <div class="filter-group-title">Price Range ($)</div>
+          <div class="price-range-inputs">
+            <input type="number" id="filter-min-price" class="price-range-input" placeholder="Min" value="0" min="0">
+            <span>to</span>
+            <input type="number" id="filter-max-price" class="price-range-input" placeholder="Max" value="300" min="0">
+            <button type="button" id="btn-apply-price" class="btn-apply-price">Go</button>
+          </div>
+        </div>
+
+        <!-- Rating Filter -->
+        <div class="filter-group">
+          <div class="filter-group-title">Minimum Rating</div>
+          <div class="filter-list" id="rating-filter-list">
+            <label class="filter-item-label">
+              <input type="radio" name="filter-rating" value="0" checked>
+              <span>Any Rating</span>
+            </label>
+            <label class="filter-item-label">
+              <input type="radio" name="filter-rating" value="4.5">
+              <span>4.5 & up</span>
+              <span style="color: #F59E0B; margin-left: auto;">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+            </label>
+            <label class="filter-item-label">
+              <input type="radio" name="filter-rating" value="4.0">
+              <span>4.0 & up</span>
+              <span style="color: #F59E0B; margin-left: auto;">&#9733;&#9733;&#9733;&#9733;</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- Availability Filter -->
+        <div class="filter-group">
+          <label class="filter-item-label">
+            <input type="checkbox" id="filter-in-stock">
+            <span style="font-weight: 600;">In Stock Only</span>
+          </label>
+        </div>
+      </aside>
+
+      <!-- PRODUCT LISTINGS COLUMN -->
+      <section class="shop-content-area">
+        <!-- Shop Toolbar -->
+        <div class="shop-toolbar">
+          <div class="toolbar-left">
+            <button type="button" class="btn-mobile-filter" id="btn-mobile-filter-open">
+              <ion-icon name="filter-outline"></ion-icon> Filter
+            </button>
+            <span class="product-count-text" id="shop-product-count">Loading products...</span>
+          </div>
+
+          <div class="toolbar-right">
+            <div class="sort-select-box">
+              <label for="shop-sort-select">Sort by:</label>
+              <select id="shop-sort-select" class="sort-select">
+                <option value="default">Featured</option>
+                <option value="bestseller">Popularity</option>
+                <option value="newest">Newest</option>
+                <option value="price-low">Price: Low to High</option>
+                <option value="price-high">Price: High to Low</option>
+                <option value="rating">Highest Rated</option>
+                <option value="discount">Biggest Discount</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <!-- Active Filter Chips -->
+        <div class="active-filters-bar" id="active-filters-bar"></div>
+
+        <!-- Product Grid -->
+        <div class="product-grid" id="shop-product-grid">
+          <!-- Dynamically populated -->
+        </div>
+
+        <!-- Pagination -->
+        <div class="pagination-container" id="shop-pagination"></div>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-category">
+      <div class="container">
+        <h2 class="footer-category-title">Brand directory</h2>
+        <div class="footer-category-box">
+          <h3 class="category-box-title">Fashion :</h3>
+          <a href="shop.html?category=Mens" class="footer-category-link">T-shirt</a>
+          <a href="shop.html?category=Mens" class="footer-category-link">Shirts</a>
+          <a href="shop.html?category=Mens" class="footer-category-link">shorts & jeans</a>
+          <a href="shop.html?category=Mens" class="footer-category-link">jacket</a>
+          <a href="shop.html?category=Womens" class="footer-category-link">dress & frock</a>
+        </div>
+
+        <div class="footer-category-box">
+          <h3 class="category-box-title">Jewelry :</h3>
+          <a href="shop.html?category=Jewelry" class="footer-category-link">Earrings</a>
+          <a href="shop.html?category=Jewelry" class="footer-category-link">Couple Rings</a>
+          <a href="shop.html?category=Jewelry" class="footer-category-link">Necklace</a>
+        </div>
+
+        <div class="footer-category-box">
+          <h3 class="category-box-title">Cosmetics :</h3>
+          <a href="shop.html?category=Cosmetics" class="footer-category-link">Perfume</a>
+          <a href="shop.html?category=Cosmetics" class="footer-category-link">Shampoo</a>
+          <a href="shop.html?category=Cosmetics" class="footer-category-link">Body Wash</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-nav">
+      <div class="container">
+        <ul class="footer-nav-list">
+          <li class="footer-nav-item"><h2 class="nav-title">Popular Categories</h2></li>
+          <li class="footer-nav-item"><a href="shop.html?category=Mens" class="footer-nav-link">Fashion Men</a></li>
+          <li class="footer-nav-item"><a href="shop.html?category=Womens" class="footer-nav-link">Fashion Women</a></li>
+          <li class="footer-nav-item"><a href="shop.html?category=Jewelry" class="footer-nav-link">Jewelry & Rings</a></li>
+          <li class="footer-nav-item"><a href="shop.html?category=Watches" class="footer-nav-link">Luxury Watches</a></li>
+        </ul>
+
+        <ul class="footer-nav-list">
+          <li class="footer-nav-item"><h2 class="nav-title">Company</h2></li>
+          <li class="footer-nav-item"><a href="about.html" class="footer-nav-link">About Navedi Mall</a></li>
+          <li class="footer-nav-item"><a href="contact.html" class="footer-nav-link">Contact Us</a></li>
+          <li class="footer-nav-item"><a href="faq.html" class="footer-nav-link">Help & FAQs</a></li>
+          <li class="footer-nav-item"><a href="privacy.html" class="footer-nav-link">Privacy Policy</a></li>
+          <li class="footer-nav-item"><a href="terms.html" class="footer-nav-link">Terms & Conditions</a></li>
+        </ul>
+
+        <ul class="footer-nav-list">
+          <li class="footer-nav-item"><h2 class="nav-title">Customer Service</h2></li>
+          <li class="footer-nav-item"><a href="orders.html" class="footer-nav-link">Track Your Order</a></li>
+          <li class="footer-nav-item"><a href="cart.html" class="footer-nav-link">Shopping Cart</a></li>
+          <li class="footer-nav-item"><a href="wishlist.html" class="footer-nav-link">Wishlist</a></li>
+          <li class="footer-nav-item"><a href="account.html" class="footer-nav-link">My Account</a></li>
+        </ul>
+
+        <ul class="footer-nav-list">
+          <li class="footer-nav-item"><h2 class="nav-title">Contact</h2></li>
+          <li class="footer-nav-item flex">
+            <div class="icon-box"><ion-icon name="location-outline"></ion-icon></div>
+            <address class="content">742 Evergreen Terrace, Suite 400, Springfield, OR</address>
+          </li>
+          <li class="footer-nav-item flex">
+            <div class="icon-box"><ion-icon name="call-outline"></ion-icon></div>
+            <a href="tel:+15552345678" class="footer-nav-link">+1 (555) 234-5678</a>
+          </li>
+          <li class="footer-nav-item flex">
+            <div class="icon-box"><ion-icon name="mail-outline"></ion-icon></div>
+            <a href="mailto:support@navedimall.com" class="footer-nav-link">support@navedimall.com</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="container">
+        <img src="./assets/images/payment.png" alt="payment methods" class="payment-img">
+        <p class="copyright">
+          Copyright &copy; <a href="index.html">Navedi Mall</a>. All rights reserved.
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="./assets/js/products.js"></script>
+  <script src="./assets/js/storage.js"></script>
+  <script src="./assets/js/app.js"></script>
+  <script src="./assets/js/shop.js"></script>
+  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+</body>
+
+</html>
